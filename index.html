@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -49,13 +49,31 @@
         .logo-box {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
         .logo-box:hover {
             transform: scale(1.05);
+        }
+
+        .header-logo-img {
+            height: 38px;
+            width: auto;
+            filter: drop-shadow(0 0 6px var(--accent-glow));
+        }
+
+        .header-logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: var(--text-main);
+        }
+
+        .header-logo-text span {
+            color: var(--accent-color);
         }
 
         .lang-switcher {
@@ -91,6 +109,66 @@
             transform: rotate(90deg);
         }
 
+        /* NAV MENU OVERLAY */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgba(17, 20, 23, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.8);
+            border-left: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 40px 25px;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .nav-overlay.active {
+            right: 0;
+        }
+
+        .close-btn {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(8px);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
         /* HERO SECTION */
         .hero {
             min-height: 100vh;
@@ -107,6 +185,30 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HERO LOGO ANIMATION */
+        .hero-logo-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .hero-logo-img {
+            width: 140px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 3, 0.6));
+            animation: logoPulse 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes logoPulse {
+            from {
+                transform: scale(1);
+                filter: drop-shadow(0 0 10px rgba(0, 255, 3, 0.4));
+            }
+            to {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 25px rgba(0, 255, 3, 0.8));
+            }
         }
 
         .hero-sub {
@@ -131,12 +233,53 @@
             font-weight: 900;
             margin-bottom: 15px;
             letter-spacing: 1px;
+            position: relative;
         }
 
         .hero-title span {
             color: var(--accent-color);
             display: block;
             text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* GLITCH ANIMATION */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip: rect(0, 0, 0, 0);
+        }
+        .glitch::before {
+            left: -2px;
+            text-shadow: 2px 0 #ff00c1;
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: 2px;
+            text-shadow: -2px 0 #00fff9;
+            animation: glitch-anim2 3s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(20px, 9999px, 15px, 0); }
+            20% { clip: rect(50px, 9999px, 80px, 0); }
+            40% { clip: rect(10px, 9999px, 40px, 0); }
+            60% { clip: rect(70px, 9999px, 30px, 0); }
+            80% { clip: rect(30px, 9999px, 90px, 0); }
+            100% { clip: rect(60px, 9999px, 10px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(40px, 9999px, 10px, 0); }
+            20% { clip: rect(10px, 9999px, 30px, 0); }
+            40% { clip: rect(80px, 9999px, 50px, 0); }
+            60% { clip: rect(20px, 9999px, 70px, 0); }
+            80% { clip: rect(90px, 9999px, 20px, 0); }
+            100% { clip: rect(30px, 9999px, 60px, 0); }
         }
 
         .hero-tagline {
@@ -187,7 +330,6 @@
             max-width: 320px;
         }
 
-        /* TOMBOL UTAMA & ANIMASI */
         .btn-primary {
             background-color: var(--accent-color);
             color: #000;
@@ -513,7 +655,7 @@
             transform: translateX(5px);
         }
 
-        /* OPEN MEMBER / WA CARDS INTERAKTIF */
+        /* OPEN MEMBER / WA CARDS */
         .wa-card {
             display: flex;
             align-items: center;
@@ -619,7 +761,7 @@
 
         .social-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
+            font-size: 1.0rem;
             font-weight: 700;
         }
 
@@ -638,12 +780,30 @@
             font-size: 0.85rem;
         }
 
+        footer .footer-logo {
+            height: 45px;
+            width: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+        }
+
         footer .brand {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.3rem;
             color: white;
             margin-bottom: 5px;
             letter-spacing: 1px;
+        }
+
+        /* SCROLL REVEAL ANIMATION CLASS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -652,22 +812,51 @@
     <!-- HEADER -->
     <header>
         <div class="logo-box" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ff03" stroke-width="2">
-                <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+            <svg class="header-logo-img" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M150 20 L200 80 L250 40 L220 120 L80 120 L50 40 L100 80 Z" stroke="#00ff03" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M80 135 L220 135 M90 150 L210 150" stroke="#00ff03" stroke-width="8" stroke-linecap="round"/>
+                <path d="M60 160 L240 160 L240 260 L150 330 L60 260 Z" stroke="#00ff03" stroke-width="14" fill="none" stroke-linejoin="round"/>
+                <path d="M150 175 L150 290" stroke="#00ff03" stroke-width="12" stroke-linecap="round"/>
             </svg>
+            <div class="header-logo-text">DIVRODITE <span>ID</span></div>
         </div>
         <div style="display:flex; align-items:center;">
             <button class="lang-switcher" id="langBtn">🌐 ID</button>
-            <button class="menu-btn" onclick="alert('Navigasi Menu Divrodite ID')">☰</button>
+            <button class="menu-btn" id="openMenuBtn">☰</button>
         </div>
     </header>
 
+    <!-- NAV MENU OVERLAY -->
+    <div class="nav-overlay" id="navOverlay">
+        <button class="close-btn" id="closeMenuBtn">&times;</button>
+        <ul class="nav-links">
+            <li><a href="#about" onclick="closeNav()">[01] TENTANG GUILD</a></li>
+            <li><a href="#manifesto" onclick="closeNav()">[02] VISI & MISI</a></li>
+            <li><a href="#team" onclick="closeNav()">[03] KEPENGURUSAN</a></li>
+            <li><a href="#prestasi" onclick="closeNav()">[04] PRESTASI</a></li>
+            <li><a href="#open-member" onclick="closeNav()">[05] OPEN MEMBER</a></li>
+        </ul>
+    </div>
+
     <!-- HERO SECTION -->
     <div class="hero">
-        <div class="hero-sub">KOMUNITAS ESPORTS • BERDIRI 01 APRIL 2024</div>
-        <h1 class="hero-title">DIVRODITE <span>ID</span></h1>
-        <div class="hero-tagline">Satu Tujuan, Tak Terbendung!</div>
-        <div class="hero-desc">Go United, Win Together — DIVRODITE VICTORIOUS!!</div>
+        <!-- DIVRODITE LOGO ANIMATED -->
+        <div class="hero-logo-container">
+            <svg class="hero-logo-img" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M150 20 L200 80 L250 40 L220 120 L80 120 L50 40 L100 80 Z" stroke="#00ff03" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="50" cy="40" r="8" fill="#00ff03"/>
+                <circle cx="150" cy="20" r="8" fill="#00ff03"/>
+                <circle cx="250" cy="40" r="8" fill="#00ff03"/>
+                <path d="M80 135 L220 135 M90 150 L210 150" stroke="#00ff03" stroke-width="7" stroke-linecap="round"/>
+                <path d="M60 160 L240 160 L240 260 L150 330 L60 260 Z" stroke="#00ff03" stroke-width="12" fill="none" stroke-linejoin="round"/>
+                <path d="M150 175 L150 290" stroke="#00ff03" stroke-width="10" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <div class="hero-sub" data-i18n="hero-sub">KOMUNITAS ESPORTS • BERDIRI 01 APRIL 2024</div>
+        <h1 class="hero-title glitch" data-text="DIVRODITE ID">DIVRODITE <span>ID</span></h1>
+        <div class="hero-tagline" data-i18n="hero-tagline">Satu Tujuan, Tak Terbendung!</div>
+        <div class="hero-desc" data-i18n="hero-desc">Go United, Win Together — DIVRODITE VICTORIOUS!!</div>
         
         <div class="game-badges">
             <span class="badge">🎮 Free Fire</span>
@@ -675,99 +864,98 @@
         </div>
 
         <div class="cta-container">
-            <a href="#open-member" class="btn-primary">GABUNG SEKARANG</a>
-            <a href="#about" class="btn-secondary">JELAJAHI GUILD</a>
+            <a href="#open-member" class="btn-primary" data-i18n="btn-join">GABUNG SEKARANG</a>
+            <a href="#about" class="btn-secondary" data-i18n="btn-explore">JELAJAHI GUILD</a>
         </div>
     </div>
 
     <!-- TENTANG GUILD -->
-    <section id="about">
-        <div class="section-tag">01 — TENTANG GUILD</div>
-        <h2 class="section-title">SATU KOMUNITAS,<br>DUA MEDAN PERANG</h2>
-        <p class="about-text">Divrodite ID adalah komunitas esports yang saat ini bergerak di bidang game Free Fire dan Call of Duty Mobile.</p>
+    <section id="about" class="reveal">
+        <div class="section-tag" data-i18n="tag-about">01 — TENTANG GUILD</div>
+        <h2 class="section-title" data-i18n="title-about">SATU KOMUNITAS,<br>DUA MEDAN PERANG</h2>
+        <p class="about-text" data-i18n="desc-about">Divrodite ID adalah komunitas esports yang saat ini bergerak di bidang game Free Fire dan Call of Duty Mobile.</p>
         
-        <!-- SEJARAH -->
         <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">01 APRIL 2024</div>
-                <div class="timeline-title">GUILD TERBENTUK</div>
-                <div class="timeline-desc">Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Awalnya berfokus penuh pada Free Fire.</div>
+            <div class="timeline-item reveal">
+                <div class="timeline-date" data-i18n="date-t1">01 APRIL 2024</div>
+                <div class="timeline-title" data-i18n="title-t1">GUILD TERBENTUK</div>
+                <div class="timeline-desc" data-i18n="desc-t1">Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Awalnya berfokus penuh pada Free Fire.</div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-date">EKSPANSI DIVISI</div>
-                <div class="timeline-title">LAHIRNYA DIVISI CODM</div>
-                <div class="timeline-desc">Setelah beberapa waktu, Divrodite ID bekerja sama membangun divisi Call of Duty Mobile untuk memperluas jangkauan komunitas.</div>
+            <div class="timeline-item reveal">
+                <div class="timeline-date" data-i18n="date-t2">EKSPANSI DIVISI</div>
+                <div class="timeline-title" data-i18n="title-t2">LAHIRNYA DIVISI CODM</div>
+                <div class="timeline-desc" data-i18n="desc-t2">Setelah beberapa waktu, Divrodite ID bekerja sama membangun divisi Call of Duty Mobile untuk memperluas jangkauan komunitas.</div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-date">FFNS 2026 SPRING</div>
-                <div class="timeline-title">SEMIFINAL CITY QUALIFIER</div>
-                <div class="timeline-desc">Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.</div>
+            <div class="timeline-item reveal">
+                <div class="timeline-date" data-i18n="date-t3">FFNS 2026 SPRING</div>
+                <div class="timeline-title" data-i18n="title-t3">SEMIFINAL CITY QUALIFIER</div>
+                <div class="timeline-desc" data-i18n="desc-t3">Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.</div>
             </div>
         </div>
     </section>
 
     <!-- VISI & MISI -->
-    <section id="manifesto">
-        <div class="section-tag">02 — VISI & MISI</div>
-        <h2 class="section-title">MANIFESTO KAMI</h2>
+    <section id="manifesto" class="reveal">
+        <div class="section-tag" data-i18n="tag-vm">02 — VISI & MISI</div>
+        <h2 class="section-title" data-i18n="title-vm">MANIFESTO KAMI</h2>
 
-        <div class="vm-card">
+        <div class="vm-card reveal">
             <div class="vm-number">01</div>
-            <div class="vm-title">VISI</div>
+            <div class="vm-title" data-i18n="title-visi">VISI</div>
             <ul class="vm-list">
-                <li>Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.</li>
-                <li>Berbagi pengalaman dan informasi sesama member guild.</li>
-                <li>Menjadi tempat bagi player Free Fire yang ingin bermain have fun maupun kompetitif.</li>
+                <li data-i18n="v1">Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.</li>
+                <li data-i18n="v2">Berbagi pengalaman dan informasi sesama member guild.</li>
+                <li data-i18n="v3">Menjadi tempat bagi player Free Fire yang ingin bermain have fun maupun kompetitif.</li>
             </ul>
         </div>
 
-        <div class="vm-card">
+        <div class="vm-card reveal">
             <div class="vm-number">02</div>
-            <div class="vm-title">MISI</div>
+            <div class="vm-title" data-i18n="title-misi">MISI</div>
             <ul class="vm-list">
-                <li>Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.</li>
-                <li>Membuat forum berbagi agar semua member dapat berkembang bersama.</li>
+                <li data-i18n="m1">Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.</li>
+                <li data-i18n="m2">Membuat forum berbagi agar semua member dapat berkembang bersama.</li>
             </ul>
         </div>
     </section>
 
     <!-- STRUKTUR KEPENGURUSAN -->
-    <section id="team">
-        <div class="section-tag">03 — STRUKTUR KEPENGURUSAN</div>
-        <h2 class="section-title">BARISAN KOMANDO</h2>
+    <section id="team" class="reveal">
+        <div class="section-tag" data-i18n="tag-team">03 — STRUKTUR KEPENGURUSAN</div>
+        <h2 class="section-title" data-i18n="title-team">BARISAN KOMANDO</h2>
         <div style="font-family: 'Share Tech Mono'; color: var(--text-muted); margin-bottom: 25px;">👥 6 MEMBERS</div>
 
-        <div class="member-card leader">
+        <div class="member-card leader reveal">
             <span class="member-num">01</span>
             <div class="member-role">LEADER / FOUNDER</div>
             <div class="member-name">DEY</div>
         </div>
 
-        <div class="member-card">
+        <div class="member-card reveal">
             <span class="member-num">02</span>
             <div class="member-role">STAFF OPMEM</div>
             <div class="member-name">PANCA</div>
         </div>
 
-        <div class="member-card">
+        <div class="member-card reveal">
             <span class="member-num">03</span>
             <div class="member-role">STAFF OPMEM</div>
             <div class="member-name">RARA</div>
         </div>
 
-        <div class="member-card">
+        <div class="member-card reveal">
             <span class="member-num">04</span>
             <div class="member-role">STAFF EVENT & PENGEMBANGAN TIM</div>
             <div class="member-name">PUTRA</div>
         </div>
 
-        <div class="member-card">
+        <div class="member-card reveal">
             <span class="member-num">05</span>
             <div class="member-role">STAFF EDITOR</div>
             <div class="member-name">YANN</div>
         </div>
 
-        <div class="member-card">
+        <div class="member-card reveal">
             <span class="member-num">06</span>
             <div class="member-role">STAFF INTERNAL</div>
             <div class="member-name">VIRA</div>
@@ -775,36 +963,35 @@
     </section>
 
     <!-- PRESTASI -->
-    <section id="prestasi">
-        <div class="section-tag">04 — PRESTASI</div>
-        <h2 class="section-title">JEJAK KEMENANGAN</h2>
-        <p class="about-text" style="margin-bottom: 25px;">Momen-momen kebanggaan Divrodite ID di medan tempur.</p>
+    <section id="prestasi" class="reveal">
+        <div class="section-tag" data-i18n="tag-ach">04 — PRESTASI</div>
+        <h2 class="section-title" data-i18n="title-ach">JEJAK KEMENANGAN</h2>
+        <p class="about-text" style="margin-bottom: 25px;" data-i18n="desc-ach">Momen-momen kebanggaan Divrodite ID di medan tempur.</p>
 
-        <div class="achievement-card">
+        <div class="achievement-card reveal">
             <div class="achievement-img-box">
                 <span class="achievement-badge">🏆 FREE FIRE • FFNS 2026 SPRING</span>
                 <div class="achievement-title">SEMIFINAL CITY QUALIFIER FFNS PEKANBARU</div>
             </div>
         </div>
 
-        <div class="achievement-card">
+        <div class="achievement-card reveal">
             <div class="achievement-img-box" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80');">
-                <span class="achievement-badge">🏆 FREE FIRE • DOKUMENTASI</span>
-                <div class="achievement-title">PERJALANAN KOMPETITIF GUILD</div>
+                <span class="achievement-badge" data-i18n="badge-doc">🏆 FREE FIRE • DOKUMENTASI</span>
+                <div class="achievement-title" data-i18n="title-doc">PERJALANAN KOMPETITIF GUILD</div>
             </div>
         </div>
 
-        <a href="https://instagram.com/divrodite.id" target="_blank" class="ig-link">— LIHAT POSTINGAN • INSTAGRAM @DIVRODITE.ID ↗</a>
+        <a href="https://instagram.com/divrodite.id" target="_blank" class="ig-link" data-i18n="ig-post">— LIHAT POSTINGAN • INSTAGRAM @DIVRODITE.ID ↗</a>
     </section>
 
     <!-- OPEN MEMBER & KONTAK -->
-    <section id="open-member">
-        <div class="section-tag">05 — OPEN MEMBER</div>
-        <h2 class="section-title" style="color: var(--accent-color);">SIAP BERGABUNG?</h2>
-        <p class="about-text" style="margin-bottom: 25px;">Divrodite ID membuka pintu untuk player yang ingin bertumbuh — baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.</p>
+    <section id="open-member" class="reveal">
+        <div class="section-tag" data-i18n="tag-opmem">05 — OPEN MEMBER</div>
+        <h2 class="section-title" style="color: var(--accent-color);" data-i18n="title-opmem">SIAP BERGABUNG?</h2>
+        <p class="about-text" style="margin-bottom: 25px;" data-i18n="desc-opmem">Divrodite ID membuka pintu untuk player yang ingin bertumbuh — baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.</p>
 
-        <!-- KONTAK WA PANCA -->
-        <a href="https://wa.me/6288274040292" target="_blank" class="wa-card">
+        <a href="https://wa.me/6288274040292" target="_blank" class="wa-card reveal">
             <div class="wa-info">
                 <div class="wa-icon">💬</div>
                 <div>
@@ -816,8 +1003,7 @@
             <div class="arrow-icon">↗</div>
         </a>
 
-        <!-- KONTAK WA RARA -->
-        <a href="https://wa.me/6283167230896" target="_blank" class="wa-card">
+        <a href="https://wa.me/6283167230896" target="_blank" class="wa-card reveal">
             <div class="wa-info">
                 <div class="wa-icon">💬</div>
                 <div>
@@ -829,31 +1015,29 @@
             <div class="arrow-icon">↗</div>
         </a>
 
-        <!-- TOMBOL AKSI -->
         <div style="margin-top: 25px; display:flex; flex-direction:column; gap: 12px;">
-            <a href="https://docs.google.com/forms" target="_blank" class="btn-primary">📋 FORM PENDAFTARAN</a>
-            <a href="#" onclick="alert('Toko TopUp segera hadir!')" class="btn-secondary">🛍️ TOKO TOPUP</a>
+            <a href="https://linktr.ee/divrodite" target="_blank" class="btn-primary" data-i18n="btn-form">📋 FORM PENDAFTARAN</a>
+            <a href="https://divroditestore.vcpanel.id" target="_blank" class="btn-secondary" data-i18n="btn-store">🛍️ TOKO TOPUP</a>
         </div>
 
-        <!-- SOSIAL MEDIA -->
         <div style="margin-top: 40px;">
-            <div style="font-family:'Share Tech Mono'; color:var(--text-muted); font-size:0.85rem; letter-spacing:1px; margin-bottom:15px;">IKUTI KAMI</div>
+            <div style="font-family:'Share Tech Mono'; color:var(--text-muted); font-size:0.85rem; letter-spacing:1px; margin-bottom:15px;" data-i18n="follow-us">IKUTI KAMI</div>
             <div class="social-grid">
-                <a href="https://instagram.com/divrodite.id" target="_blank" class="social-card">
+                <a href="https://instagram.com/divrodite.id" target="_blank" class="social-card reveal">
                     <div style="font-size:1.5rem;">📸</div>
                     <div>
                         <div class="social-title">INSTAGRAM</div>
                         <div class="social-handle">@divrodite.id</div>
                     </div>
                 </a>
-                <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-card">
+                <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-card reveal">
                     <div style="font-size:1.5rem;">🎵</div>
                     <div>
                         <div class="social-title">TIKTOK</div>
                         <div class="social-handle">@divrodite.id</div>
                     </div>
                 </a>
-                <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-card">
+                <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-card reveal">
                     <div style="font-size:1.5rem;">▶️</div>
                     <div>
                         <div class="social-title">YOUTUBE</div>
@@ -866,21 +1050,146 @@
 
     <!-- FOOTER -->
     <footer>
+        <svg class="footer-logo" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M150 20 L200 80 L250 40 L220 120 L80 120 L50 40 L100 80 Z" stroke="#00ff03" stroke-width="10" fill="none"/>
+            <path d="M60 160 L240 160 L240 260 L150 330 L60 260 Z" stroke="#00ff03" stroke-width="12" fill="none"/>
+            <path d="M150 175 L150 290" stroke="#00ff03" stroke-width="10"/>
+        </svg>
         <div class="brand">DIVRODITE.ID</div>
-        <div style="font-family: 'Share Tech Mono'; font-size: 0.8rem; margin-bottom: 15px;">SATU TUJUAN, TAK TERBENDUNG.</div>
-        <p>&copy; 2026 DIVRODITE ID • SEMUA HAK DILINDUNGI.</p>
+        <div style="font-family: 'Share Tech Mono'; font-size: 0.8rem; margin-bottom: 15px;" data-i18n="footer-motto">SATU TUJUAN, TAK TERBENDUNG.</div>
+        <p data-i18n="footer-copy">&copy; 2026 DIVRODITE ID • SEMUA HAK DILINDUNGI.</p>
     </footer>
 
     <script>
-        // Fitur Ganti Bahasa (ID / EN Contoh Interaktif)
-        const langBtn = document.getElementById('langBtn');
-        langBtn.addEventListener('click', () => {
-            if (langBtn.innerText.includes('ID')) {
-                langBtn.innerText = '🌐 EN';
-            } else {
-                langBtn.innerText = '🌐 ID';
+        const navOverlay = document.getElementById('navOverlay');
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+        openMenuBtn.addEventListener('click', () => { navOverlay.classList.add('active'); });
+        closeMenuBtn.addEventListener('click', () => { navOverlay.classList.remove('active'); });
+        function closeNav() { navOverlay.classList.remove('active'); }
+
+        const translations = {
+            id: {
+                "hero-sub": "KOMUNITAS ESPORTS • BERDIRI 01 APRIL 2024",
+                "hero-tagline": "Satu Tujuan, Tak Terbendung!",
+                "hero-desc": "Go United, Win Together — DIVRODITE VICTORIOUS!!",
+                "btn-join": "GABUNG SEKARANG",
+                "btn-explore": "JELAJAHI GUILD",
+                "tag-about": "01 — TENTANG GUILD",
+                "title-about": "SATU KOMUNITAS,<br>DUA MEDAN PERANG",
+                "desc-about": "Divrodite ID adalah komunitas esports yang saat ini bergerak di bidang game Free Fire dan Call of Duty Mobile.",
+                "date-t1": "01 APRIL 2024",
+                "title-t1": "GUILD TERBENTUK",
+                "desc-t1": "Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Awalnya berfokus penuh pada Free Fire.",
+                "date-t2": "EKSPANSI DIVISI",
+                "title-t2": "LAHIRNYA DIVISI CODM",
+                "desc-t2": "Setelah beberapa waktu, Divrodite ID bekerja sama membangun divisi Call of Duty Mobile untuk memperluas jangkauan komunitas.",
+                "date-t3": "FFNS 2026 SPRING",
+                "title-t3": "SEMIFINAL CITY QUALIFIER",
+                "desc-t3": "Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.",
+                "tag-vm": "02 — VISI & MISI",
+                "title-vm": "MANIFESTO KAMI",
+                "title-visi": "VISI",
+                "v1": "Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.",
+                "v2": "Berbagi pengalaman dan informasi sesama member guild.",
+                "v3": "Menjadi tempat bagi player Free Fire yang ingin bermain have fun maupun kompetitif.",
+                "title-misi": "MISI",
+                "m1": "Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.",
+                "m2": "Membuat forum berbagi agar semua member dapat berkembang bersama.",
+                "tag-team": "03 — STRUKTUR KEPENGURUSAN",
+                "title-team": "BARISAN KOMANDO",
+                "tag-ach": "04 — PRESTASI",
+                "title-ach": "JEJAK KEMENANGAN",
+                "desc-ach": "Momen-momen kebanggaan Divrodite ID di medan tempur.",
+                "badge-doc": "🏆 FREE FIRE • DOKUMENTASI",
+                "title-doc": "PERJALANAN KOMPETITIF GUILD",
+                "ig-post": "— LIHAT POSTINGAN • INSTAGRAM @DIVRODITE.ID ↗",
+                "tag-opmem": "05 — OPEN MEMBER",
+                "title-opmem": "SIAP BERGABUNG?",
+                "desc-opmem": "Divrodite ID membuka pintu untuk player yang ingin bertumbuh — baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.",
+                "btn-form": "📋 FORM PENDAFTARAN",
+                "btn-store": "🛍️ TOKO TOPUP",
+                "follow-us": "IKUTI KAMI",
+                "footer-motto": "SATU TUJUAN, TAK TERBENDUNG.",
+                "footer-copy": "&copy; 2026 DIVRODITE ID • SEMUA HAK DILINDUNGI."
+            },
+            en: {
+                "hero-sub": "ESPORTS COMMUNITY • ESTABLISHED APRIL 01, 2024",
+                "hero-tagline": "One Goal, Unstoppable!",
+                "hero-desc": "Go United, Win Together — DIVRODITE VICTORIOUS!!",
+                "btn-join": "JOIN NOW",
+                "btn-explore": "EXPLORE GUILD",
+                "tag-about": "01 — ABOUT GUILD",
+                "title-about": "ONE COMMUNITY,<br>TWO BATTLEFIELDS",
+                "desc-about": "Divrodite ID is an esports community currently active in Free Fire and Call of Duty Mobile.",
+                "date-t1": "APRIL 01, 2024",
+                "title-t1": "GUILD FOUNDED",
+                "desc-t1": "Divrodite ID was founded by 5 members: Dey, Irfan, Wulan, Bunga, and Alya. Initially focusing purely on Free Fire.",
+                "date-t2": "DIVISION EXPANSION",
+                "title-t2": "BIRTH OF CODM DIVISION",
+                "desc-t2": "Later on, Divrodite ID expanded by forming the Call of Duty Mobile division to broaden community reach.",
+                "date-t3": "FFNS 2026 SPRING",
+                "title-t3": "CITY QUALIFIER SEMIFINALS",
+                "desc-t3": "Our major achievement in Free Fire: qualifying for the FFNS Pekanbaru City Qualifier Semifinals in FFNS 2026 Spring.",
+                "tag-vm": "02 — VISION & MISSION",
+                "title-vm": "OUR MANIFESTO",
+                "title-visi": "VISION",
+                "v1": "To build a community guild strengthening brotherhood, solidarity, and unity among members and guilds.",
+                "v2": "To share knowledge and experience among all guild members.",
+                "v3": "To provide a home for Free Fire players looking for casual or competitive gameplay.",
+                "title-misi": "MISSION",
+                "m1": "Host internal/external scrims and guild events to foster brotherhood and solidarity across the community.",
+                "m2": "Create shared forums for all members to grow together.",
+                "tag-team": "03 — MANAGEMENT STRUCTURE",
+                "title-team": "COMMAND LINEUP",
+                "tag-ach": "04 — ACHIEVEMENTS",
+                "title-ach": "VICTORY PATH",
+                "desc-ach": "Divrodite ID's proud moments on the battleground.",
+                "badge-doc": "🏆 FREE FIRE • DOCUMENTATION",
+                "title-doc": "COMPETITIVE GUILD JOURNEY",
+                "ig-post": "— VIEW POST • INSTAGRAM @DIVRODITE.ID ↗",
+                "tag-opmem": "05 — OPEN MEMBER",
+                "title-opmem": "READY TO JOIN?",
+                "desc-opmem": "Divrodite ID welcomes players eager to grow — casually or competitively. Contact our Recruitment Staff to apply.",
+                "btn-form": "📋 REGISTRATION FORM",
+                "btn-store": "🛍️ TOPUP STORE",
+                "follow-us": "FOLLOW US",
+                "footer-motto": "ONE GOAL, UNSTOPPABLE.",
+                "footer-copy": "&copy; 2026 DIVRODITE ID • ALL RIGHTS RESERVED."
             }
+        };
+
+        let currentLang = 'id';
+        const langBtn = document.getElementById('langBtn');
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            langBtn.innerText = currentLang === 'id' ? '🌐 ID' : '🌐 EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
         });
+
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
     </script>
 </body>
 </html>
+

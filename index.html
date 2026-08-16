@@ -3,16 +3,884 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIVRODITE ESPORTS</title>
+    <title>DIVRODITE.ID | Komunitas Esports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; background-color: #0d0d0d; color: #fff; text-align: center; padding: 50px; }
-        h1 { color: #00ff03; }
-        .btn { display: inline-block; padding: 10px 20px; background: #00ff03; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; }
+        :root {
+            --bg-color: #08090a;
+            --card-bg: #111417;
+            --accent-color: #00ff03;
+            --accent-glow: rgba(0, 255, 3, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+            --border-color: #21262d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 9, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-box:hover {
+            transform: scale(1.05);
+        }
+
+        .lang-switcher {
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            background: transparent;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lang-switcher:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 40px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 255, 3, 0.08) 0%, rgba(8, 9, 10, 1) 75%);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-sub {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            animation: pulseText 2s infinite alternate;
+        }
+
+        @keyframes pulseText {
+            from { opacity: 0.7; text-shadow: 0 0 2px var(--accent-color); }
+            to { opacity: 1; text-shadow: 0 0 10px var(--accent-color); }
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title span {
+            color: var(--accent-color);
+            display: block;
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .hero-tagline {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .hero-desc {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .game-badges {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .badge {
+            border: 1px solid #1f292e;
+            padding: 6px 15px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            background: rgba(255,255,255,0.02);
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            border-color: var(--accent-color);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0,255,3,0.2);
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        /* TOMBOL UTAMA & ANIMASI */
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            padding: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--accent-glow);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            display: block;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 3, 0.8);
+            transform: translateY(-3px) scale(1.02);
+            background-color: #00ff44;
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            padding: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: inset 0 0 10px rgba(0, 255, 3, 0.15), 0 0 15px rgba(0, 255, 3, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* SECTIONS GENERAL */
+        section {
+            padding: 70px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-tag::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            display: inline-block;
+            box-shadow: 0 0 8px var(--accent-color);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* ABOUT & TIMELINE */
+        .about-text {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--border-color);
+            margin-top: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            background: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            background: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .timeline-date {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* VISI MISI */
+        .vm-card {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 6px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .vm-card:hover {
+            border-color: rgba(0, 255, 3, 0.2);
+            background: rgba(0, 255, 3, 0.02);
+            transform: translateY(-4px);
+        }
+
+        .vm-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--accent-color);
+            line-height: 1;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .vm-card:hover .vm-number {
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .vm-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .vm-list {
+            list-style: none;
+        }
+
+        .vm-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        .vm-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        /* KEPENGURUSAN / MEMBER CARDS */
+        .member-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: default;
+        }
+
+        .member-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 255, 3, 0.15);
+        }
+
+        .member-card.leader {
+            border-color: rgba(0, 255, 3, 0.4);
+            background: linear-gradient(135deg, rgba(0,255,3,0.05) 0%, var(--card-bg) 100%);
+        }
+
+        .member-role {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .member-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .member-num {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            color: #444;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .member-card:hover .member-num {
+            color: var(--accent-color);
+        }
+
+        /* PRESTASI CARD */
+        .achievement-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .achievement-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 3, 0.2);
+        }
+
+        .achievement-img-box {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #1c2128 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80') center/cover;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .achievement-card:hover .achievement-img-box {
+            transform: scale(1.03);
+        }
+
+        .achievement-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(8, 9, 10, 0.85);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 5px 12px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0,255,3,0.3);
+        }
+
+        .achievement-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+            z-index: 2;
+        }
+
+        .ig-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--text-muted);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .ig-link:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        /* OPEN MEMBER / WA CARDS INTERAKTIF */
+        .wa-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: white;
+            border-radius: 6px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .wa-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 8px 25px rgba(0, 255, 3, 0.2);
+            background: rgba(0, 255, 3, 0.03);
+        }
+
+        .wa-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .wa-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: black;
+            box-shadow: 0 0 12px var(--accent-glow);
+            transition: transform 0.3s ease;
+        }
+
+        .wa-card:hover .wa-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .wa-role {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--accent-color);
+            font-size: 0.75rem;
+        }
+
+        .wa-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .wa-phone {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .arrow-icon {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .wa-card:hover .arrow-icon {
+            color: var(--accent-color);
+            transform: translate(3px, -3px);
+        }
+
+        /* SOSIAL MEDIA GRID */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: white;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .social-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 255, 3, 0.25);
+            background: rgba(0, 255, 3, 0.04);
+        }
+
+        .social-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .social-handle {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer .brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
-    <h1>WELCOME TO DIVRODITE ESPORTS</h1>
-    <p>Official Website Guild & Community DIVRODITE ID</p>
-    <a href="https://instagram.com/divrodite.id" class="btn">Kunjungi Instagram</a>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-box" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ff03" stroke-width="2">
+                <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+            </svg>
+        </div>
+        <div style="display:flex; align-items:center;">
+            <button class="lang-switcher" id="langBtn">🌐 ID</button>
+            <button class="menu-btn" onclick="alert('Navigasi Menu Divrodite ID')">☰</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-sub">KOMUNITAS ESPORTS • BERDIRI 01 APRIL 2024</div>
+        <h1 class="hero-title">DIVRODITE <span>ID</span></h1>
+        <div class="hero-tagline">Satu Tujuan, Tak Terbendung!</div>
+        <div class="hero-desc">Go United, Win Together — DIVRODITE VICTORIOUS!!</div>
+        
+        <div class="game-badges">
+            <span class="badge">🎮 Free Fire</span>
+            <span class="badge">🎮 Call of Duty Mobile</span>
+        </div>
+
+        <div class="cta-container">
+            <a href="#open-member" class="btn-primary">GABUNG SEKARANG</a>
+            <a href="#about" class="btn-secondary">JELAJAHI GUILD</a>
+        </div>
+    </div>
+
+    <!-- TENTANG GUILD -->
+    <section id="about">
+        <div class="section-tag">01 — TENTANG GUILD</div>
+        <h2 class="section-title">SATU KOMUNITAS,<br>DUA MEDAN PERANG</h2>
+        <p class="about-text">Divrodite ID adalah komunitas esports yang saat ini bergerak di bidang game Free Fire dan Call of Duty Mobile.</p>
+        
+        <!-- SEJARAH -->
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">01 APRIL 2024</div>
+                <div class="timeline-title">GUILD TERBENTUK</div>
+                <div class="timeline-desc">Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Awalnya berfokus penuh pada Free Fire.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">EKSPANSI DIVISI</div>
+                <div class="timeline-title">LAHIRNYA DIVISI CODM</div>
+                <div class="timeline-desc">Setelah beberapa waktu, Divrodite ID bekerja sama membangun divisi Call of Duty Mobile untuk memperluas jangkauan komunitas.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">FFNS 2026 SPRING</div>
+                <div class="timeline-title">SEMIFINAL CITY QUALIFIER</div>
+                <div class="timeline-desc">Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISI & MISI -->
+    <section id="manifesto">
+        <div class="section-tag">02 — VISI & MISI</div>
+        <h2 class="section-title">MANIFESTO KAMI</h2>
+
+        <div class="vm-card">
+            <div class="vm-number">01</div>
+            <div class="vm-title">VISI</div>
+            <ul class="vm-list">
+                <li>Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.</li>
+                <li>Berbagi pengalaman dan informasi sesama member guild.</li>
+                <li>Menjadi tempat bagi player Free Fire yang ingin bermain have fun maupun kompetitif.</li>
+            </ul>
+        </div>
+
+        <div class="vm-card">
+            <div class="vm-number">02</div>
+            <div class="vm-title">MISI</div>
+            <ul class="vm-list">
+                <li>Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.</li>
+                <li>Membuat forum berbagi agar semua member dapat berkembang bersama.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- STRUKTUR KEPENGURUSAN -->
+    <section id="team">
+        <div class="section-tag">03 — STRUKTUR KEPENGURUSAN</div>
+        <h2 class="section-title">BARISAN KOMANDO</h2>
+        <div style="font-family: 'Share Tech Mono'; color: var(--text-muted); margin-bottom: 25px;">👥 6 MEMBERS</div>
+
+        <div class="member-card leader">
+            <span class="member-num">01</span>
+            <div class="member-role">LEADER / FOUNDER</div>
+            <div class="member-name">DEY</div>
+        </div>
+
+        <div class="member-card">
+            <span class="member-num">02</span>
+            <div class="member-role">STAFF OPMEM</div>
+            <div class="member-name">PANCA</div>
+        </div>
+
+        <div class="member-card">
+            <span class="member-num">03</span>
+            <div class="member-role">STAFF OPMEM</div>
+            <div class="member-name">RARA</div>
+        </div>
+
+        <div class="member-card">
+            <span class="member-num">04</span>
+            <div class="member-role">STAFF EVENT & PENGEMBANGAN TIM</div>
+            <div class="member-name">PUTRA</div>
+        </div>
+
+        <div class="member-card">
+            <span class="member-num">05</span>
+            <div class="member-role">STAFF EDITOR</div>
+            <div class="member-name">YANN</div>
+        </div>
+
+        <div class="member-card">
+            <span class="member-num">06</span>
+            <div class="member-role">STAFF INTERNAL</div>
+            <div class="member-name">VIRA</div>
+        </div>
+    </section>
+
+    <!-- PRESTASI -->
+    <section id="prestasi">
+        <div class="section-tag">04 — PRESTASI</div>
+        <h2 class="section-title">JEJAK KEMENANGAN</h2>
+        <p class="about-text" style="margin-bottom: 25px;">Momen-momen kebanggaan Divrodite ID di medan tempur.</p>
+
+        <div class="achievement-card">
+            <div class="achievement-img-box">
+                <span class="achievement-badge">🏆 FREE FIRE • FFNS 2026 SPRING</span>
+                <div class="achievement-title">SEMIFINAL CITY QUALIFIER FFNS PEKANBARU</div>
+            </div>
+        </div>
+
+        <div class="achievement-card">
+            <div class="achievement-img-box" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80');">
+                <span class="achievement-badge">🏆 FREE FIRE • DOKUMENTASI</span>
+                <div class="achievement-title">PERJALANAN KOMPETITIF GUILD</div>
+            </div>
+        </div>
+
+        <a href="https://instagram.com/divrodite.id" target="_blank" class="ig-link">— LIHAT POSTINGAN • INSTAGRAM @DIVRODITE.ID ↗</a>
+    </section>
+
+    <!-- OPEN MEMBER & KONTAK -->
+    <section id="open-member">
+        <div class="section-tag">05 — OPEN MEMBER</div>
+        <h2 class="section-title" style="color: var(--accent-color);">SIAP BERGABUNG?</h2>
+        <p class="about-text" style="margin-bottom: 25px;">Divrodite ID membuka pintu untuk player yang ingin bertumbuh — baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.</p>
+
+        <!-- KONTAK WA PANCA -->
+        <a href="https://wa.me/6288274040292" target="_blank" class="wa-card">
+            <div class="wa-info">
+                <div class="wa-icon">💬</div>
+                <div>
+                    <div class="wa-role">STAFF OPMEM</div>
+                    <div class="wa-name">PANCA</div>
+                    <div class="wa-phone">+62 882-7404-0292</div>
+                </div>
+            </div>
+            <div class="arrow-icon">↗</div>
+        </a>
+
+        <!-- KONTAK WA RARA -->
+        <a href="https://wa.me/6283167230896" target="_blank" class="wa-card">
+            <div class="wa-info">
+                <div class="wa-icon">💬</div>
+                <div>
+                    <div class="wa-role">STAFF OPMEM</div>
+                    <div class="wa-name">RARA</div>
+                    <div class="wa-phone">+62 831-6723-0896</div>
+                </div>
+            </div>
+            <div class="arrow-icon">↗</div>
+        </a>
+
+        <!-- TOMBOL AKSI -->
+        <div style="margin-top: 25px; display:flex; flex-direction:column; gap: 12px;">
+            <a href="https://docs.google.com/forms" target="_blank" class="btn-primary">📋 FORM PENDAFTARAN</a>
+            <a href="#" onclick="alert('Toko TopUp segera hadir!')" class="btn-secondary">🛍️ TOKO TOPUP</a>
+        </div>
+
+        <!-- SOSIAL MEDIA -->
+        <div style="margin-top: 40px;">
+            <div style="font-family:'Share Tech Mono'; color:var(--text-muted); font-size:0.85rem; letter-spacing:1px; margin-bottom:15px;">IKUTI KAMI</div>
+            <div class="social-grid">
+                <a href="https://instagram.com/divrodite.id" target="_blank" class="social-card">
+                    <div style="font-size:1.5rem;">📸</div>
+                    <div>
+                        <div class="social-title">INSTAGRAM</div>
+                        <div class="social-handle">@divrodite.id</div>
+                    </div>
+                </a>
+                <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-card">
+                    <div style="font-size:1.5rem;">🎵</div>
+                    <div>
+                        <div class="social-title">TIKTOK</div>
+                        <div class="social-handle">@divrodite.id</div>
+                    </div>
+                </a>
+                <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-card">
+                    <div style="font-size:1.5rem;">▶️</div>
+                    <div>
+                        <div class="social-title">YOUTUBE</div>
+                        <div class="social-handle">@divrodite.id_comunity</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="brand">DIVRODITE.ID</div>
+        <div style="font-family: 'Share Tech Mono'; font-size: 0.8rem; margin-bottom: 15px;">SATU TUJUAN, TAK TERBENDUNG.</div>
+        <p>&copy; 2026 DIVRODITE ID • SEMUA HAK DILINDUNGI.</p>
+    </footer>
+
+    <script>
+        // Fitur Ganti Bahasa (ID / EN Contoh Interaktif)
+        const langBtn = document.getElementById('langBtn');
+        langBtn.addEventListener('click', () => {
+            if (langBtn.innerText.includes('ID')) {
+                langBtn.innerText = '🌐 EN';
+            } else {
+                langBtn.innerText = '🌐 ID';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -804,9 +804,11 @@ html_content = """<!DOCTYPE html>
             opacity: 1;
             transform: translateY(0);
         }
+
     </style>
 </head>
 <body>
+
 
     <!-- HEADER -->
     <header>
@@ -830,11 +832,18 @@ html_content = """<!DOCTYPE html>
         <button class="close-btn" id="closeMenuBtn">&times;</button>
         <ul class="nav-links">           <li><a href="#about" class="nav-link" data-i18n="nav-about">[01] TENTANG GUILD</a>
             <a href="#vision" class="nav-link" data-i18n="nav-vision">[02] VISI & MISI</a>
+            
             <a href="#structure" class="nav-link" data-i18n="nav-structure">[03] KEPENGURUSAN</a>
+            
             <a href="#achievement" class="nav-link" data-i18n="nav-achievement">[04] PRESTASI</a>
+            
             <a href="#opmem" class="nav-link" data-i18n="nav-opmem">[05] OPEN MEMBER</a>
+            
             <a href="#partnership" class="nav-link" data-i18n="nav-partner">[06] KERJA SAMA</a>
+            
             <a href="#event" class="nav-link" data-i18n="nav-event">[07] EVENT & JADWAL</a>
+<!-- LINK MENU DRAWER -->
+<a href="#cn-tester" onclick="toggleSideMenu()">[08] CN TESTER</a>
         </ul>
     </div>
 
@@ -879,7 +888,7 @@ html_content = """<!DOCTYPE html>
             <div class="timeline-item reveal">
                 <div class="timeline-date" data-i18n="date-t1">01 APRIL 2024</div>
                 <div class="timeline-title" data-i18n="title-t1">GUILD TERBENTUK</div>
-                <div class="timeline-desc" data-i18n="desc-t1">Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Awalnya berfokus penuh pada Free Fire.</div>
+                <div class="timeline-desc" data-i18n="desc-t1">Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Awalnya berfokus penuh pada Free Fire dan berada di region majalengka,jawa barat.</div>
             </div>
             <div class="timeline-item reveal">
                 <div class="timeline-date" data-i18n="date-t2">EKSPANSI DIVISI</div>
@@ -962,7 +971,7 @@ html_content = """<!DOCTYPE html>
         </div>
         
         <div class="member-card reveal">
-                    <span class="member-num">05</span>
+                    <span class="member-num">07</span>
                     <div class="member-role">STAFF HUMAS</div>
                     <div class="member-name">PANJI</div>
                 </div>
@@ -1056,7 +1065,7 @@ html_content = """<!DOCTYPE html>
                     <!-- Nama Staff Humas -->
                     <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">PANJI</div>
                     <!-- Region / Nomor -->
-                    <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">+62 857-0712-0646 </div>
+                    <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;"> +62 857-0712-0646</div>
                 </div>
                 
                 <!-- Tombol Link ke WhatsApp -->
@@ -1174,47 +1183,157 @@ html_content = """<!DOCTYPE html>
                 ↗
             </div>
         </div>
-    
-
+  
     <!-- Tombol Aksi -->
     <!-- Tombol Primary (Hijau) -->
     <a href="#" class="reveal" style="display: block; background-color: #00ff03; color: #000000; text-align: center; padding: 16px; border-radius: 8px; font-weight: 800; text-decoration: none; margin-bottom: 12px; letter-spacing: 0.5px; font-size: 15px;">
         📅 LIHAT JADWAL LENGKAP
     </a>
+<!-- Tombol Secondary (Hitam Transparan / Outline) -->
+        <a href="https://wa.me/628226524077" target="_blank" class="reveal" style="display: block; background-color: transparent; border: 1px solid #333; color: #ffffff; text-align: center; padding: 16px; border-radius: 8px; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; font-size: 15px;">
+            ⚔️ PENDAFTARAN SCRIM
+        </a>
+        
+<!-- KASIH ID PADA WIDGET CN TESTER -->
+<div id="cn-tester" style="scroll-margin-top: 90px;">
     
-    <!-- Tombol Secondary (Hitam Transparan / Outline) -->
-<a href="https://wa.me/62822652<4077" target="_blank" class="reveal" style="display: block; background-color: transparent; border: 1px solid #333; color: #ffffff; text-align: center; padding: 16px; border-radius: 8px; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; font-size: 15px;">
-    ⚔️ PENDAFTARAN SCRIM
-</a>
+    <!-- Seluruh Kode Widget CN Tester Kamu Ada Di Sini -->
 
-</section>
-        <div style="margin-top: 40px;">
-            <div style="font-family:'Share Tech Mono'; color:var(--text-muted); font-size:0.85rem; letter-spacing:1px; margin-bottom:15px;" data-i18n="follow-us">IKUTI KAMI</div>
-            <div class="social-grid">
-                <a href="https://instagram.com/divrodite.id" target="_blank" class="social-card reveal">
-                    <div style="font-size:1.5rem;">📸</div>
-                    <div>
-                        <div class="social-title">INSTAGRAM</div>
-                        <div class="social-handle">@divrodite.id</div>
-                    </div>
-                </a>
-                <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-card reveal">
-                    <div style="font-size:1.5rem;">🎵</div>
-                    <div>
-                        <div class="social-title">TIKTOK</div>
-                        <div class="social-handle">@divrodite.id</div>
-                    </div>
-                </a>
-                <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-card reveal">
-                    <div style="font-size:1.5rem;">▶️</div>
-                    <div>
-                        <div class="social-title">YOUTUBE</div>
-                        <div class="social-handle">@divrodite.id_comunity</div>
-                    </div>
-                </a>
-            </div>
+</div>
+<!-- WIDGET FREE FIRE CN NICK TESTER (EXAMPLE: NICK | DVT) -->
+<div style="background: #121212; border: 1px solid #1f1f1f; border-radius: 12px; padding: 25px; margin-top: 30px; font-family: 'Rajdhani', sans-serif; color: #fff;">
+    
+    <!-- Title Section -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h3 style="color: #00ff03; font-family: 'Orbitron', sans-serif; font-size: 18px; margin: 0; letter-spacing: 1px;">DIVRODITE ID NICKNAME TESTER</h3>
+        <p style="color: #777; font-size: 12px; margin-top: 4px;">Ketik nama kamu di kolom. Suffix <b> | DVT</b> sudah terpasang otomatis dengan spasi ingame.</p>
+    </div>
+
+    <!-- Form Input Area -->
+    <div style="margin-bottom: 15px;">
+        <label style="font-size: 11px; color: #aaa; display: block; margin-bottom: 6px; font-weight: bold;">INPUT NAMA PLAYER</label>
+        <div style="display: flex; align-items: center; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding-right: 12px;">
+            <input type="text" id="cnUserNick" oninput="updateCnPreviewDVT()" placeholder="Contoh: NICK" style="flex: 1; background: transparent; border: none; color: #fff; padding: 10px 12px; font-size: 13px; outline: none; box-sizing: border-box;">
+            <!-- Tag DVT dengan Spasi Khusus -->
+            <span style="color: #00ff03; font-weight: bold; font-family: 'Orbitron', sans-serif; font-size: 13px; padding-left: 10px; border-left: 1px solid #333; user-select: none;"> | DVT</span>
         </div>
-    </section>
+        <span style="font-size: 10px; color: #666; margin-top: 4px; display: block;">*Akhiran " | DVT" memakan 6 karakter, sisa tersisa max 6 karakter untuk nama player.</span>
+    </div>
+
+    <!-- Quick FF Symbols Bar -->
+    <div style="margin-bottom: 20px;">
+        <label style="font-size: 11px; color: #888; display: block; margin-bottom: 6px;">SISIPKAN SIMBOL POPULER FF:</label>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <button type="button" onclick="insertCnSymbol('亗')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">亗</button>
+            <button type="button" onclick="insertCnSymbol('⚡')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">⚡</button>
+            <button type="button" onclick="insertCnSymbol('✿')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">✿</button>
+            <button type="button" onclick="insertCnSymbol('☠')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">☠</button>
+            <button type="button" onclick="insertCnSymbol('🍷')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">🍷</button>
+            <button type="button" onclick="insertCnSymbol('ㅤ')" style="background: #1a1a1a; border: 1px solid #00ff03; color: #00ff03; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: bold;">+ SPASI INVISIBLE</button>
+        </div>
+    </div>
+
+    <!-- Live Preview Card -->
+    <div style="background: linear-gradient(135deg, #181818, #0a0a0a); border: 1px solid #282828; border-radius: 8px; padding: 20px; text-align: center; position: relative; margin-bottom: 15px;">
+        <span style="font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">INGAME DISPLAY PREVIEW</span>
+        
+        <div id="cnPreviewBox" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 900; color: #00ff03; letter-spacing: 1px; word-break: break-all; min-height: 30px; display: flex; align-items: center; justify-content: center;">
+            NICK | DVT
+        </div>
+
+        <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+            <span id="cnStatusMsg" style="color: #00ff03;">✅ Panjang valid untuk Free Fire!</span>
+            <span id="cnCounter" style="font-weight: bold; color: #00ff03;">10 / 12 Karakter</span>
+        </div>
+    </div>
+
+    <!-- Copy Button -->
+    <button type="button" id="cnCopyBtn" onclick="copyCnNickDVT()" style="width: 100%; background: #00ff03; color: #000; border: none; padding: 12px; font-weight: 900; font-family: 'Orbitron', sans-serif; font-size: 13px; border-radius: 6px; cursor: pointer; letter-spacing: 1px;">
+        SALIN NICKNAME (NICK | DVT)
+    </button>
+
+</div>
+
+<!-- LOGIKA JAVASCRIPT -->
+<script>
+    const FIXED_DVT = " | DVT";
+
+    function updateCnPreviewDVT() {
+        let userNick = document.getElementById("cnUserNick").value;
+        
+        // Tampilkan 'NICK' secara default jika kolom input kosong
+        let displayNick = userNick.length > 0 ? userNick : "NICK";
+        let fullNick = displayNick + FIXED_DVT;
+        
+        let totalChar = Array.from(fullNick).length;
+
+        let previewBox = document.getElementById("cnPreviewBox");
+        let counter = document.getElementById("cnCounter");
+        let statusMsg = document.getElementById("cnStatusMsg");
+        let copyBtn = document.getElementById("cnCopyBtn");
+
+        previewBox.innerText = fullNick;
+        counter.innerText = ` / 12 Karakter`;
+        copyBtn.innerText = `SALIN NICKNAME ()`;
+
+        if (totalChar <= 12) {
+            statusMsg.innerText = "✅ Panjang valid untuk Free Fire!";
+            statusMsg.style.color = "#00ff03";
+            counter.style.color = "#00ff03";
+        } else {
+            statusMsg.innerText = "⚠️ Melebihi batas max 12 karakter FF!";
+            statusMsg.style.color = "#ff3333";
+            counter.style.color = "#ff3333";
+        }
+    }
+
+    function insertCnSymbol(symbol) {
+        let nickInput = document.getElementById("cnUserNick");
+        nickInput.value += symbol;
+        updateCnPreviewDVT();
+    }
+
+    function copyCnNickDVT() {
+        let userNick = document.getElementById("cnUserNick").value.trim();
+        let fullNick = (userNick ? userNick : "NICK") + FIXED_DVT;
+
+        navigator.clipboard.writeText(fullNick).then(() => {
+            alert("Nickname berhasil disalin: " + fullNick);
+        }).catch(err => {
+            console.error("Gagal menyalin:", err);
+        });
+    }
+</script>
+        
+</section>
+               <div style="margin-top: 40px;">
+                   <div style="font-family:'Share Tech Mono'; color:var(--text-muted); font-size:0.85rem; letter-spacing:1px; margin-bottom:15px;" data-i18n="follow-us">IKUTI KAMI</div>
+                   <div class="social-grid">
+                       <a href="https://instagram.com/divrodite.id" target="_blank" class="social-card reveal">
+                           <div style="font-size:1.5rem;">📸</div>
+                           <div>
+                               <div class="social-title">INSTAGRAM</div>
+                               <div class="social-handle">@divrodite.id</div>
+                           </div>
+                       </a>
+                       <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-card reveal">
+                           <div style="font-size:1.5rem;">🎵</div>
+                           <div>
+                               <div class="social-title">TIKTOK</div>
+                               <div class="social-handle">@divrodite.id</div>
+                           </div>
+                       </a>
+                       <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-card reveal">
+                           <div style="font-size:1.5rem;">▶️</div>
+                           <div>
+                               <div class="social-title">YOUTUBE</div>
+                               <div class="social-handle">@divrodite.id_comunity</div>
+                           </div>
+                       </a>
+                   </div>
+               </div>
+           </section>
+       
 
     <!-- FOOTER -->
     <footer>

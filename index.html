@@ -108,7 +108,6 @@ html_content = """<!DOCTYPE html>
             color: var(--accent-color);
             transform: rotate(90deg);
         }
-
         /* NAV MENU OVERLAY */
         .nav-overlay {
             position: fixed;
@@ -829,12 +828,13 @@ html_content = """<!DOCTYPE html>
     <!-- NAV MENU OVERLAY -->
     <div class="nav-overlay" id="navOverlay">
         <button class="close-btn" id="closeMenuBtn">&times;</button>
-        <ul class="nav-links">
-            <li><a href="#about" onclick="closeNav()">[01] TENTANG GUILD</a></li>
-            <li><a href="#manifesto" onclick="closeNav()">[02] VISI & MISI</a></li>
-            <li><a href="#team" onclick="closeNav()">[03] KEPENGURUSAN</a></li>
-            <li><a href="#prestasi" onclick="closeNav()">[04] PRESTASI</a></li>
-            <li><a href="#open-member" onclick="closeNav()">[05] OPEN MEMBER</a></li>
+        <ul class="nav-links">           <li><a href="#about" class="nav-link" data-i18n="nav-about">[01] TENTANG GUILD</a>
+            <a href="#vision" class="nav-link" data-i18n="nav-vision">[02] VISI & MISI</a>
+            <a href="#structure" class="nav-link" data-i18n="nav-structure">[03] KEPENGURUSAN</a>
+            <a href="#achievement" class="nav-link" data-i18n="nav-achievement">[04] PRESTASI</a>
+            <a href="#opmem" class="nav-link" data-i18n="nav-opmem">[05] OPEN MEMBER</a>
+            <a href="#partnership" class="nav-link" data-i18n="nav-partner">[06] KERJA SAMA</a>
+            <a href="#event" class="nav-link" data-i18n="nav-event">[07] EVENT & JADWAL</a>
         </ul>
     </div>
 
@@ -1026,7 +1026,168 @@ html_content = """<!DOCTYPE html>
             <a href="https://linktr.ee/divrodite" target="_blank" class="btn-primary" data-i18n="btn-form">📋 FORM PENDAFTARAN</a>
             <a href="https://divroditestore.vcpanel.id" target="_blank" class="btn-secondary" data-i18n="btn-store">🛍️ TOKO TOPUP</a>
         </div>
+<!-- SECTION KERJA SAMA / PARTNERSHIP -->
+        <section class="section" id="partnership">
+            
+            <!-- Bagian Judul Section -->
+            <div class="section-tag" data-i18n="tag-partner">
+                <span style="color: #00ff03; margin-right: 5px;">■</span> 06 — KERJA SAMA
+            </div>
+            
+            <h2 class="section-title" style="color: #00ff03; font-weight: 900; text-transform: uppercase; font-size: 2.5rem; line-height: 1.1; margin-bottom: 20px;" data-i18n="title-partner">
+                BUSINESS &<br>PARTNERSHIP
+            </h2>
+            
+            <p class="about-text" style="margin-bottom: 30px; color: #a0a0a0;" data-i18n="desc-partner">
+                Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami untuk mendiskusikan peluang terbaik.
+            </p>
+        
+            <!-- Kartu Kontak Staff Humas -->
+            <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 25px;">
+                
+                <!-- Ikon Pesan (Chat) -->
+                <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
+                    💬
+                </div>
+                
+                <!-- Info Teks Staff -->
+                <div style="flex: 1;">
+                    <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">STAFF HUMAS</div>
+                    <!-- Nama Staff Humas -->
+                    <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">PANJI</div>
+                    <!-- Region / Nomor -->
+                    <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">+62 857-0712-0646 </div>
+                </div>
+                
+                <!-- Tombol Link ke WhatsApp -->
+                <!-- Ganti tanda # di href dengan link WhatsApp, contoh: https://wa.me/+6285707120646 -->
+<a href="https://wa.me/6285707120646" target="_blank" style="background-color: rgba(255,255,255,0.05); ...">
+                    ↗
+                </a>
+            </div>
+        
+            <!-- Tombol Ekstra (Opsional: Untuk Download Proposal atau Kirim Email) -->
+            <a href="#" class="reveal" style="display: block; background-color: transparent; border: 1px solid #00ff03; color: #00ff03; text-align: center; padding: 16px; border-radius: 8px; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; font-size: 15px;">
+                UNTUK KERJASAMA HUBUNGI STAFF HUMAS 
+            </a>
+        
+        </section>
+<!-- SECTION EVENT -->
+<section class="section" id="event">
+    
+    <!-- Bagian Judul Section -->
+    <div class="section-tag" data-i18n="tag-event">
+        <span style="color: #00ff03; margin-right: 5px;">■</span> 07 — EVENT & JADWAL
+    </div>
+    
+    <h2 class="section-title" style="color: #00ff03; font-weight: 900; text-transform: uppercase; font-size: 2.5rem; line-height: 1.1; margin-bottom: 20px;" data-i18n="title-event">
+        ARENA<br>PERTEMPURAN
+    </h2>
+    
+    <p class="about-text" style="margin-bottom: 30px; color: #a0a0a0;" data-i18n="desc-event">
+        Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID. Bersiaplah!
+    </p>
 
+    <!-- Kartu Event 1: Turnamen -->
+    <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 15px;">
+        <!-- Ikon Kotak Hijau -->
+        <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
+            🏆
+        </div>
+        <!-- Info Teks -->
+        <div style="flex: 1;">
+            <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRODITE ID EVENT</div>
+            <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">DIVRDOITE ID SCRIM LEAGUE COLABORATION SEASON 2</div>
+            <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">COMING SOON • TBA</div>
+        </div>
+        <!-- Ikon Panah -->
+        <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
+            ↗
+        </div>
+    </div>
+
+    <!-- Kartu Event 2: Scrim -->
+    <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 30px;">
+        <!-- Ikon Kotak Hijau -->
+        <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
+            ⚔️
+        </div>
+        <!-- Info Teks -->
+        <div style="flex: 1;">
+            <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRDITE ID</div>
+            <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">BATTLE OF DIVRODITE SEASON 4</div>
+            <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">COMING SOON • TBA</div>
+        </div>
+        <!-- Ikon Panah -->
+        <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
+            ↗
+        </div>
+    </div>
+    <!-- Kartu Event 3: Scrim -->
+    <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 30px;">
+        <!-- Ikon Kotak Hijau -->
+        <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
+            ⚔️
+        </div>
+        <!-- Info Teks -->
+        <div style="flex: 1;">
+            <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRDITE ID</div>
+            <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">CLASH OF DIVRODITE SEASON 2</div>
+            <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">COMING SOON • TBA</div>
+        </div>
+        <!-- Ikon Panah -->
+        <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
+            ↗
+        </div>
+    </div>
+    <!-- Kartu Event 4: Scrim -->
+        <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 30px;">
+            <!-- Ikon Kotak Hijau -->
+            <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
+                ⚔️
+            </div>
+            <!-- Info Teks -->
+            <div style="flex: 1;">
+                <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRDITE ID</div>
+                <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">SCRIM INTERNAL</div>
+                <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">SETIAP SABTU • 20.00 WIB</div>
+            </div>
+            <!-- Ikon Panah -->
+            <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
+                ↗
+            </div>
+        </div>
+    <!-- Kartu Event 5: Scrim -->
+        <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 30px;">
+            <!-- Ikon Kotak Hijau -->
+            <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
+                ⚔️
+            </div>
+            <!-- Info Teks -->
+            <div style="flex: 1;">
+                <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRDITE ID</div>
+                <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">SCRIM EKSTERNAL</div>
+                <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">SETIAP AKHIR BULAN • 20.00 WIB</div>
+            </div>
+            <!-- Ikon Panah -->
+            <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
+                ↗
+            </div>
+        </div>
+    
+
+    <!-- Tombol Aksi -->
+    <!-- Tombol Primary (Hijau) -->
+    <a href="#" class="reveal" style="display: block; background-color: #00ff03; color: #000000; text-align: center; padding: 16px; border-radius: 8px; font-weight: 800; text-decoration: none; margin-bottom: 12px; letter-spacing: 0.5px; font-size: 15px;">
+        📅 LIHAT JADWAL LENGKAP
+    </a>
+    
+    <!-- Tombol Secondary (Hitam Transparan / Outline) -->
+<a href="https://wa.me/62822652<4077" target="_blank" class="reveal" style="display: block; background-color: transparent; border: 1px solid #333; color: #ffffff; text-align: center; padding: 16px; border-radius: 8px; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; font-size: 15px;">
+    ⚔️ PENDAFTARAN SCRIM
+</a>
+
+</section>
         <div style="margin-top: 40px;">
             <div style="font-family:'Share Tech Mono'; color:var(--text-muted); font-size:0.85rem; letter-spacing:1px; margin-bottom:15px;" data-i18n="follow-us">IKUTI KAMI</div>
             <div class="social-grid">

@@ -1014,48 +1014,6 @@
                 }
             };
 
-            function toggleMenu() {
-                const menu = document.getElementById('navMenu');
-                menu.classList.toggle('show');
-            }
-
-            function toggleLangMenu() {
-                const langMenu = document.getElementById('langMenu');
-                langMenu.classList.toggle('show');
-            }
-
-            window.onclick = function(event) {
-                if (!event.target.closest('.lang-wrapper')) {
-                    const langMenu = document.getElementById('langMenu');
-                    if (langMenu && langMenu.classList.contains('show')) {
-                        langMenu.classList.remove('show');
-                    }
-                }
-            }
-
-            function switchLanguage(lang) {
-                document.getElementById('currentLang').innerText = lang.toUpperCase();
-                const elements = document.querySelectorAll('[data-translate]');
-
-                elements.forEach(el => {
-                    const key = el.getAttribute('data-translate');
-                    if (translations[lang] && translations[lang][key]) {
-                        el.innerText = translations[lang][key];
-                    }
-                });
-
-                toggleLangMenu();
-            }
-
-            function alertTranslation() {
-                const current = document.getElementById('currentLang').innerText;
-                if (current === 'EN') {
-                    alert('Full schedule is being updated!');
-                } else {
-                    alert('Jadwal Lengkap sedang diperbarui!');
-                }
-            }
-        </script>
-
-    </body>
+<script src="script.js"></script>
+</body>
 </html>

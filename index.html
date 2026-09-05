@@ -1,958 +1,773 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIVRODITE ID - Komunitas Esports</title>
-    <style>
-:root {
-        --bg-color: #0b0c0d;
-        --card-bg: #131517;
-        --accent-green: #00ff22;
-        --text-white: #ffffff;
-        --text-gray: #a0a0a0;
-        --border-color: #22252a;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIVRODITE ID - Komunitas Esports</title>
+  <style>
+    :root {
+      --bg-color: #0b0c0d;
+      --card-bg: #131517;
+      --accent-green: #00ff22;
+      --text-white: #ffffff;
+      --text-gray: #a0a0a0;
+      --border-color: #22252a;
     }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            line-height: 1.6;
-            padding-bottom: 50px;
-            top: 0 !important;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-white);
+      line-height: 1.6;
+      padding-bottom: 50px;
+      top: 0 !important;
+    }
 
-        /* Sembunyikan elemen bawaan Google Translate */
-        .goog-te-banner-frame, .goog-te-balloon-frame {
-            display: none !important;
-        }
-        .skiptranslate {
-            display: none !important;
-        }
-        body {
-            top: 0px !important;
-        }
+    .goog-te-banner-frame, .goog-te-balloon-frame { display: none !important; }
+    .skiptranslate { display: none !important; }
+    body { top: 0px !important; }
 
-        /* Custom Language Selector - Simpel & Minimalis */
-        .lang-wrapper {
-            position: relative;
-        }
+    .lang-wrapper {
+      position: relative;
+    }
 
-        .lang-btn-simple {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-white);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.3s ease;
-        }
+    .lang-btn-simple {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-white);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
 
-        .lang-btn-simple:hover {
-            border-color: var(--accent-green);
-            color: var(--accent-green);
-        }
+    .lang-btn-simple:hover {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
 
-        .lang-dropdown {
-            display: none;
-            position: absolute;
-            top: 40px;
-            right: 0;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            z-index: 101;
-            min-width: 130px;
-        }
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      z-index: 101;
+      min-width: 130px;
+    }
 
-        .lang-dropdown.show {
-            display: flex;
-            flex-direction: column;
-        }
+    .lang-dropdown.show {
+      display: flex;
+      flex-direction: column;
+    }
 
-        .lang-option {
-            padding: 10px 15px;
-            font-size: 0.85rem;
-            color: var(--text-white);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
+    .lang-option {
+      padding: 10px 15px;
+      font-size: 0.85rem;
+      color: var(--text-white);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
-        .lang-option:hover {
-            background-color: var(--bg-color);
-            color: var(--accent-green);
-        }
+    .lang-option:hover {
+      background-color: var(--bg-color);
+      color: var(--accent-green);
+    }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        /* Header & Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: var(--bg-color);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: var(--bg-color);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
 
-        .logo-container img {
-            height: 35px;
-            width: auto;
-            object-fit: contain;
-        }
+    .logo-container span {
+      color: var(--accent-green);
+    }
 
-        .logo-container span {
-            color: var(--accent-green);
-        }
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .menu-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
 
-        .menu-icon {
-            font-size: 1.5rem;
-            cursor: pointer;
-            user-select: none;
-        }
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 65px;
+      right: 20px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      z-index: 99;
+      min-width: 200px;
+    }
 
-        /* Dropdown Menu Mobile */
-        .dropdown-menu {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 65px;
-            right: 20px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            z-index: 99;
-            min-width: 200px;
-        }
+    .dropdown-menu.show {
+      display: flex;
+    }
 
-        .dropdown-menu.show {
-            display: flex;
-        }
+    .dropdown-menu a {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .dropdown-menu a {
-            padding: 12px 20px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .dropdown-menu a span {
+      color: var(--text-gray);
+      font-size: 0.8rem;
+    }
 
-        .dropdown-menu a span {
-            color: var(--text-gray);
-            font-size: 0.8rem;
-        }
+    .dropdown-menu a:hover {
+      background-color: var(--bg-color);
+      color: var(--accent-green);
+    }
 
-        .dropdown-menu a:hover {
-            background-color: var(--bg-color);
-            color: var(--accent-green);
-        }
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
 
-        .dropdown-menu a:last-child {
-            border-bottom: none;
-        }
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-        }
+    .hero-badge {
+      color: var(--accent-green);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+    }
 
-        .hero-badge {
-            color: var(--accent-green);
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
 
-        .hero-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
+    .hero-title span {
+      color: var(--accent-green);
+      display: block;
+      margin-top: 5px;
+    }
 
-        .hero-title span {
-            color: var(--accent-green);
-            display: block;
-        }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
 
-        .hero-subtitle {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+    .hero-desc {
+      color: var(--text-gray);
+      font-size: 0.85rem;
+      margin-bottom: 25px;
+    }
 
-        .hero-desc {
-            color: var(--text-gray);
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-        }
+    .game-tags {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
 
-        .game-tags {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
+    .tag {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+    }
 
-        .tag {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-        }
+    .btn-primary {
+      background-color: var(--accent-green);
+      color: #000;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 8px;
+      display: block;
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto 10px;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+    }
 
-        .btn-primary {
-            background-color: var(--accent-green);
-            color: #000;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 8px;
-            display: block;
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto 10px;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-        }
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-white);
+      padding: 15px;
+      border-radius: 8px;
+      display: block;
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto;
+      text-align: center;
+      cursor: pointer;
+    }
 
-        .btn-secondary {
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-white);
-            padding: 15px;
-            border-radius: 8px;
-            display: block;
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-            text-align: center;
-            cursor: pointer;
-        }
+    section {
+      padding: 30px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        /* Common Section Styling */
-        section {
-            padding: 30px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .section-number {
+      color: var(--accent-green);
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
 
-        .section-number {
-            color: var(--accent-green);
-            font-size: 0.8rem;
-            margin-bottom: 5px;
-        }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
 
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
+    .section-desc {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
 
-        .section-desc {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      position: relative;
+    }
 
-        /* Cards */
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            position: relative;
-        }
+    .card-number {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      color: var(--text-gray);
+      font-size: 0.8rem;
+    }
 
-        .card-number {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            color: var(--text-gray);
-            font-size: 0.8rem;
-        }
+    .card-role {
+      color: var(--accent-green);
+      font-size: 0.75rem;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
 
-        .card-role {
-            color: var(--accent-green);
-            font-size: 0.75rem;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
+    .card-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
 
-        .card-name {
-            font-size: 1.4rem;
-            font-weight: bold;
-        }
+    .card-contact {
+      color: var(--text-gray);
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+    
+    .social-link:hover {
+      color: var(--accent-green);
+    }
 
-        .card-contact {
-            color: var(--text-gray);
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
+    .timeline-item {
+      border-left: 2px solid var(--accent-green);
+      padding-left: 15px;
+      margin-left: 5px;
+      margin-bottom: 25px;
+      position: relative;
+    }
 
-        .social-link:hover {
-            color: var(--accent-green);
-        }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--bg-color);
+      border: 2px solid var(--accent-green);
+    }
 
-        /* Timeline */
-        .timeline-item {
-            border-left: 2px solid var(--accent-green);
-            padding-left: 15px;
-            margin-left: 5px;
-            margin-bottom: 25px;
-            position: relative;
-        }
+    .timeline-date {
+      color: var(--accent-green);
+      font-size: 0.75rem;
+      margin-bottom: 5px;
+    }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--bg-color);
-            border: 2px solid var(--accent-green);
-        }
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
 
-        .timeline-date {
-            color: var(--accent-green);
-            font-size: 0.75rem;
-            margin-bottom: 5px;
-        }
+    .timeline-text {
+      color: var(--text-gray);
+      font-size: 0.85rem;
+    }
 
-        .timeline-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+    .list-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
 
-        .timeline-text {
-            color: var(--text-gray);
-            font-size: 0.85rem;
-        }
+    .list-item::before {
+      content: '■';
+      color: var(--accent-green);
+      font-size: 0.8rem;
+    }
 
-        /* Lists */
-        .list-item {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--text-gray);
-        }
+    footer {
+      text-align: center;
+      padding: 40px 20px 20px;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
 
-        .list-item::before {
-            content: '■';
-            color: var(--accent-green);
-            font-size: 0.8rem;
-        }
+    .footer-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px 20px;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-        }
+    .footer-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      margin-bottom: 5px;
+    }
+    
+    .footer-address {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      margin-bottom: 15px;
+    }
 
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .footer-subtitle {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            margin-bottom: 5px;
-        }
-
-        .footer-address {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            margin-bottom: 15px;
-        }
-
-        .copyright {
-            color: var(--text-gray);
-            font-size: 0.7rem;
-            margin-top: 20px;
-        }
-    </style>
+    .copyright {
+      color: var(--text-gray);
+      font-size: 0.7rem;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Hidden Google Translate Element -->
-    <div id="google_translate_element" style="display:none;"></div>
+  <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- Header -->
-    <header>
-        <div class="logo-container">
-            <img src="logoutama.png" alt="Logo DIVRODITE ID">
-            DIVRODITE <span>ID</span>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <!-- Logo Kecil Navbar yang Disamakan Persis -->
+      <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 40L28 62L50 20L72 62L88 40L78 80H22L12 40Z" stroke="#00ff22" stroke-width="6" stroke-linejoin="round"/>
+        <line x1="28" y1="80" x2="72" y2="80" stroke="#00ff22" stroke-width="6" stroke-linecap="round"/>
+        <line x1="22" y1="68" x2="78" y2="68" stroke="#00ff22" stroke-width="5" stroke-linecap="round"/>
+        <path d="M30 45H70V70C70 82 30 82 30 70V45Z" stroke="#00ff22" stroke-width="6" stroke-linejoin="round"/>
+        <line x1="50" y1="48" x2="50" y2="76" stroke="#00ff22" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      DIVRODITE <span>ID</span>
+    </div>
+    <div class="nav-controls">
+      <div class="lang-wrapper notranslate">
+        <button class="lang-btn-simple" onclick="toggleLangMenu()">
+          🌐 <span id="currentLang">ID</span> ▾
+        </button>
+        <div class="lang-dropdown" id="langMenu">
+          <div class="lang-option" onclick="changeLanguage('id', 'ID')">🇮🇩 Indonesia</div>
+          <div class="lang-option" onclick="changeLanguage('en', 'EN')">🇺🇸 English</div>
+          <div class="lang-option" onclick="changeLanguage('ms', 'MS')">🇲🇾 Melayu</div>
+          <div class="lang-option" onclick="changeLanguage('vi', 'VI')">🇻🇳 Tiếng Việt</div>
+          <div class="lang-option" onclick="changeLanguage('th', 'TH')">🇹🇭 ไทย (Thai)</div>
+          <div class="lang-option" onclick="changeLanguage('ja', 'JA')">🇯🇵 日本語</div>
         </div>
-        <div class="nav-controls">
-            <div class="lang-wrapper notranslate">
-                <button class="lang-btn-simple" onclick="toggleLangMenu()">
-                    🌐 <span id="currentLang">ID</span> ▾
-                </button>
-                <div class="lang-dropdown" id="langMenu">
-                    <div class="lang-option" onclick="changeLanguage('id', 'ID')">
-                        🇮🇩 Indonesia
-                    </div>
-                    <div class="lang-option" onclick="changeLanguage('en', 'EN')">
-                        🇺🇸 English
-                    </div>
-                    <div class="lang-option" onclick="changeLanguage('ms', 'MS')">
-                        🇲🇾 Melayu
-                    </div>
-                    <div class="lang-option" onclick="changeLanguage('vi', 'VI')">
-                        🇻🇳 Tiếng Việt
-                    </div>
-                    <div class="lang-option" onclick="changeLanguage('th', 'TH')">
-                        🇹🇭 ไทย (Thai)
-                    </div>
-                    <div class="lang-option" onclick="changeLanguage('ja', 'JA')">
-                        🇯🇵 日本語
-                    </div>
-                </div>
-            </div>
+      </div>
 
-            <div class="menu-icon" onclick="toggleMenu()">
-                ☰
-            </div>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    </div>
+    
+    <nav class="dropdown-menu" id="navMenu">
+      <a href="#tentang" onclick="toggleMenu()"><span>01</span> Tentang Guild</a>
+      <a href="#visi-misi" onclick="toggleMenu()"><span>02</span> Visi & Misi</a>
+      <a href="#kepengurusan" onclick="toggleMenu()"><span>03</span> Kepengurusan</a>
+      <a href="#prestasi" onclick="toggleMenu()"><span>04</span> Prestasi</a>
+      <a href="#open-member" onclick="toggleMenu()"><span>05</span> Open Member</a>
+      <a href="#kerja-sama" onclick="toggleMenu()"><span>06</span> Kerja Sama</a>
+      <a href="#event" onclick="toggleMenu()"><span>07</span> Event & Jadwal</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Logo Utama Besar (Persis Seperti Gambar Referensi) -->
+    <div style="margin-bottom: 20px; display: inline-block;">
+      <svg width="120" height="110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 12px rgba(0, 255, 34, 0.45));">
+        <!-- Mahkota -->
+        <path d="M12 40L28 62L50 20L72 62L88 40L78 80H22L12 40Z" stroke="#00ff22" stroke-width="5" stroke-linejoin="round"/>
+        <line x1="28" y1="80" x2="72" y2="80" stroke="#00ff22" stroke-width="5" stroke-linecap="round"/>
+        <line x1="22" y1="68" x2="78" y2="68" stroke="#00ff22" stroke-width="4" stroke-linecap="round"/>
+        <!-- Perisai -->
+        <path d="M30 45H70V70C70 82 30 82 30 70V45Z" stroke="#00ff22" stroke-width="5" stroke-linejoin="round"/>
+        <line x1="50" y1="48" x2="50" y2="76" stroke="#00ff22" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="hero-badge">KOMUNITAS ESPORTS · BERDIRI 01 APRIL 2024</div>
+    
+    <h1 class="hero-title">
+      DIVRODITE
+      <span>ID</span>
+    </h1>
+    
+    <p class="hero-subtitle">Satu Tujuan, Tak Terbendung!</p>
+    <p class="hero-desc">Go United, Win Together - DIVRODITE VICTORIOUS!!</p>
+
+    <div class="game-tags">
+      <div class="tag">🎮 FREE FIRE</div>
+      <div class="tag">🔫 CODM</div>
+    </div>
+
+    <a href="#open-member" class="btn-primary">GABUNG SEKARANG</a>
+    <a href="#tentang" class="btn-secondary">JELAJAHI GUILD</a>
+  </section>
+
+  <!-- Section 01: Tentang Guild -->
+  <section id="tentang">
+    <h2 class="section-title">PERJALANAN KOMUNITAS KAMI</h2>
+    <p class="section-desc">Divrodite ID adalah komunitas esports yang bergerak kuat di medan tempur Free Fire dan Call of Duty Mobile.</p>
+
+    <div class="timeline-item">
+      <div class="timeline-date">01 APRIL 2024</div>
+      <div class="timeline-title">GUILD TERBENTUK</div>
+      <div class="timeline-text">Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Terbentuk di region Majalengka, Jawa Barat, dengan tekad menyatukan player kompetitif.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">SEJARAH CODM</div>
+      <div class="timeline-title">EKSPANSI CALL OF DUTY MOBILE</div>
+      <div class="timeline-text">Divrodite ID melebarkan sayapnya ke medan pertempuran Call of Duty Mobile, membawa nama guild untuk bersaing di arena tembak taktis yang lebih luas dan memperkuat persaudaraan antardivisi.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">FFNS 2026 SPRING</div>
+      <div class="timeline-title">SEMIFINAL CITY QUALIFIER</div>
+      <div class="timeline-text">Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.</div>
+    </div>
+  </section>
+
+  <!-- Section 02: Visi & Misi -->
+  <section id="visi-misi">
+    <div class="section-number">02 – VISI & MISI</div>
+    <h2 class="section-title">MANIFESTO KAMI</h2>
+
+    <div class="card">
+      <h3 style="color: var(--accent-green); margin-bottom: 10px;">01 VISI</h3>
+      <div class="list-item">Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.</div>
+      <div class="list-item">Berbagi pengalaman dan informasi sesama member guild.</div>
+      <div class="list-item">Menjadi tempat bagi player yang ingin bermain have fun maupun kompetitif.</div>
+    </div>
+
+    <div class="card">
+      <h3 style="color: var(--accent-green); margin-bottom: 10px;">02 MISI</h3>
+      <div class="list-item">Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.</div>
+      <div class="list-item">Membuat forum berbagi agar semua member dapat berkembang bersama.</div>
+    </div>
+  </section>
+
+  <!-- Section 03: Kepengurusan -->
+  <section id="kepengurusan">
+    <div class="section-number">03 – STRUKTUR KEPENGURUSAN</div>
+    <h2 class="section-title">BARISAN KOMANDO</h2>
+    <p class="section-desc">👥 7 MEMBERS</p>
+
+    <div class="card">
+      <span class="card-number">01</span>
+      <div class="card-role">LEADER / FOUNDER</div>
+      <div class="card-name">DEY</div>
+    </div>
+
+    <div class="card">
+      <span class="card-number">02</span>
+      <div class="card-role">STAFF OPMEM BOYS</div>
+      <div class="card-name">PANCA</div>
+    </div>
+
+    <div class="card">
+      <span class="card-number">03</span>
+      <div class="card-role">STAFF OPMEM LADIES</div>
+      <div class="card-name">RARA</div>
+    </div>
+
+    <div class="card">
+      <span class="card-number">04</span>
+      <div class="card-role">STAFF EVENT & PENGEMBANGAN TIM</div>
+      <div class="card-name">PUTRA</div>
+    </div>
+
+    <div class="card">
+      <span class="card-number">05</span>
+      <div class="card-role">STAFF EDITOR</div>
+      <div class="card-name">YANN</div>
+    </div>
+
+    <div class="card">
+      <span class="card-number">06</span>
+      <div class="card-role">STAFF INTERNAL</div>
+      <div class="card-name">VIRA</div>
+    </div>
+
+    <div class="card">
+      <span class="card-number">07</span>
+      <div class="card-role">STAFF HUMAS</div>
+      <div class="card-name">PANJI</div>
+    </div>
+  </section>
+
+  <!-- Section 04: Prestasi -->
+  <section id="prestasi">
+    <div class="section-number">04 – PRESTASI</div>
+    <h2 class="section-title">JEJAK KEMENANGAN</h2>
+    <p class="section-desc">Momen-momen kebanggaan Divrodite ID di medan tempur.</p>
+
+    <div class="card">
+      <div class="card-role">🏆 FREE FIRE · FFNS 2026 SPRING</div>
+      <div class="card-name" style="font-size: 1.1rem; margin-top: 5px;">SEMIFINAL CITY QUALIFIER FFNS PEKANBARU</div>
+    </div>
+
+    <div class="card">
+      <div class="card-role">🏆 FREE FIRE & CODM · DOKUMENTASI</div>
+      <div class="card-name" style="font-size: 1.1rem; margin-top: 5px;">PERJALANAN KOMPETITIF GUILD</div>
+    </div>
+  </section>
+
+  <!-- Section 05: Open Member -->
+  <section id="open-member">
+    <div class="section-number">05 – OPEN MEMBER</div>
+    <h2 class="section-title">SIAP BERGABUNG?</h2>
+    <p class="section-desc">Divrodite ID membuka pintu untuk player yang ingin bertumbuh – baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.</p>
+
+    <a href="https://wa.me/6288274040292" target="_blank" style="text-decoration: none; display: block;">
+      <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
+        <div class="card-role">STAFF OPMEM BOYS</div>
+        <div class="card-name">PANCA</div>
+        <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
+          💬 Klik di sini untuk Chat WhatsApp (+62 882-7404-0292)
         </div>
+      </div>
+    </a>
 
-        <!-- Dropdown Menu Mobile dengan Nomor -->
-        <nav class="dropdown-menu" id="navMenu">
-            <a href="#tentang" onclick="toggleMenu()"><span>01</span> Tentang Guild</a>
-            <a href="#visi-misi" onclick="toggleMenu()"><span>02</span> Visi & Misi</a>
-            <a href="#kepengurusan" onclick="toggleMenu()"><span>03</span> Kepengurusan</a>
-            <a href="#prestasi" onclick="toggleMenu()"><span>04</span> Prestasi</a>
-            <a href="#open-member" onclick="toggleMenu()"><span>05</span> Open Member</a>
-            <a href="#kerja-sama" onclick="toggleMenu()"><span>06</span> Kerja Sama</a>
-            <a href="#event" onclick="toggleMenu()"><span>07</span> Event & Jadwal</a>
-            <a href="#supported" onclick="toggleMenu()"><span>08</span> Supported</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-badge">
-            KOMUNITAS ESPORTS · BERDIRI 01 APRIL 2024
+    <a href="https://wa.me/6283167230896" target="_blank" style="text-decoration: none; display: block;">
+      <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
+        <div class="card-role">STAFF OPMEM LADIES</div>
+        <div class="card-name">RARA</div>
+        <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
+          💬 Klik di sini untuk Chat WhatsApp (+62 831-6723-0896)
         </div>
-        <img src="logoutama.png" alt="DIVRODITE ID" style="max-width: 150px; margin-bottom: 10px;">
-        <h1 class="hero-title">DIVRODITE <span>ID</span></h1>
-        <p class="hero-subtitle">
-            Satu Tujuan, Tak Terbendung!
-        </p>
-        <p class="hero-desc">
-            Go United, Win Together - DIVRODITE VICTORIOUS!!
-        </p>
+      </div>
+    </a>
 
-        <div class="game-tags">
-            <div class="tag">
-                🎮 FREE FIRE
-            </div>
-            <div class="tag">
-                🔫 CODM
-            </div>
+    <a href="https://whatsapp.com/channel/0029VaaWCN19cDDXJ5pEkJ1G" target="_blank" class="btn-primary" style="margin-top: 15px; display: block; text-align: center;">📢 SALURAN WHATSAPP</a>
+    <a href="https://divroditestore.vcpanel.id" target="_blank" class="btn-secondary" style="margin-top: 10px; display: block; text-align: center;">🛍️ TOKO TOPUP</a>
+  </section>
+
+  <!-- Section 06: Kerja Sama -->
+  <section id="kerja-sama">
+    <div class="section-number">06 – KERJA SAMA</div>
+    <h2 class="section-title">BUSINESS & PARTNERSHIP</h2>
+    <p class="section-desc">Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami.</p>
+
+    <a href="https://wa.me/6285707120646" target="_blank" style="text-decoration: none; display: block;">
+      <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
+        <div class="card-role">STAFF HUMAS</div>
+        <div class="card-name">PANJI</div>
+        <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
+          💬 Klik di sini untuk Chat WhatsApp (+62 857-0712-0646)
         </div>
+      </div>
+    </a>
+  </section>
 
-        <a href="#open-member" class="btn-primary">GABUNG SEKARANG</a>
-        <a href="#tentang" class="btn-secondary">JELAJAHI GUILD</a>
-    </section>
+  <!-- Section 07: Event & Jadwal -->
+  <section id="event">
+    <div class="section-number">07 – EVENT & JADWAL</div>
+    <h2 class="section-title">ARENA PERTEMPURAN</h2>
+    <p class="section-desc">Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID.</p>
 
-    <!-- Section 01: Tentang Guild -->
-    <section id="tentang">
-        <h2 class="section-title">PERJALANAN KOMUNITAS KAMI</h2>
-        <p class="section-desc">
-            Divrodite ID adalah komunitas esports yang bergerak kuat di medan tempur Free Fire dan Call of Duty Mobile.
-        </p>
+    <div class="card">
+      <div class="card-role">🏆 EVENT DIVRODITE ID</div>
+      <div class="card-name" style="font-size: 1.1rem;">DIVRODITE ID SCRIM LEAGUE COLABORATION SEASON 2</div>
+      <div class="card-contact">7-11 September 2026 • 19.00-20.00 WIB</div>
+    </div>
 
-        <div class="timeline-item">
-            <div class="timeline-date">
-                01 APRIL 2024
-            </div>
-            <div class="timeline-title">
-                GUILD TERBENTUK
-            </div>
-            <div class="timeline-text">
-                Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Terbentuk di region Majalengka, Jawa Barat, dengan tekad menyatukan player kompetitif.
-            </div>
-        </div>
+    <div class="card">
+      <div class="card-role">⚔️ EVENT DIVRODITE ID</div>
+      <div class="card-name" style="font-size: 1.1rem;">BATTLE OF DIVRODITE SEASON 4</div>
+      <div class="card-contact">COMING SOON • TBA</div>
+    </div>
 
-        <div class="timeline-item">
-            <div class="timeline-date">
-                SEJARAH CODM
-            </div>
-            <div class="timeline-title">
-                EKSPANSI CALL OF DUTY MOBILE
-            </div>
-            <div class="timeline-text">
-                Divrodite ID melebarkan sayapnya ke medan pertempuran Call of Duty Mobile, membawa nama guild untuk bersaing di arena tembak taktis yang lebih luas dan memperkuat persaudaraan antardivisi.
-            </div>
-        </div>
+    <div class="card">
+      <div class="card-role">⚔️ EVENT DIVRODITE ID</div>
+      <div class="card-name" style="font-size: 1.1rem;">CLASH OF DIVRODITE SEASON 2</div>
+      <div class="card-contact">COMING SOON • TBA</div>
+    </div>
 
-        <div class="timeline-item">
-            <div class="timeline-date">
-                FFNS 2026 SPRING
-            </div>
-            <div class="timeline-title">
-                SEMIFINAL CITY QUALIFIER
-            </div>
-            <div class="timeline-text">
-                Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.
-            </div>
-        </div>
-    </section>
+    <div class="card">
+      <div class="card-role">⚔️ EVENT DIVRODITE ID</div>
+      <div class="card-name" style="font-size: 1.1rem;">SCRIM INTERNAL</div>
+      <div class="card-contact">SETIAP SABTU • 20.00 WIB</div>
+    </div>
 
-    <!-- Section 02: Visi & Misi -->
-    <section id="visi-misi">
-        <div class="section-number">
-            02 – VISI & MISI
-        </div>
-        <h2 class="section-title">MANIFESTO KAMI</h2>
+    <div class="card">
+      <div class="card-role">⚔️ EVENT DIVRODITE ID</div>
+      <div class="card-name" style="font-size: 1.1rem;">SCRIM EKSTERNAL</div>
+      <div class="card-contact">SETIAP AKHIR BULAN • 20.00 WIB</div>
+    </div>
 
-        <div class="card">
-            <h3 style="color: var(--accent-green); margin-bottom: 10px;">01 VISI</h3>
-            <div class="list-item">
-                Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.
-            </div>
-            <div class="list-item">
-                Berbagi pengalaman dan informasi sesama member guild.
-            </div>
-            <div class="list-item">
-                Menjadi tempat bagi player yang ingin bermain have fun maupun kompetitif.
-            </div>
-        </div>
+    <button onclick="alert('Jadwal Lengkap sedang diperbarui!')" class="btn-primary">📅 LIHAT JADWAL LENGKAP</button>
+  </section>
 
-        <div class="card">
-            <h3 style="color: var(--accent-green); margin-bottom: 10px;">02 MISI</h3>
-            <div class="list-item">
-                Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.
-            </div>
-            <div class="list-item">
-                Membuat forum berbagi agar semua member dapat berkembang bersama.
-            </div>
-        </div>
-    </section>
+  <!-- Section: Ikuti Kami -->
+  <section id="socials">
+    <p class="section-desc" style="text-transform: uppercase; letter-spacing: 2px;">IKUTI KAMI</p>
 
-    <!-- Section 03: Kepengurusan -->
-    <section id="kepengurusan">
-        <div class="section-number">
-            03 – STRUKTUR KEPENGURUSAN
-        </div>
-        <h2 class="section-title">BARISAN KOMANDO</h2>
-        <p class="section-desc">
-            👥 7 MEMBERS
-        </p>
+    <div class="card">
+      <div class="card-role">📸 INSTAGRAM</div>
+      <div class="card-name" style="font-size: 1rem;">
+        <a href="https://instagram.com/divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
+      </div>
+    </div>
 
-        <div class="card">
-            <span class="card-number">01</span>
-            <div class="card-role">
-                LEADER / FOUNDER
-            </div>
-            <div class="card-name">
-                DEY
-            </div>
-        </div>
+    <div class="card">
+      <div class="card-role">🎵 TIKTOK</div>
+      <div class="card-name" style="font-size: 1rem;">
+        <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
+      </div>
+    </div>
 
-        <div class="card">
-            <span class="card-number">02</span>
-            <div class="card-role">
-                STAFF OPMEM BOYS
-            </div>
-            <div class="card-name">
-                PANCA
-            </div>
-        </div>
+    <div class="card">
+      <div class="card-role">▶️ YOUTUBE</div>
+      <div class="card-name" style="font-size: 1rem;">
+        <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-link">@divrodite.id_comunity</a>
+      </div>
+    </div>
+  </section>
 
-        <div class="card">
-            <span class="card-number">03</span>
-            <div class="card-role">
-                STAFF OPMEM LADIES
-            </div>
-            <div class="card-name">
-                RARA
-            </div>
-        </div>
+  <!-- Footer -->
+  <footer>
+    <div style="margin-bottom: 5px; display: inline-block;">
+      <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 40L28 62L50 20L72 62L88 40L78 80H22L12 40Z" stroke="#00ff22" stroke-width="6" stroke-linejoin="round"/>
+        <line x1="28" y1="80" x2="72" y2="80" stroke="#00ff22" stroke-width="6" stroke-linecap="round"/>
+        <line x1="22" y1="68" x2="78" y2="68" stroke="#00ff22" stroke-width="5" stroke-linecap="round"/>
+        <path d="M30 45H70V70C70 82 30 82 30 70V45Z" stroke="#00ff22" stroke-width="6" stroke-linejoin="round"/>
+        <line x1="50" y1="48" x2="50" y2="76" stroke="#00ff22" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="footer-title">DIVRODITE.ID</div>
+    <div class="footer-subtitle">SATU TUJUAN, TAK TERBENDUNG.</div>
+    <div class="footer-address">📍 Majalengka, Jawa Barat, Indonesia</div>
+    <div class="copyright">© 2026 DIVRODITE ID · SEMUA HAK DILINDUNGI.</div>
+  </footer>
 
-        <div class="card">
-            <span class="card-number">04</span>
-            <div class="card-role">
-                STAFF EVENT & PENGEMBANGAN TIM
-            </div>
-            <div class="card-name">
-                PUTRA
-            </div>
-        </div>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('show');
+    }
 
-        <div class="card">
-            <span class="card-number">05</span>
-            <div class="card-role">
-                STAFF EDITOR
-            </div>
-            <div class="card-name">
-                -
-            </div>
-        </div>
+    function toggleLangMenu() {
+      const langMenu = document.getElementById('langMenu');
+      langMenu.classList.toggle('show');
+    }
 
-        <div class="card">
-            <span class="card-number">06</span>
-            <div class="card-role">
-                STAFF INTERNAL
-            </div>
-            <div class="card-name">
-                VIRA
-            </div>
-        </div>
+    window.onclick = function(event) {
+      if (!event.target.closest('.lang-wrapper')) {
+        const langMenu = document.getElementById('langMenu');
+        if (langMenu && langMenu.classList.contains('show')) {
+          langMenu.classList.remove('show');
+        }
+      }
+    }
 
-        <div class="card">
-            <span class="card-number">07</span>
-            <div class="card-role">
-                STAFF HUMAS
-            </div>
-            <div class="card-name">
-                PANJI
-            </div>
-        </div>
-    </section>
+    function changeLanguage(langCode, label) {
+      document.getElementById('currentLang').innerText = label;
+      
+      const googleCombo = document.querySelector('.goog-te-combo');
+      if (googleCombo) {
+        if (langCode === 'id') {
+          googleCombo.value = '';
+        } else {
+          googleCombo.value = langCode;
+        }
+        googleCombo.dispatchEvent(new Event('change'));
+      }
+      
+      toggleLangMenu();
+    }
 
-    <!-- Section 04: Prestasi -->
-    <section id="prestasi">
-        <div class="section-number">
-            04 – PRESTASI
-        </div>
-        <h2 class="section-title">JEJAK KEMENANGAN</h2>
-        <p class="section-desc">
-            Momen-momen kebanggaan Divrodite ID di medan tempur.
-        </p>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'id',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-        <div class="card">
-            <div class="card-role">
-                🏆 FREE FIRE · FFNS 2026 SPRING
-            </div>
-            <div class="card-name" style="font-size: 1.1rem; margin-top: 5px;">
-                SEMIFINAL CITY QUALIFIER FFNS PEKANBARU
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-role">
-                🏆 FREE FIRE & CODM · DOKUMENTASI
-            </div>
-            <div class="card-name" style="font-size: 1.1rem; margin-top: 5px;">
-                PERJALANAN KOMPETITIF GUILD
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 05: Open Member -->
-    <section id="open-member">
-        <div class="section-number">
-            05 – OPEN MEMBER
-        </div>
-        <h2 class="section-title">SIAP BERGABUNG?</h2>
-        <p class="section-desc">
-            Divrodite ID membuka pintu untuk player yang ingin bertumbuh – baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.
-        </p>
-
-        <a href="https://wa.me/6288274040292" target="_blank" style="text-decoration: none; display: block;">
-            <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
-                <div class="card-role">
-                    STAFF OPMEM BOYS
-                </div>
-                <div class="card-name">
-                    PANCA
-                </div>
-                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
-                    💬 Klik di sini untuk Chat WhatsApp (+62 882-7404-0292)
-                </div>
-            </div>
-        </a>
-
-        <a href="https://wa.me/6283167230896" target="_blank" style="text-decoration: none; display: block;">
-            <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
-                <div class="card-role">
-                    STAFF OPMEM LADIES
-                </div>
-                <div class="card-name">
-                    RARA
-                </div>
-                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
-                    💬 Klik di sini untuk Chat WhatsApp (+62 831-6723-0896)
-                </div>
-            </div>
-        </a>
-
-        <a href="https://whatsapp.com/channel/0029VaaWCN19cDDXJ5pEkJ1G" target="_blank" class="btn-primary" style="margin-top: 15px; display: block; text-align: center;">📢 SALURAN WHATSAPP</a>
-        <a href="https://divroditestore.vcpanel.id" target="_blank" class="btn-secondary" style="margin-top: 10px; display: block; text-align: center;">🛍️ TOKO TOPUP</a>
-    </section>
-
-    <!-- Section 06: Kerja Sama -->
-    <section id="kerja-sama">
-        <div class="section-number">
-            06 – KERJA SAMA
-        </div>
-        <h2 class="section-title">BUSINESS & PARTNERSHIP</h2>
-        <p class="section-desc">
-            Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami untuk mendiskusikan peluang terbaik.
-        </p>
-
-        <a href="https://wa.me/6285707120646" target="_blank" style="text-decoration: none; display: block;">
-            <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
-                <div class="card-role">
-                    STAFF HUMAS
-                </div>
-                <div class="card-name">
-                    PANJI
-                </div>
-                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
-                    💬 Klik di sini untuk Chat WhatsApp (+62 857-0712-0646)
-                </div>
-            </div>
-        </a>
-    </section>
-
-    <!-- Section 07: Event & Jadwal -->
-    <section id="event">
-        <div class="section-number">
-            07 – EVENT & JADWAL
-        </div>
-        <h2 class="section-title">ARENA PERTEMPURAN</h2>
-        <p class="section-desc">
-            Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID. Bersiaplah!
-        </p>
-
-        <div class="card">
-            <div class="card-role">
-                🏆 EVENT DIVRODITE ID
-            </div>
-            <div class="card-name" style="font-size: 1.1rem;">
-                DIVRODITE ID SCRIM LEAGUE COLABORATION SEASON 2
-            </div>
-            <div class="card-contact">
-                7-11 September 2026 • 19.00-20.00 WIB
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-role">
-                ⚔️ EVENT DIVRODITE ID
-            </div>
-            <div class="card-name" style="font-size: 1.1rem;">
-                BATTLE OF DIVRODITE SEASON 4
-            </div>
-            <div class="card-contact">
-                COMING SOON • TBA
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-role">
-                ⚔️ EVENT DIVRODITE ID
-            </div>
-            <div class="card-name" style="font-size: 1.1rem;">
-                CLASH OF DIVRODITE SEASON 2
-            </div>
-            <div class="card-contact">
-                COMING SOON • TBA
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-role">
-                ⚔️ EVENT DIVRODITE ID
-            </div>
-            <div class="card-name" style="font-size: 1.1rem;">
-                SCRIM INTERNAL
-            </div>
-            <div class="card-contact">
-                SETIAP SABTU • 20.00 WIB
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-role">
-                ⚔️ EVENT DIVRODITE ID
-            </div>
-            <div class="card-name" style="font-size: 1.1rem;">
-                SCRIM EKSTERNAL
-            </div>
-            <div class="card-contact">
-                SETIAP AKHIR BULAN • 20.00 WIB
-            </div>
-        </div>
-
-        <button onclick="alert('Jadwal Lengkap sedang diperbarui!')" class="btn-primary">📅 LIHAT JADWAL LENGKAP</button>
-    </section>
-
-    <!-- Section 08: Supported By -->
-    <section id="supported">
-        <div class="section-number">
-            08 – SUPPORTED
-        </div>
-        <h2 class="section-title">MITRA KAMI</h2>
-        <p class="section-desc">
-            Terima kasih kepada pihak-pihak yang telah mendukung penuh perjalanan komunitas Divrodite ID.
-        </p>
-
-        <!-- Tempat Placeholder Sponsor 1 -->
-        <div class="card" style="text-align: center; padding: 30px 20px;">
-            <div class="card-role">
-                OFFICIAL PARTNER
-            </div>
-            <div class="card-name" style="margin-top: 15px;">
-                <!-- Masukkan Logo Di Sini -->
-                <img src="logokgffi.png" alt="Komunitas Guild Free Fire Indonesia" style="max-width: 150px; height: auto; object-fit: contain;">
-            </div>
-        </div>
-        
-        <!-- Section: Ikuti Kami -->
-        <section id="socials">
-            <p class="section-desc" style="text-transform: uppercase; letter-spacing: 2px;">
-                IKUTI KAMI
-            </p>
-
-            <div class="card">
-                <div class="card-role">
-                    📸 INSTAGRAM
-                </div>
-                <div class="card-name" style="font-size: 1rem;">
-                    <a href="https://instagram.com/divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-role">
-                    🎵 TIKTOK
-                </div>
-                <div class="card-name" style="font-size: 1rem;">
-                    <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-role">
-                    ▶️ YOUTUBE
-                </div>
-                <div class="card-name" style="font-size: 1rem;">
-                    <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-link">@divrodite.id_comunity</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <img src="logoutama.png" alt="DIVRODITE Logo" style="max-width: 80px; margin-bottom: 10px;">
-            <div class="footer-title">
-                DIVRODITE.ID
-            </div>
-            <div class="footer-subtitle">
-                SATU TUJUAN, TAK TERBENDUNG.
-            </div>
-            <div class="footer-address">
-                📍 Majalengka, Jawa Barat, Indonesia
-            </div>
-            <div class="copyright">
-                © 2026 DIVRODITE ID · SEMUA HAK DILINDUNGI.
-            </div>
-        </footer>
-
-        <!-- Script Menu & Multi Bahasa -->
-        <script>
-            function toggleMenu() {
-                const menu = document.getElementById('navMenu');
-                menu.classList.toggle('show');
-            }
-
-            function toggleLangMenu() {
-                const langMenu = document.getElementById('langMenu');
-                langMenu.classList.toggle('show');
-            }
-
-            // Menutup menu jika klik di luar area
-            window.onclick = function(event) {
-                if (!event.target.closest('.lang-wrapper')) {
-                    const langMenu = document.getElementById('langMenu');
-                    if (langMenu && langMenu.classList.contains('show')) {
-                        langMenu.classList.remove('show');
-                    }
-                }
-            }
-
-            // Perbaikan fungsi ganti bahasa tanpa reload halaman
-            function changeLanguage(langCode, label) {
-                document.getElementById('currentLang').innerText = label;
-
-                const googleCombo = document.querySelector('.goog-te-combo');
-                if (googleCombo) {
-                    if (langCode === 'id') {
-                        googleCombo.value = '';
-                    } else {
-                        googleCombo.value = langCode;
-                    }
-                    googleCombo.dispatchEvent(new Event('change'));
-                }
-
-                toggleLangMenu();
-            }
-
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                    pageLanguage: 'id',
-                    autoDisplay: false
-                }, 'google_translate_element');
-            }
-        </script>
-        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    </body>
+</body>
 </html>

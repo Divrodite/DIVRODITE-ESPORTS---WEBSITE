@@ -24,6 +24,7 @@ function renderSchedules() {
   });
 }
 
-window.onload = function() {
+// Gunakan ini agar aman dan tidak merusak fungsi lain di script.js
+document.addEventListener("DOMContentLoaded", function() {
   renderSchedules();
-};
+});

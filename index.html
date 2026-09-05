@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIVRODITE ID - Komunitas Esports</title>
     <style>
-:root {
-        --bg-color: #0b0c0d;
-        --card-bg: #131517;
-        --accent-green: #00ff22;
-        --text-white: #ffffff;
-        --text-gray: #a0a0a0;
-        --border-color: #22252a;
-    }
+        :root {
+            --bg-color: #0b0c0d;
+            --card-bg: #131517;
+            --accent-green: #00ff22;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --border-color: #22252a;
+        }
 
         * {
             box-sizing: border-box;
@@ -169,6 +169,49 @@
 
         .dropdown-menu a:last-child {
             border-bottom: none;
+        }
+
+        /* Teks Berjalan (Marquee) - Seamless Infinite Loop */
+        .marquee-container {
+            width: 100%;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            padding: 12px 0;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .marquee-track {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollText 25s linear infinite;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-white);
+            text-transform: uppercase;
+        }
+
+        .marquee-text span {
+            color: var(--accent-green);
+            margin: 0 15px;
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .hero {
@@ -416,7 +459,7 @@
             DIVRODITE <span>ID</span>
         </div>
         <div class="nav-controls">
-            <!-- Pilihan Bahasa Khusus ID dan EN -->
+            <!-- Pilihan Bahasa (ID, EN, JA) -->
             <div class="lang-wrapper">
                 <button class="lang-btn-simple" onclick="toggleLangMenu()">
                     🌐 <span id="currentLang">ID</span> ▾
@@ -427,6 +470,9 @@
                     </div>
                     <div class="lang-option" onclick="switchLanguage('en')">
                         🇬🇧 English
+                    </div>
+                    <div class="lang-option" onclick="switchLanguage('ja')">
+                        🇯🇵 日本語
                     </div>
                 </div>
             </div>
@@ -488,6 +534,18 @@
         <a href="#tentang" class="btn-secondary" data-translate="btn_jelajahi">JELAJAHI GUILD</a>
     </section>
 
+    <!-- Marquee di bawah Hero -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span> 
+            </div>
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Section 01: Tentang Guild -->
     <section id="tentang">
         <h2 class="section-title" data-translate="sec1_title">PERJALANAN KOMUNITAS KAMI</h2>
@@ -527,10 +585,22 @@
                 SEMIFINAL CITY QUALIFIER
             </div>
             <div class="timeline-text" data-translate="time3_text">
-                Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.
+                Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier Pekanbaru pada FFNS 2026 Spring.
             </div>
         </div>
     </section>
+
+    <!-- Marquee di bawah Tentang -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span> 
+            </div>
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Section 02: Visi & Misi -->
     <section id="visi-misi">
@@ -563,7 +633,19 @@
         </div>
     </section>
 
-    <!-- Section 03: Kepengurusan -->
+    <!-- Marquee di bawah Visi & Misi -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span> 
+            </div>
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 03: Struktur Kepengurusan -->
     <section id="kepengurusan">
         <div class="section-number" data-translate="sec3_num">
             03 – STRUKTUR KEPENGURUSAN
@@ -644,6 +726,18 @@
         </div>
     </section>
 
+    <!-- Marquee di bawah Kepengurusan -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span> 
+            </div>
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Section 04: Prestasi -->
     <section id="prestasi">
         <div class="section-number" data-translate="sec4_num">
@@ -673,347 +767,504 @@
         </div>
     </section>
 
-   <!-- Section 05: Open Member -->
-  <section id="open-member" style="position: relative; z-index: 1;">
-    <div class="section-number" data-translate="sec5_num">05 – OPEN MEMBER</div>
-    <h2 class="section-title" data-translate="sec5_title">SIAP BERGABUNG?</h2>
-    <p class="section-desc" data-translate="sec5_desc">Divrodite ID membuka pintu untuk player yang ingin bertumbuh – baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.</p>
-
-    <a href="https://wa.me/6288274040292" target="_blank" style="text-decoration: none; display: block; position: relative; z-index: 5;">
-      <div class="card" style="cursor: pointer; border-color: var(--border-color);">
-        <div class="card-role" data-translate="role_opmem_boys">STAFF OPMEM BOYS</div>
-        <div class="card-name">PANCA</div>
-        <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;" data-translate="wa_chat">
-          💬 Klik di sini untuk Chat WhatsApp (+62 882-7404-0292)
+    <!-- Marquee di bawah Prestasi -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span> 
+            </div>
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span>
+            </div>
         </div>
-      </div>
-    </a>
+    </div>
 
-    <a href="https://wa.me/6283167230896" target="_blank" style="text-decoration: none; display: block; position: relative; z-index: 5;">
-      <div class="card" style="cursor: pointer; border-color: var(--border-color);">
-        <div class="card-role" data-translate="role_opmem_ladies">STAFF OPMEM LADIES</div>
-        <div class="card-name">RARA</div>
-        <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;" data-translate="wa_chat2">
-          💬 Klik di sini untuk Chat WhatsApp (+62 831-6723-0896)
+    <!-- Section 05: Open Member -->
+    <section id="open-member" style="position: relative; z-index: 1;">
+        <div class="section-number" data-translate="sec5_num">05 – OPEN MEMBER</div>
+        <h2 class="section-title" data-translate="sec5_title">SIAP BERGABUNG?</h2>
+        <p class="section-desc" data-translate="sec5_desc">Divrodite ID membuka pintu untuk player yang ingin bertumbuh – baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.</p>
+
+        <a href="https://wa.me/6288274040292" target="_blank" style="text-decoration: none; display: block; position: relative; z-index: 5;">
+            <div class="card" style="cursor: pointer; border-color: var(--border-color);">
+                <div class="card-role" data-translate="role_opmem_boys">STAFF OPMEM BOYS</div>
+                <div class="card-name">PANCA</div>
+                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;" data-translate="wa_chat">
+                    💬 Klik di sini untuk Chat WhatsApp (+62 882-7404-0292)
+                </div>
+            </div>
+        </a>
+
+        <a href="https://wa.me/6283167230896" target="_blank" style="text-decoration: none; display: block; position: relative; z-index: 5;">
+            <div class="card" style="cursor: pointer; border-color: var(--border-color);">
+                <div class="card-role" data-translate="role_opmem_ladies">STAFF OPMEM LADIES</div>
+                <div class="card-name">RARA</div>
+                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;" data-translate="wa_chat2">
+                    💬 Klik di sini untuk Chat WhatsApp (+62 831-6723-0896)
+                </div>
+            </div>
+        </a>
+
+        <a href="https://whatsapp.com/channel/0029VaaWCN19cDDXJ5pEkJ1G" target="_blank" style="text-decoration: none; display: block; position: relative; z-index: 5;">
+            <div class="btn-primary" style="margin-top: 15px; text-align: center;" data-translate="btn_channel">📢 SALURAN WHATSAPP</div>
+        </a>
+
+        <a href="https://divroditestore.vcpanel.id" target="_blank" style="text-decoration: none; display: block; position: relative; z-index: 5;">
+            <div class="btn-secondary" style="margin-top: 10px; text-align: center;" data-translate="btn_store">🛍️ TOKO TOPUP</div>
+        </a>
+    </section>
+
+    <!-- Marquee di bawah Open Member -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span> 
+            </div>
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span>
+            </div>
         </div>
-      </div>
-    </a>
+    </div>
 
-    <a href="https://whatsapp.com/channel/0029VaaWCN19cDDXJ5pEkJ1G" target="_blank" style="text-decoration: none; display: block; position: relative; z-index: 5;">
-      <div class="btn-primary" style="margin-top: 15px; text-align: center;" data-translate="btn_channel">📢 SALURAN WHATSAPP</div>
-    </a>
+    <!-- Section 06: Kerja Sama -->
+    <section id="kerja-sama">
+        <div class="section-number" data-translate="sec6_num">
+            06 – KERJA SAMA
+        </div>
+        <h2 class="section-title" data-translate="sec6_title">BUSINESS & PARTNERSHIP</h2>
+        <p class="section-desc" data-translate="sec6_desc">
+            Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami.
+        </p>
 
-    <a href="https://divroditestore.vcpanel.id" target="_blank" style="text-decoration: none; display: block; position: relative; z-index: 5;">
-      <div class="btn-secondary" style="margin-top: 10px; text-align: center;" data-translate="btn_store">🛍️ TOKO TOPUP</div>
-    </a>
-  </section>
-  <!-- Section 06: Kerja Sama -->
-        <section id="kerja-sama">
-            <div class="section-number" data-translate="sec6_num">
-                06 – KERJA SAMA
-            </div>
-            <h2 class="section-title" data-translate="sec6_title">BUSINESS & PARTNERSHIP</h2>
-            <p class="section-desc" data-translate="sec6_desc">
-                Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami.
-            </p>
-
-            <a href="https://wa.me/6285707120646" target="_blank" style="text-decoration: none; display: block;">
-                <div class="card" style="cursor: pointer; border-color: var(--border-color);">
-                    <div class="card-role" data-translate="role_humas">
-                        STAFF HUMAS
-                    </div>
-                    <div class="card-name">
-                        PANJI
-                    </div>
-                    <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;" data-translate="wa_chat3">
-                        💬 Hubungi Staff Humas Kami (+62 857-0712-0646)
-                    </div>
+        <a href="https://wa.me/6285707120646" target="_blank" style="text-decoration: none; display: block;">
+            <div class="card" style="cursor: pointer; border-color: var(--border-color);">
+                <div class="card-role" data-translate="role_humas">
+                    STAFF HUMAS
                 </div>
-            </a>
-        </section>
-
-        <!-- Section 07: Event & Jadwal -->
-        <section id="event">
-            <div class="section-number" data-translate="sec7_num">
-                07 – EVENT & JADWAL
-            </div>
-            <h2 class="section-title" data-translate="sec7_title">ARENA PERTEMPURAN</h2>
-            <p class="section-desc" data-translate="sec7_desc">
-                Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID.
-            </p>
-
-            <div class="card">
-                <div class="card-role" data-translate="event_badge">
-                    🏆 EVENT DIVRODITE ID
+                <div class="card-name">
+                    PANJI
                 </div>
-                <div class="card-name" style="font-size: 1.1rem;">
-                    DIVRODITE ID SCRIM LEAGUE COLABORATION SEASON 2
-                </div>
-                <div class="card-contact" data-translate="tba_text">
-                    7-11 September 2026 • 19.00-20.00 WIB
+                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;" data-translate="wa_chat3">
+                    💬 Hubungi Staff Humas Kami (+62 857-0712-0646)
                 </div>
             </div>
+        </a>
+    </section>
 
-            <div class="card">
-                <div class="card-role" data-translate="event_badge">
-                    🏆 EVENT DIVRODITE ID
-                </div>
-                <div class="card-name" style="font-size: 1.1rem;">
-                    BATTLE OF DIVRODITE SEASON 4
-                </div>
-                <div class="card-contact" data-translate="tba_text">
-                    COMING SOON • TBA
-                </div>
+    <!-- Marquee di bawah Kerja Sama -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span> 
             </div>
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span>
+            </div>
+        </div>
+    </div>
 
-            <div class="card">
-                <div class="card-role" data-translate="event_badge">
-                    🏆 EVENT DIVRODITE ID
-                </div>
-                <div class="card-name" style="font-size: 1.1rem;">
-                    CLASH OF DIVRODITE SEASON 2
-                </div>
-                <div class="card-contact" data-translate="tba_text">
-                    COMING SOON • TBA
-                </div>
-            </div>
+    <!-- Section 07: Event & Jadwal -->
+    <section id="event">
+        <div class="section-number" data-translate="sec7_num">
+            07 – EVENT & JADWAL
+        </div>
+        <h2 class="section-title" data-translate="sec7_title">ARENA PERTEMPURAN</h2>
+        <p class="section-desc" data-translate="sec7_desc">
+            Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID.
+        </p>
 
-            <div class="card">
-                <div class="card-role" data-translate="event_badge">
-                    🏆 EVENT DIVRODITE ID
-                </div>
-                <div class="card-name" style="font-size: 1.1rem;" data-translate="scrim_int">
-                    SCRIM INTERNAL
-                </div>
-                <div class="card-contact" data-translate="scrim_int_time">
-                    SETIAP SABTU • 20.00 WIB
-                </div>
+        <div class="card">
+            <div class="card-role" data-translate="event_badge">
+                🏆 EVENT DIVRODITE ID
             </div>
+            <div class="card-name" style="font-size: 1.1rem;">
+                DIVRODITE ID SCRIM LEAGUE COLABORATION SEASON 2
+            </div>
+            <div class="card-contact" data-translate="tba_text">
+                7-11 September 2026 • 19.00-20.00 WIB
+            </div>
+        </div>
 
-            <div class="card">
-                <div class="card-role" data-translate="event_badge">
-                    🏆 EVENT DIVRODITE ID
-                </div>
-                <div class="card-name" style="font-size: 1.1rem;" data-translate="scrim_ext">
-                    SCRIM EKSTERNAL
-                </div>
-                <div class="card-contact" data-translate="scrim_ext_time">
-                    SETIAP AKHIR BULAN • 20.00 WIB
-                </div>
+        <div class="card">
+            <div class="card-role" data-translate="event_badge">
+                🏆 EVENT DIVRODITE ID
             </div>
+            <div class="card-name" style="font-size: 1.1rem;">
+                BATTLE OF DIVRODITE SEASON 4
+            </div>
+            <div class="card-contact" data-translate="tba_text">
+                COMING SOON • TBA
+            </div>
+        </div>
 
-            <button onclick="alertTranslation()" class="btn-primary" data-translate="btn_jadwal">📅 LIHAT JADWAL LENGKAP</button>
-        </section>
+        <div class="card">
+            <div class="card-role" data-translate="event_badge">
+                🏆 EVENT DIVRODITE ID
+            </div>
+            <div class="card-name" style="font-size: 1.1rem;">
+                CLASH OF DIVRODITE SEASON 2
+            </div>
+            <div class="card-contact" data-translate="tba_text">
+                COMING SOON • TBA
+            </div>
+        </div>
 
-        <!-- Section: Ikuti Kami -->
-        <section id="socials">
-            <p class="section-desc" style="text-transform: uppercase; letter-spacing: 2px;" data-translate="social_title">
-                IKUTI KAMI
-            </p>
+        <div class="card">
+            <div class="card-role" data-translate="event_badge">
+                🏆 EVENT DIVRODITE ID
+            </div>
+            <div class="card-name" style="font-size: 1.1rem;" data-translate="scrim_int">
+                SCRIM INTERNAL
+            </div>
+            <div class="card-contact" data-translate="scrim_int_time">
+                SETIAP SABTU • 20.00 WIB
+            </div>
+        </div>
 
-            <div class="card">
-                <div class="card-role">
-                    📸 INSTAGRAM
-                </div>
-                <div class="card-name" style="font-size: 1rem;">
-                    <a href="https://instagram.com/divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
-                </div>
+        <div class="card">
+            <div class="card-role" data-translate="event_badge">
+                🏆 EVENT DIVRODITE ID
             </div>
+            <div class="card-name" style="font-size: 1.1rem;" data-translate="scrim_ext">
+                SCRIM EKSTERNAL
+            </div>
+            <div class="card-contact" data-translate="scrim_ext_time">
+                SETIAP AKHIR BULAN • 20.00 WIB
+            </div>
+        </div>
 
-            <div class="card">
-                <div class="card-role">
-                    🎵 TIKTOK
-                </div>
-                <div class="card-name" style="font-size: 1rem;">
-                    <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
-                </div>
-            </div>
+        <button onclick="alertTranslation()" class="btn-primary" data-translate="btn_jadwal">📅 LIHAT JADWAL LENGKAP</button>
+    </section>
 
-            <div class="card">
-                <div class="card-role">
-                    ▶️ YOUTUBE
-                </div>
-                <div class="card-name" style="font-size: 1rem;">
-                    <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-link">@divrodite.id_comunity</a>
-                </div>
+    <!-- Marquee di bawah Event -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span> 
             </div>
-        </section>
+            <div class="marquee-text">
+                DIVRODITE ID ESPORTS <span>•</span> GO UNITED, WIN TOGETHER <span>•</span> FREE FIRE & CODM <span>•</span> DIVRODITE VICTORIOUS!! <span>•</span>
+            </div>
+        </div>
+    </div>
 
-        <!-- Footer -->
-        <footer>
-            <div style="margin-bottom: 5px; display: inline-block;">
-                <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 40L28 62L50 20L72 62L88 40L78 80H22L12 40Z" stroke="#00ff22" stroke-width="6" stroke-linejoin="round" />
-                    <line x1="28" y1="80" x2="72" y2="80" stroke="#00ff22" stroke-width="6" stroke-linecap="round" />
-                    <line x1="22" y1="68" x2="78" y2="68" stroke="#00ff22" stroke-width="5" stroke-linecap="round" />
-                    <path d="M30 45H70V70C70 82 30 82 30 70V45Z" stroke="#00ff22" stroke-width="6" stroke-linejoin="round" />
-                    <line x1="50" y1="48" x2="50" y2="76" stroke="#00ff22" stroke-width="6" stroke-linecap="round" />
-                </svg>
-            </div>
-            <div class="footer-title">
-                DIVRODITE.ID
-            </div>
-            <div class="footer-subtitle" data-translate="footer_sub">
-                SATU TUJUAN, TAK TERBENDUNG.
-            </div>
-            <div class="footer-address" data-translate="footer_address">
-                📍 Majalengka, Jawa Barat, Indonesia
-            </div>
-            <div class="copyright" data-translate="footer_copy">
-                © 2026 DIVRODITE ID · SEMUA HAK DILINDUNGI.
-            </div>
-        </footer>
+    <!-- Section: Ikuti Kami -->
+    <section id="socials">
+        <p class="section-desc" style="text-transform: uppercase; letter-spacing: 2px;" data-translate="social_title">
+            IKUTI KAMI
+        </p>
 
-        <script>
-            const translations = {
-                id: {
-                    menu_tentang: "Tentang Guild",
-                    menu_visi: "Visi & Misi",
-                    menu_kepengurusan: "Kepengurusan",
-                    menu_prestasi: "Prestasi",
-                    menu_open: "Open Member",
-                    menu_kerjasama: "Kerja Sama",
-                    menu_event: "Event & Jadwal",
-                    hero_badge: "KOMUNITAS ESPORTS · BERDIRI 01 APRIL 2024",
-                    hero_sub: "Satu Tujuan, Tak Terbendung!",
-                    hero_desc: "Go United, Win Together - DIVRODITE VICTORIOUS!!",
-                    btn_gabung: "GABUNG SEKARANG",
-                    btn_jelajahi: "JELAJAHI GUILD",
-                    sec1_title: "PERJALANAN KOMUNITAS KAMI",
-                    sec1_desc: "Divrodite ID adalah komunitas esports yang bergerak kuat di medan tempur Free Fire dan Call of Duty Mobile.",
-                    time1_title: "GUILD TERBENTUK",
-                    time1_text: "Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Terbentuk di region Majalengka, Jawa Barat, dengan tekad menyatukan player kompetitif.",
-                    time2_date: "SEJARAH CODM",
-                    time2_title: "EKSPANSI CALL OF DUTY MOBILE",
-                    time2_text: "Divrodite ID melebarkan sayapnya ke medan pertempuran Call of Duty Mobile, membawa nama guild untuk bersaing di arena tembak taktis yang lebih luas dan memperkuat persaudaraan antardivisi.",
-                    time3_title: "SEMIFINAL CITY QUALIFIER",
-                    time3_text: "Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.",
-                    sec2_num: "02 – VISI & MISI",
-                    sec2_title: "MANIFESTO KAMI",
-                    visi_header: "01 VISI",
-                    visi_1: "Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.",
-                    visi_2: "Berbagi pengalaman dan informasi sesama member guild.",
-                    visi_3: "Menjadi tempat bagi player yang ingin bermain have fun maupun kompetitif.",
-                    misi_header: "02 MISI",
-                    misi_1: "Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.",
-                    misi_2: "Membuat forum berbagi agar semua member dapat berkembang bersama.",
-                    sec3_num: "03 – STRUKTUR KEPENGURUSAN",
-                    sec3_title: "BARISAN KOMANDO",
-                    sec3_desc: "👥 7 MEMBERS",
-                    role_leader: "LEADER / FOUNDER",
-                    role_opmem_boys: "STAFF OPMEM BOYS",
-                    role_opmem_ladies: "STAFF OPMEM LADIES",
-                    role_event: "STAFF EVENT & PENGEMBANGAN TIM",
-                    role_editor: "STAFF EDITOR",
-                    role_internal: "STAFF INTERNAL",
-                    role_humas: "STAFF HUMAS",
-                    sec4_num: "04 – PRESTASI",
-                    sec4_title: "JEJAK KEMENANGAN",
-                    sec4_desc: "Momen-momen kebanggaan Divrodite ID di medan tempur.",
-                    prestasi_1: "SEMIFINAL CITY QUALIFIER FFNS PEKANBARU",
-                    prestasi_2_role: "🏆 FREE FIRE & CODM · DOKUMENTASI",
-                    prestasi_2: "PERJALANAN KOMPETITIF GUILD",
-                    sec5_num: "05 – OPEN MEMBER",
-                    sec5_title: "SIAP BERGABUNG?",
-                    sec5_desc: "Divrodite ID membuka pintu untuk player yang ingin bertumbuh – baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.",
-                    wa_chat: "💬 Klik di sini untuk Chat WhatsApp (+62 882-7404-0292)",
-                    wa_chat2: "💬 Klik di sini untuk Chat WhatsApp (+62 831-6723-0896)",
-                    btn_channel: "📢 SALURAN WHATSAPP",
-                    btn_store: "🛍️ TOKO TOPUP",
-                    sec6_num: "06 – KERJA SAMA",
-                    sec6_title: "BUSINESS & PARTNERSHIP",
-                    sec6_desc: "Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami.",
-                    wa_chat3: "💬 Klik di sini untuk Chat WhatsApp (+62 857-0712-0546)",
-                    sec7_num: "07 – EVENT & JADWAL",
-                    sec7_title: "ARENA PERTEMPURAN",
-                    sec7_desc: "Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID.",
-                    event_badge: "🏆 EVENT DIVRODITE ID",
-                    tba_text: "COMING SOON • TBA",
-                    scrim_int: "SCRIM INTERNAL",
-                    scrim_int_time: "SETIAP SABTU • 20.00 WIB",
-                    scrim_ext: "SCRIM EKSTERNAL",
-                    scrim_ext_time: "SETIAP AKHIR BULAN • 20.00 WIB",
-                    btn_jadwal: "📅 LIHAT JADWAL LENGKAP",
-                    social_title: "IKUTI KAMI",
-                    footer_sub: "SATU TUJUAN, TAK TERBENDUNG.",
-                    footer_address: "📍 Majalengka, Jawa Barat, Indonesia",
-                    footer_copy: "© 2026 DIVRODITE ID · SEMUA HAK DILINDUNGI."
-                },
-                en: {
-                    menu_tentang: "About Guild",
-                    menu_visi: "Vision & Mission",
-                    menu_kepengurusan: "Management",
-                    menu_prestasi: "Achievements",
-                    menu_open: "Open Member",
-                    menu_kerjasama: "Partnership",
-                    menu_event: "Events & Schedule",
-                    hero_badge: "ESPORTS COMMUNITY · ESTABLISHED APRIL 1, 2024",
-                    hero_sub: "One Goal, Unstoppable!",
-                    hero_desc: "Go United, Win Together - DIVRODITE VICTORIOUS!!",
-                    btn_gabung: "JOIN NOW",
-                    btn_jelajahi: "EXPLORE GUILD",
-                    sec1_title: "OUR COMMUNITY JOURNEY",
-                    sec1_desc: "Divrodite ID is a strong esports community operating in Free Fire and Call of Duty Mobile battlegrounds.",
-                    time1_title: "GUILD FORMED",
-                    time1_text: "Divrodite ID was founded by 5 people: Dey, Irfan, Wulan, Bunga, and Alya. Established in Majalengka, West Java, determined to unite competitive players.",
-                    time2_date: "CODM HISTORY",
-                    time2_title: "CALL OF DUTY MOBILE EXPANSION",
-                    time2_text: "Divrodite ID expanded its wings into the Call of Duty Mobile battlefield, carrying the guild name to compete in broader tactical arenas and strengthen inter-division brotherhood.",
-                    time3_title: "CITY QUALIFIER SEMIFINALIST",
-                    time3_text: "Our best achievement in Free Fire: qualified for the Pekanbaru City Qualifier Semifinals in FFNS 2026 Spring.",
-                    sec2_num: "02 – VISION & MISSION",
-                    sec2_title: "OUR MANIFESTO",
-                    visi_header: "01 VISION",
-                    visi_1: "Building a community guild that strengthens brotherhood, solidarity, and unity among members and other guilds.",
-                    visi_2: "Sharing experiences and information among guild members.",
-                    visi_3: "Providing a home for players who want to play casually or competitively.",
-                    misi_header: "02 MISSION",
-                    misi_1: "Hosting internal scrims, external scrims, and guild events to build bonds and solidarity among members and the community.",
-                    misi_2: "Creating a sharing forum so all members can grow together.",
-                    sec3_num: "03 – MANAGEMENT STRUCTURE",
-                    sec3_title: "COMMAND LINE",
-                    sec3_desc: "👥 7 MEMBERS",
-                    role_leader: "LEADER / FOUNDER",
-                    role_opmem_boys: "BOYS RECRUITMENT STAFF",
-                    role_opmem_ladies: "LADIES RECRUITMENT STAFF",
-                    role_event: "EVENT & TEAM DEVELOPMENT STAFF",
-                    role_editor: "EDITOR STAFF",
-                    role_internal: "INTERNAL STAFF",
-                    role_humas: "PUBLIC RELATIONS STAFF",
-                    sec4_num: "04 – ACHIEVEMENTS",
-                    sec4_title: "VICTORY TRACK",
-                    sec4_desc: "Proud moments of Divrodite ID on the battleground.",
-                    prestasi_1: "PEKANBARU FFNS CITY QUALIFIER SEMIFINALIST",
-                    prestasi_2_role: "🏆 FREE FIRE & CODM · DOCUMENTATION",
-                    prestasi_2: "COMPETITIVE GUILD JOURNEY",
-                    sec5_num: "05 – OPEN MEMBER",
-                    sec5_title: "READY TO JOIN?",
-                    sec5_desc: "Divrodite ID opens its doors for players wanting to grow – whether for fun or competition. Contact our Recruitment Staff to sign up.",
-                    wa_chat: "💬 Click here to Chat via WhatsApp (+62 882-7404-0292)",
-                    wa_chat2: "💬 Click here to Chat via WhatsApp (+62 831-6723-0896)",
-                    btn_channel: "📢 WHATSAPP CHANNEL",
-                    btn_store: "🛍️ TOPUP STORE",
-                    sec6_num: "06 – PARTNERSHIP",
-                    sec6_title: "BUSINESS & PARTNERSHIP",
-                    sec6_desc: "Interested in partnerships, sponsorships, event collaborations, or media partnerships with Divrodite ID? Contact our Public Relations Staff.",
-                    wa_chat3: "💬 Click here to Chat via WhatsApp (+62 857-0712-0546)",
-                    sec7_num: "07 – EVENTS & SCHEDULE",
-                    sec7_title: "BATTLEGROUND ARENA",
-                    sec7_desc: "Upcoming tournament schedules, Scrim Leagues, and competitive events for the Divrodite ID roster.",
-                    event_badge: "🏆 DIVRODITE ID EVENT",
-                    tba_text: "UPCOMING • TBA",
-                    scrim_int: "INTERNAL SCRIM",
-                    scrim_int_time: "EVERY SATURDAY • 8:00 PM WIB",
-                    scrim_ext: "EXTERNAL SCRIM",
-                    scrim_ext_time: "END OF EVERY MONTH • 8:00 PM WIB",
-                    btn_jadwal: "📅 VIEW FULL SCHEDULE",
-                    social_title: "FOLLOW US",
-                    footer_sub: "ONE GOAL, UNSTOPPABLE.",
-                    footer_address: "📍 Majalengka, West Java, Indonesia",
-                    footer_copy: "© 2026 DIVRODITE ID · ALL RIGHTS RESERVED."
+        <div class="card">
+            <div class="card-role">
+                📸 INSTAGRAM
+            </div>
+            <div class="card-name" style="font-size: 1rem;">
+                <a href="https://instagram.com/divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-role">
+                🎵 TIKTOK
+            </div>
+            <div class="card-name" style="font-size: 1rem;">
+                <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-role">
+                ▶️ YOUTUBE
+            </div>
+            <div class="card-name" style="font-size: 1rem;">
+                <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-link">@divrodite.id_comunity</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="margin-bottom: 5px; display: inline-block;">
+            <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 40L28 62L50 20L72 62L88 40L78 80H22L12 40Z" stroke="#00ff22" stroke-width="6" stroke-linejoin="round" />
+                <line x1="28" y1="80" x2="72" y2="80" stroke="#00ff22" stroke-width="6" stroke-linecap="round" />
+                <line x1="22" y1="68" x2="78" y2="68" stroke="#00ff22" stroke-width="5" stroke-linecap="round" />
+                <path d="M30 45H70V70C70 82 30 82 30 70V45Z" stroke="#00ff22" stroke-width="6" stroke-linejoin="round" />
+                <line x1="50" y1="48" x2="50" y2="76" stroke="#00ff22" stroke-width="6" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div class="footer-title">
+            DIVRODITE.ID
+        </div>
+        <div class="footer-subtitle" data-translate="footer_sub">
+            SATU TUJUAN, TAK TERBENDUNG.
+        </div>
+        <div class="footer-address" data-translate="footer_address">
+            📍 Majalengka, Jawa Barat, Indonesia
+        </div>
+        <div class="copyright" data-translate="footer_copy">
+            © 2026 DIVRODITE ID · SEMUA HAK DILINDUNGI.
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            id: {
+                menu_tentang: "Tentang Guild",
+                menu_visi: "Visi & Misi",
+                menu_kepengurusan: "Kepengurusan",
+                menu_prestasi: "Prestasi",
+                menu_open: "Open Member",
+                menu_kerjasama: "Kerja Sama",
+                menu_event: "Event & Jadwal",
+                hero_badge: "KOMUNITAS ESPORTS · BERDIRI 01 APRIL 2024",
+                hero_sub: "Satu Tujuan, Tak Terbendung!",
+                hero_desc: "Go United, Win Together - DIVRODITE VICTORIOUS!!",
+                btn_gabung: "GABUNG SEKARANG",
+                btn_jelajahi: "JELAJAHI GUILD",
+                sec1_title: "PERJALANAN KOMUNITAS KAMI",
+                sec1_desc: "Divrodite ID adalah komunitas esports yang bergerak kuat di medan tempur Free Fire dan Call of Duty Mobile.",
+                time1_title: "GUILD TERBENTUK",
+                time1_text: "Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Terbentuk di region Majalengka, Jawa Barat, dengan tekad menyatukan player kompetitif.",
+                time2_date: "SEJARAH CODM",
+                time2_title: "EKSPANSI CALL OF DUTY MOBILE",
+                time2_text: "Divrodite ID melebarkan sayapnya ke medan pertempuran Call of Duty Mobile, membawa nama guild untuk bersaing di arena tembak taktis yang lebih luas dan memperkuat persaudaraan antardivisi.",
+                time3_title: "SEMIFINAL CITY QUALIFIER",
+                time3_text: "Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier Pekanbaru pada FFNS 2026 Spring.",
+                sec2_num: "02 – VISI & MISI",
+                sec2_title: "MANIFESTO KAMI",
+                visi_header: "01 VISI",
+                visi_1: "Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.",
+                visi_2: "Berbagi pengalaman dan informasi sesama member guild.",
+                visi_3: "Menjadi tempat bagi player yang ingin bermain have fun maupun kompetitif.",
+                misi_header: "02 MISI",
+                misi_1: "Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.",
+                misi_2: "Membuat forum berbagi agar semua member dapat berkembang bersama.",
+                sec3_num: "03 – STRUKTUR KEPENGURUSAN",
+                sec3_title: "BARISAN KOMANDO",
+                sec3_desc: "👥 7 MEMBERS",
+                role_leader: "LEADER / FOUNDER",
+                role_opmem_boys: "STAFF OPMEM BOYS",
+                role_opmem_ladies: "STAFF OPMEM LADIES",
+                role_event: "STAFF EVENT & PENGEMBANGAN TIM",
+                role_editor: "STAFF EDITOR",
+                role_internal: "STAFF INTERNAL",
+                role_humas: "STAFF HUMAS",
+                sec4_num: "04 – PRESTASI",
+                sec4_title: "JEJAK KEMENANGAN",
+                sec4_desc: "Momen-momen kebanggaan Divrodite ID di medan tempur.",
+                prestasi_1: "SEMIFINAL CITY QUALIFIER FFNS PEKANBARU",
+                prestasi_2_role: "🏆 FREE FIRE & CODM · DOKUMENTASI",
+                prestasi_2: "PERJALANAN KOMPETITIF GUILD",
+                sec5_num: "05 – OPEN MEMBER",
+                sec5_title: "SIAP BERGABUNG?",
+                sec5_desc: "Divrodite ID membuka pintu untuk player yang ingin bertumbuh – baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.",
+                wa_chat: "💬 Klik di sini untuk Chat WhatsApp (+62 882-7404-0292)",
+                wa_chat2: "💬 Klik di sini untuk Chat WhatsApp (+62 831-6723-0896)",
+                btn_channel: "📢 SALURAN WHATSAPP",
+                btn_store: "🛍️ TOKO TOPUP",
+                sec6_num: "06 – KERJA SAMA",
+                sec6_title: "BUSINESS & PARTNERSHIP",
+                sec6_desc: "Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami.",
+                wa_chat3: "💬 Klik di sini untuk Chat WhatsApp (+62 857-0712-0646)",
+                sec7_num: "07 – EVENT & JADWAL",
+                sec7_title: "ARENA PERTEMPURAN",
+                sec7_desc: "Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID.",
+                event_badge: "🏆 EVENT DIVRODITE ID",
+                tba_text: "COMING SOON • TBA",
+                scrim_int: "SCRIM INTERNAL",
+                scrim_int_time: "SETIAP SABTU • 20.00 WIB",
+                scrim_ext: "SCRIM EKSTERNAL",
+                scrim_ext_time: "SETIAP AKHIR BULAN • 20.00 WIB",
+                btn_jadwal: "📅 LIHAT JADWAL LENGKAP",
+                social_title: "IKUTI KAMI",
+                footer_sub: "SATU TUJUAN, TAK TERBENDUNG.",
+                footer_address: "📍 Majalengka, Jawa Barat, Indonesia",
+                footer_copy: "© 2026 DIVRODITE ID · SEMUA HAK DILINDUNGI."
+            },
+            en: {
+                menu_tentang: "About Guild",
+                menu_visi: "Vision & Mission",
+                menu_kepengurusan: "Management",
+                menu_prestasi: "Achievements",
+                menu_open: "Open Member",
+                menu_kerjasama: "Partnership",
+                menu_event: "Events & Schedule",
+                hero_badge: "ESPORTS COMMUNITY · ESTABLISHED APRIL 1, 2024",
+                hero_sub: "One Goal, Unstoppable!",
+                hero_desc: "Go United, Win Together - DIVRODITE VICTORIOUS!!",
+                btn_gabung: "JOIN NOW",
+                btn_jelajahi: "EXPLORE GUILD",
+                sec1_title: "OUR COMMUNITY JOURNEY",
+                sec1_desc: "Divrodite ID is a strong esports community operating in Free Fire and Call of Duty Mobile battlegrounds.",
+                time1_title: "GUILD FORMED",
+                time1_text: "Divrodite ID was founded by 5 people: Dey, Irfan, Wulan, Bunga, and Alya. Established in Majalengka, West Java, determined to unite competitive players.",
+                time2_date: "CODM HISTORY",
+                time2_title: "CALL OF DUTY MOBILE EXPANSION",
+                time2_text: "Divrodite ID expanded its wings into the Call of Duty Mobile battlefield, carrying the guild name to compete in broader tactical arenas and strengthen inter-division brotherhood.",
+                time3_title: "CITY QUALIFIER SEMIFINALIST",
+                time3_text: "Our best achievement in Free Fire: qualified for the Pekanbaru City Qualifier Semifinals in FFNS 2026 Spring.",
+                sec2_num: "02 – VISION & MISSION",
+                sec2_title: "OUR MANIFESTO",
+                visi_header: "01 VISION",
+                visi_1: "Building a community guild that strengthens brotherhood, solidarity, and unity among members and other guilds.",
+                visi_2: "Sharing experiences and information among guild members.",
+                visi_3: "Providing a home for players who want to play casually or competitively.",
+                misi_header: "02 MISSION",
+                misi_1: "Hosting internal scrims, external scrims, and guild events to build bonds and solidarity among members and the community.",
+                misi_2: "Creating a sharing forum so all members can grow together.",
+                sec3_num: "03 – MANAGEMENT STRUCTURE",
+                sec3_title: "COMMAND LINE",
+                sec3_desc: "👥 7 MEMBERS",
+                role_leader: "LEADER / FOUNDER",
+                role_opmem_boys: "BOYS RECRUITMENT STAFF",
+                role_opmem_ladies: "LADIES RECRUITMENT STAFF",
+                role_event: "EVENT & TEAM DEVELOPMENT STAFF",
+                role_editor: "EDITOR STAFF",
+                role_internal: "INTERNAL STAFF",
+                role_humas: "PUBLIC RELATIONS STAFF",
+                sec4_num: "04 – ACHIEVEMENTS",
+                sec4_title: "VICTORY TRACK",
+                sec4_desc: "Proud moments of Divrodite ID on the battleground.",
+                prestasi_1: "PEKANBARU FFNS CITY QUALIFIER SEMIFINALIST",
+                prestasi_2_role: "🏆 FREE FIRE & CODM · DOCUMENTATION",
+                prestasi_2: "COMPETITIVE GUILD JOURNEY",
+                sec5_num: "05 – OPEN MEMBER",
+                sec5_title: "READY TO JOIN?",
+                sec5_desc: "Divrodite ID opens its doors for players wanting to grow – whether for fun or competition. Contact our Recruitment Staff to sign up.",
+                wa_chat: "💬 Click here to Chat via WhatsApp (+62 882-7404-0292)",
+                wa_chat2: "💬 Click here to Chat via WhatsApp (+62 831-6723-0896)",
+                btn_channel: "📢 WHATSAPP CHANNEL",
+                btn_store: "🛍️ TOPUP STORE",
+                sec6_num: "06 – PARTNERSHIP",
+                sec6_title: "BUSINESS & PARTNERSHIP",
+                sec6_desc: "Interested in partnerships, sponsorships, event collaborations, or media partnerships with Divrodite ID? Contact our Public Relations Staff.",
+                wa_chat3: "💬 Click here to Chat via WhatsApp (+62 857-0712-0646)",
+                sec7_num: "07 – EVENTS & SCHEDULE",
+                sec7_title: "BATTLEGROUND ARENA",
+                sec7_desc: "Upcoming tournament schedules, Scrim Leagues, and competitive events for the Divrodite ID roster.",
+                event_badge: "🏆 DIVRODITE ID EVENT",
+                tba_text: "UPCOMING • TBA",
+                scrim_int: "INTERNAL SCRIM",
+                scrim_int_time: "EVERY SATURDAY • 8:00 PM WIB",
+                scrim_ext: "EXTERNAL SCRIM",
+                scrim_ext_time: "END OF EVERY MONTH • 8:00 PM WIB",
+                btn_jadwal: "📅 VIEW FULL SCHEDULE",
+                social_title: "FOLLOW US",
+                footer_sub: "ONE GOAL, UNSTOPPABLE.",
+                footer_address: "📍 Majalengka, West Java, Indonesia",
+                footer_copy: "© 2026 DIVRODITE ID · ALL RIGHTS RESERVED."
+            },
+            ja: {
+                menu_tentang: "ギルドについて",
+                menu_visi: "ビジョン＆ミッション",
+                menu_kepengurusan: "運営体制",
+                menu_prestasi: "実績",
+                menu_open: "メンバー募集",
+                menu_kerjasama: "パートナーシップ",
+                menu_event: "イベント＆スケジュール",
+                hero_badge: "イースポーツコミュニティ · 2024年4月1日設立",
+                hero_sub: "一つの目標、止まらない力！",
+                hero_desc: "Go United, Win Together - DIVRODITE VICTORIOUS!!",
+                btn_gabung: "今すぐ参加",
+                btn_jelajahi: "ギルドを探索",
+                sec1_title: "私たちのコミュニティの軌跡",
+                sec1_desc: "Divrodite IDは、Free FireとCall of Duty Mobileの戦場で強力に活動するイースポーツコミュニティです。",
+                time1_title: "ギルド結成",
+                time1_text: "Divrodite IDは、Dey、Irfan、Wulan、Bunga、Alyaの5人によって設立されました。西ジャワ州マジャレンカ地域を拠点に、競技プレイヤーを団結させるという決意のもと結成されました。",
+                time2_date: "CODMの歴史",
+                time2_title: "Call of Duty Mobile 展開",
+                time2_text: "Divrodite IDはCall of Duty Mobileの戦場へと活動の幅を広げ、より広い戦術アリーナで競い合い、部門間の絆を深めています。",
+                time3_title: "シティ予選準決勝進出",
+                time3_text: "Free Fireでの最高実績：FFNS 2026 Springのプカンバル都市予選準決勝に進出。",
+                sec2_num: "03 – ビジョン＆ミッション",
+                sec2_title: "私たちのマニフェスト",
+                visi_header: "01 ビジョン",
+                visi_1: "メンバー間および他ギルドとの絆、連帯感、団結力を深めるコミュニティギルドを構築する。",
+                visi_2: "ギルドメンバー間で経験や情報を共有する。",
+                visi_3: "楽しくプレイしたいプレイヤーから競技志向のプレイヤーまでが集える場所を提供する。",
+                misi_header: "02 ミッション",
+                misi_1: "メンバーおよびコミュニティ間の絆と連帯感を育むため、内部スクリム、外部スクリム、ギルドイベントを開催する。",
+                misi_2: "全メンバーが共に成長できる共有フォーラムを作成する。",
+                sec3_num: "02 – 運営体制",
+                sec3_title: "コマンドライン",
+                sec3_desc: "👥 7名",
+                role_leader: "リーダー / 創設者",
+                role_opmem_boys: "メンバー募集スタッフ（男子）",
+                role_opmem_ladies: "メンバー募集スタッフ（女子）",
+                role_event: "イベント＆チーム開発スタッフ",
+                role_editor: "エディタースタッフ",
+                role_internal: "内部スタッフ",
+                role_humas: "広報スタッフ",
+                sec4_num: "04 – 実績",
+                sec4_title: "勝利の足跡",
+                sec4_desc: "戦場におけるDivrodite IDの誇るべき瞬間。",
+                prestasi_1: "FFNS プカンバル都市予選準決勝進出",
+                prestasi_2_role: "🏆 FREE FIRE & CODM · ドキュメント",
+                prestasi_2: "競技ギルドの旅",
+                sec5_num: "05 – メンバー募集",
+                sec5_title: "参加の準備はできましたか？",
+                sec5_desc: "Divrodite IDは、エンジョイ勢からガチ勢まで、成長したいプレイヤーを歓迎します。応募は募集スタッフまでご連絡ください。",
+                wa_chat: "💬 WhatsAppでチャット (+62 882-7404-0292)",
+                wa_chat2: "💬 WhatsAppでチャット (+62 831-6723-0896)",
+                btn_channel: "📢 WhatsApp チャンネル",
+                btn_store: "🛍️ チャージストア",
+                sec6_num: "06 – パートナーシップ",
+                sec6_title: "ビジネス＆パートナーシップ",
+                sec6_desc: "Divrodite IDとのパートナーシップ、スポンサーシップ、イベントコラボ、メディアパートナーに興味がありますか？広報スタッフまでお問い合わせください。",
+                wa_chat3: "💬 WhatsAppでチャット (+62 857-0712-0646)",
+                sec7_num: "07 – イベント＆スケジュール",
+                sec7_title: "バトルグラウンドアリーナ",
+                sec7_desc: "Divrodite IDのメンバーが参加予定の直近の大会、スクリムリーグ、競技イベントのスケジュール。",
+                event_badge: "🏆 DIVRODITE ID イベント",
+                tba_text: "近日公開 • 未定",
+                scrim_int: "内部スクリム",
+                scrim_int_time: "毎週土曜日 • 20:00 WIB",
+                scrim_ext: "外部スクリム",
+                scrim_ext_time: "毎月末 • 20:00 WIB",
+                btn_jadwal: "📅 フルスケジュールを見る",
+                social_title: "フォローする",
+                footer_sub: "一つの目標、止まらない力。",
+                footer_address: "📍 インドネシア、西ジャワ州マジャレンカ",
+                footer_copy: "© 2026 DIVRODITE ID · 全著作権所有。"
+            }
+        };
+
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        }
+
+        function toggleLangMenu() {
+            const langMenu = document.getElementById('langMenu');
+            langMenu.classList.toggle('show');
+        }
+
+        function switchLanguage(lang) {
+            document.getElementById('currentLang').innerText = lang.toUpperCase();
+            document.getElementById('langMenu').classList.remove('show');
+            
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
                 }
-            };
+            });
+        }
 
-<script src="script.js"></script>
+        function alertTranslation() {
+            alert("Jadwal lengkap akan segera diumumkan!");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-wrapper')) {
+                document.getElementById('langMenu').classList.remove('show');
+            }
+            if (!event.target.closest('.nav-controls')) {
+                document.getElementById('navMenu').classList.remove('show');
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,31 +1,141 @@
-/* Data Awal Jadwal */
-let defaultSchedules = [
-  { role: "🏆 EVENT DIVRODITE ID", title: "DIVRODITE ID SCRIM LEAGUE COLABORATION SEASON 2", time: "COMING SOON • TBA" },
-  { role: "⚔️ EVENT DIVRODITE ID", title: "BATTLE OF DIVRODITE SEASON 4", time: "COMING SOON • TBA" },
-  { role: "⚔️ EVENT DIVRODITE ID", title: "CLASH OF DIVRODITE SEASON 2", time: "COMING SOON • TBA" },
-  { role: "⚔️ EVENT DIVRODITE ID", title: "SCRIM INTERNAL", time: "SETIAP SABTU • 20.00 WIB" },
-  { role: "⚔️ EVENT DIVRODITE ID", title: "SCRIM EKSTERNAL", time: "SETIAP AKHIR BULAN • 20.00 WIB" }
-];
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - DIVRODITE ID</title>
+  <style>
+    :root {
+      --bg-color: #0b0c0d;
+      --card-bg: #131517;
+      --accent-green: #00ff22;
+      --text-white: #ffffff;
+      --text-gray: #a0a0a0;
+      --border-color: #22252a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-white); padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .admin-container { width: 100%; max-width: 450px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); }
+    h2 { font-size: 1.4rem; margin-bottom: 5px; text-transform: uppercase; }
+    .subtitle { color: var(--text-gray); font-size: 0.85rem; margin-bottom: 20px; }
+    .admin-panel { display: none; }
+    .admin-panel.active { display: block; }
+    .admin-input { width: 100%; padding: 12px; margin-bottom: 12px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-white); border-radius: 6px; font-size: 0.9rem; }
+    .admin-input:focus { border-color: var(--accent-green); outline: none; }
+    label { font-size: 0.8rem; color: var(--text-gray); display: block; margin-bottom: 4px; }
+    .btn-primary { background-color: var(--accent-green); color: #000; font-weight: bold; padding: 12px; border-radius: 6px; display: block; width: 100%; text-align: center; cursor: pointer; border: none; font-size: 0.9rem; }
+    .btn-secondary { background-color: transparent; border: 1px solid #ff3333; color: #ff3333; padding: 12px; border-radius: 6px; display: block; width: 100%; text-align: center; cursor: pointer; font-size: 0.9rem; margin-top: 10px; }
+    .back-link { display: inline-block; margin-top: 15px; color: var(--text-gray); font-size: 0.85rem; text-decoration: none; }
+    .back-link:hover { color: var(--accent-green); }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div style="color: var(--accent-green); font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 5px;">DIVRODITE ID SYSTEM</div>
+    <h2>Admin Control Panel</h2>
+    <p class="subtitle">Kelola dan ubah jadwal event guild secara langsung.</p>
 
-let schedules = JSON.parse(localStorage.getItem('divrodite_schedules')) || defaultSchedules;
+    <!-- Kotak Login -->
+    <div id="loginBox" class="admin-panel active">
+      <label>Username Admin:</label>
+      <input type="text" id="adminUser" class="admin-input" placeholder="Masukkan username...">
+      <label>Password Admin:</label>
+      <input type="password" id="adminPass" class="admin-input" placeholder="Masukkan password...">
+      <button onclick="verifyAdmin()" class="btn-primary">Masuk ke Panel</button>
+      <a href="index.html" class="back-link">← Kembali ke Website Utama</a>
+    </div>
 
-function renderSchedules() {
-  const container = document.getElementById('scheduleContainer');
-  if(!container) return;
-  container.innerHTML = '';
-  schedules.forEach((item) => {
-    container.innerHTML += `
-      <div class="card">
-        <div class="card-role">${item.role}</div>
-        <div class="card-name" style="font-size: 1.1rem;">${item.title}</div>
-        <div class="card-contact">${item.time}</div>
+    <!-- Kotak Edit Jadwal -->
+    <div id="editBox" class="admin-panel">
+      <div style="margin-bottom: 12px;">
+        <label>Pilih Jadwal yang Ingin Diubah:</label>
+        <select id="scheduleSelect" class="admin-input" onchange="loadScheduleData()">
+          <option value="0">1. Divrodite ID Scrim League Colaboration</option>
+          <option value="1">2. Battle of Divrodite Season 4</option>
+          <option value="2">3. Clash of Divrodite Season 2</option>
+          <option value="3">4. Scrim Internal</option>
+          <option value="4">5. Scrim Eksternal</option>
+        </select>
       </div>
-    `;
-  });
-}
 
-window.onload = function() {
-  renderSchedules();
-};
+      <div style="margin-bottom: 12px;">
+        <label>Nama Event / Scrim:</label>
+        <input type="text" id="editTitle" class="admin-input">
+      </div>
 
-// ... sisa fungsi terjemahan dan menu tetap sama seperti sebelumnya ...
+      <div style="margin-bottom: 15px;">
+        <label>Keterangan Waktu / Status:</label>
+        <input type="text" id="editTime" class="admin-input">
+      </div>
+
+      <button onclick="saveScheduleChanges()" class="btn-primary" style="margin-bottom: 10px;">💾 Simpan Perubahan</button>
+      <button onclick="logoutAdmin()" class="btn-secondary">Keluar / Lock Admin</button>
+      
+      <div style="text-align: center; margin-top: 15px;">
+        <a href="index.html" class="back-link">← Lihat Website Utama</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let defaultSchedules = [
+      { role: "🏆 EVENT DIVRODITE ID", title: "DIVRODITE ID SCRIM LEAGUE COLABORATION SEASON 2", time: "COMING SOON • TBA" },
+      { role: "⚔️ EVENT DIVRODITE ID", title: "BATTLE OF DIVRODITE SEASON 4", time: "COMING SOON • TBA" },
+      { role: "⚔️ EVENT DIVRODITE ID", title: "CLASH OF DIVRODITE SEASON 2", time: "COMING SOON • TBA" },
+      { role: "⚔️ EVENT DIVRODITE ID", title: "SCRIM INTERNAL", time: "SETIAP SABTU • 20.00 WIB" },
+      { role: "⚔️ EVENT DIVRODITE ID", title: "SCRIM EKSTERNAL", time: "SETIAP AKHIR BULAN • 20.00 WIB" }
+    ];
+
+    let schedules = JSON.parse(localStorage.getItem('divrodite_schedules')) || defaultSchedules;
+    
+    // Kredensial Login Admin
+    const ADMIN_USER = "mindiv";
+    const ADMIN_PASS = "mindiv0104";
+
+    window.onload = function() {
+      if(localStorage.getItem('divrodite_is_admin') === 'true') {
+        document.getElementById('loginBox').classList.remove('active');
+        document.getElementById('editBox').classList.add('active');
+        loadScheduleData();
+      }
+    };
+
+    function verifyAdmin() {
+      const user = document.getElementById('adminUser').value;
+      const pass = document.getElementById('adminPass').value;
+      
+      if(user === ADMIN_USER && pass === ADMIN_PASS) {
+        localStorage.setItem('divrodite_is_admin', 'true');
+        document.getElementById('loginBox').classList.remove('active');
+        document.getElementById('editBox').classList.add('active');
+        document.getElementById('adminUser').value = '';
+        document.getElementById('adminPass').value = '';
+        loadScheduleData();
+      } else {
+        alert('Username atau Password Admin Salah!');
+      }
+    }
+
+    function logoutAdmin() {
+      localStorage.removeItem('divrodite_is_admin');
+      document.getElementById('editBox').classList.remove('active');
+      document.getElementById('loginBox').classList.add('active');
+    }
+
+    function loadScheduleData() {
+      const index = document.getElementById('scheduleSelect').value;
+      document.getElementById('editTitle').value = schedules[index].title;
+      document.getElementById('editTime').value = schedules[index].time;
+    }
+
+    function saveScheduleChanges() {
+      const index = document.getElementById('scheduleSelect').value;
+      schedules[index].title = document.getElementById('editTitle').value;
+      schedules[index].time = document.getElementById('editTime').value;
+      
+      localStorage.setItem('divrodite_schedules', JSON.stringify(schedules));
+      alert('Jadwal berhasil diperbarui! Perubahan langsung aktif di website utama.');
+    }
+  </script>
+</body>
+</html>

@@ -1,1839 +1,967 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIVRODITE.ID | Komunitas Esports</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>DIVRODITE ID - Komunitas Esports</title>
     <style>
-        :root {
-            --bg-color: #08090a;
-            --card-bg: #111417;
-            --accent-color: #00ff03;
-            --accent-glow: rgba(0, 255, 3, 0.4);
-            --text-main: #ffffff;
-            --text-muted: #8b949e;
-            --border-color: #21262d;
-        }
+:root {
+        --bg-color: #0b0c0d;
+        --card-bg: #131517;
+        --accent-green: #00ff22;
+        --text-white: #ffffff;
+        --text-gray: #a0a0a0;
+        --border-color: #22252a;
+    }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            color: var(--text-white);
+            line-height: 1.6;
+            padding-bottom: 50px;
+            top: 0 !important;
         }
 
-        /* HEADER */
+        /* Sembunyikan elemen bawaan Google Translate */
+        .goog-te-banner-frame, .goog-te-balloon-frame {
+            display: none !important;
+        }
+        .skiptranslate {
+            display: none !important;
+        }
+        body {
+            top: 0px !important;
+        }
+
+        /* Custom Language Selector - Simpel & Minimalis */
+        .lang-wrapper {
+            position: relative;
+        }
+
+        .lang-btn-simple {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-white);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn-simple:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            z-index: 101;
+            min-width: 130px;
+        }
+
+        .lang-dropdown.show {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lang-option {
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            color: var(--text-white);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .lang-option:hover {
+            background-color: var(--bg-color);
+            color: var(--accent-green);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header & Navigation */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
-            position: fixed;
+            padding: 15px 20px;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
             top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(8, 9, 10, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+            z-index: 100;
         }
 
-        .logo-box {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-container img {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-container span {
+            color: var(--accent-green);
+        }
+
+        .nav-controls {
             display: flex;
             align-items: center;
             gap: 12px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
         }
 
-        .logo-box:hover {
-            transform: scale(1.05);
-        }
-
-        .header-logo-img {
-            height: 38px;
-            width: auto;
-            filter: drop-shadow(0 0 6px var(--accent-glow));
-        }
-
-        .header-logo-text {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            color: var(--text-main);
-        }
-
-        .header-logo-text span {
-            color: var(--accent-color);
-        }
-
-        .lang-switcher {
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            background: transparent;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .lang-switcher:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 10px var(--accent-glow);
-            transform: translateY(-2px);
-        }
-
-        .menu-btn {
-            background: none;
-            border: none;
-            color: white;
+        .menu-icon {
             font-size: 1.5rem;
             cursor: pointer;
-            margin-left: 15px;
-            transition: transform 0.3s ease, color 0.3s ease;
+            user-select: none;
         }
 
-        .menu-btn:hover {
-            color: var(--accent-color);
-            transform: rotate(90deg);
-        }
-        /* NAV MENU OVERLAY */
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 320px;
-            height: 100vh;
-            background: rgba(17, 20, 23, 0.98);
-            backdrop-filter: blur(15px);
-            z-index: 2000;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.8);
-            border-left: 1px solid var(--border-color);
-            display: flex;
+        /* Dropdown Menu Mobile */
+        .dropdown-menu {
+            display: none;
             flex-direction: column;
-            padding: 40px 25px;
-            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            position: absolute;
+            top: 65px;
+            right: 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            z-index: 99;
+            min-width: 200px;
         }
 
-        .nav-overlay.active {
-            right: 0;
-        }
-
-        .close-btn {
-            align-self: flex-end;
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-btn:hover {
-            color: var(--accent-color);
-        }
-
-        .nav-links {
-            list-style: none;
-            margin-top: 40px;
+        .dropdown-menu.show {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
         }
 
-        .nav-links a {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-main);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-            transform: translateX(8px);
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 100px 20px 40px;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(0, 255, 3, 0.08) 0%, rgba(8, 9, 10, 1) 75%);
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* HERO LOGO ANIMATION */
-        .hero-logo-container {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .hero-logo-img {
-            width: 140px;
-            height: auto;
-            filter: drop-shadow(0 0 15px rgba(0, 255, 3, 0.6));
-            animation: logoPulse 3s infinite alternate ease-in-out;
-        }
-
-        @keyframes logoPulse {
-            from {
-                transform: scale(1);
-                filter: drop-shadow(0 0 10px rgba(0, 255, 3, 0.4));
-            }
-            to {
-                transform: scale(1.05);
-                filter: drop-shadow(0 0 25px rgba(0, 255, 3, 0.8));
-            }
-        }
-
-        .hero-sub {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-color);
-            letter-spacing: 2px;
+        .dropdown-menu a {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
             font-size: 0.9rem;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            animation: pulseText 2s infinite alternate;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        @keyframes pulseText {
-            from { opacity: 0.7; text-shadow: 0 0 2px var(--accent-color); }
-            to { opacity: 1; text-shadow: 0 0 10px var(--accent-color); }
+        .dropdown-menu a span {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--bg-color);
+            color: var(--accent-green);
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-badge {
+            color: var(--accent-green);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
         }
 
         .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            line-height: 1;
+            font-size: 2.2rem;
             font-weight: 900;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            position: relative;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
         .hero-title span {
-            color: var(--accent-color);
+            color: var(--accent-green);
             display: block;
-            text-shadow: 0 0 20px var(--accent-glow);
         }
 
-        /* GLITCH ANIMATION */
-        .glitch {
-            position: relative;
-        }
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            clip: rect(0, 0, 0, 0);
-        }
-        .glitch::before {
-            left: -2px;
-            text-shadow: 2px 0 #ff00c1;
-            animation: glitch-anim 2s infinite linear alternate-reverse;
-        }
-        .glitch::after {
-            left: 2px;
-            text-shadow: -2px 0 #00fff9;
-            animation: glitch-anim2 3s infinite linear alternate-reverse;
-        }
-        @keyframes glitch-anim {
-            0% { clip: rect(20px, 9999px, 15px, 0); }
-            20% { clip: rect(50px, 9999px, 80px, 0); }
-            40% { clip: rect(10px, 9999px, 40px, 0); }
-            60% { clip: rect(70px, 9999px, 30px, 0); }
-            80% { clip: rect(30px, 9999px, 90px, 0); }
-            100% { clip: rect(60px, 9999px, 10px, 0); }
-        }
-        @keyframes glitch-anim2 {
-            0% { clip: rect(40px, 9999px, 10px, 0); }
-            20% { clip: rect(10px, 9999px, 30px, 0); }
-            40% { clip: rect(80px, 9999px, 50px, 0); }
-            60% { clip: rect(20px, 9999px, 70px, 0); }
-            80% { clip: rect(90px, 9999px, 20px, 0); }
-            100% { clip: rect(30px, 9999px, 60px, 0); }
-        }
-
-        .hero-tagline {
-            font-size: 1.4rem;
-            font-weight: 700;
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: bold;
             margin-bottom: 5px;
         }
 
         .hero-desc {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-size: 0.85rem;
             margin-bottom: 25px;
         }
 
-        .game-badges {
+        .game-tags {
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
             justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
         }
 
-        .badge {
-            border: 1px solid #1f292e;
-            padding: 6px 15px;
-            font-family: 'Share Tech Mono', monospace;
+        .tag {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 5px;
             font-size: 0.8rem;
-            color: #a0a0a0;
-            background: rgba(255,255,255,0.02);
-            text-transform: uppercase;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .badge:hover {
-            border-color: var(--accent-color);
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 12px rgba(0,255,3,0.2);
-        }
-
-        .cta-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 320px;
         }
 
         .btn-primary {
-            background-color: var(--accent-color);
+            background-color: var(--accent-green);
             color: #000;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            padding: 16px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 0 15px var(--accent-glow);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: center;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 8px;
             display: block;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 0 30px rgba(0, 255, 3, 0.8);
-            transform: translateY(-3px) scale(1.02);
-            background-color: #00ff44;
-        }
-
-        .btn-primary:active {
-            transform: translateY(1px) scale(0.98);
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto 10px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-secondary {
-            background: transparent;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            padding: 16px;
-            text-decoration: none;
-            text-transform: uppercase;
+            background-color: transparent;
             border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
+            color: var(--text-white);
+            padding: 15px;
+            border-radius: 8px;
             display: block;
-            border-radius: 4px;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            text-align: center;
+            cursor: pointer;
         }
 
-        .btn-secondary:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-            box-shadow: inset 0 0 10px rgba(0, 255, 3, 0.15), 0 0 15px rgba(0, 255, 3, 0.2);
-            transform: translateY(-3px);
-        }
-
-        /* SECTIONS GENERAL */
+        /* Common Section Styling */
         section {
-            padding: 70px 20px;
-            max-width: 800px;
+            padding: 30px 20px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .section-tag {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-color);
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .section-tag::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-color);
-            display: inline-block;
-            box-shadow: 0 0 8px var(--accent-color);
+        .section-number {
+            color: var(--accent-green);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
         }
 
         .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
-            line-height: 1.1;
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
             text-transform: uppercase;
+        }
+
+        .section-desc {
+            color: var(--text-gray);
+            font-size: 0.9rem;
             margin-bottom: 20px;
         }
 
-        /* ABOUT & TIMELINE */
-        .about-text {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .timeline {
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
             position: relative;
-            padding-left: 30px;
-            border-left: 2px solid var(--border-color);
-            margin-top: 30px;
         }
 
+        .card-number {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+
+        .card-role {
+            color: var(--accent-green);
+            font-size: 0.75rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .card-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .card-contact {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .social-link:hover {
+            color: var(--accent-green);
+        }
+
+        /* Timeline */
         .timeline-item {
+            border-left: 2px solid var(--accent-green);
+            padding-left: 15px;
+            margin-left: 5px;
+            margin-bottom: 25px;
             position: relative;
-            margin-bottom: 40px;
-            transition: transform 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            transform: translateX(5px);
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -37px;
-            top: 4px;
-            width: 12px;
-            height: 12px;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            border: 2px solid var(--accent-color);
-            background: var(--bg-color);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover::before {
-            background: var(--accent-color);
-            box-shadow: 0 0 10px var(--accent-color);
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent-green);
         }
 
         .timeline-date {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-color);
-            font-size: 0.85rem;
+            color: var(--accent-green);
+            font-size: 0.75rem;
             margin-bottom: 5px;
         }
 
         .timeline-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .timeline-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* VISI MISI */
-        .vm-card {
-            margin-bottom: 40px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 6px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .vm-card:hover {
-            border-color: rgba(0, 255, 3, 0.2);
-            background: rgba(0, 255, 3, 0.02);
-            transform: translateY(-4px);
-        }
-
-        .vm-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            color: transparent;
-            -webkit-text-stroke: 1.5px var(--accent-color);
-            line-height: 1;
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .vm-card:hover .vm-number {
-            text-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .vm-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .vm-list {
-            list-style: none;
-        }
-
-        .vm-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-            color: var(--text-muted);
-        }
-
-        .vm-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 12px;
-            height: 4px;
-            background-color: var(--accent-color);
-        }
-
-        /* KEPENGURUSAN / MEMBER CARDS */
-        .member-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 15px;
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            cursor: default;
-        }
-
-        .member-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 255, 3, 0.15);
-        }
-
-        .member-card.leader {
-            border-color: rgba(0, 255, 3, 0.4);
-            background: linear-gradient(135deg, rgba(0,255,3,0.05) 0%, var(--card-bg) 100%);
-        }
-
-        .member-role {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-color);
-            font-size: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: bold;
             margin-bottom: 5px;
-            text-transform: uppercase;
         }
 
-        .member-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            font-weight: 900;
-        }
-
-        .member-num {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-family: 'Share Tech Mono', monospace;
-            color: #444;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .member-card:hover .member-num {
-            color: var(--accent-color);
-        }
-
-        /* PRESTASI CARD */
-        .achievement-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .achievement-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 255, 3, 0.2);
-        }
-
-        .achievement-img-box {
-            position: relative;
-            width: 100%;
-            height: 220px;
-            background: #1c2128 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80') center/cover;
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            transition: transform 0.5s ease;
-        }
-
-        .achievement-card:hover .achievement-img-box {
-            transform: scale(1.03);
-        }
-
-        .achievement-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(8, 9, 10, 0.85);
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 5px 12px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.75rem;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0,255,3,0.3);
-        }
-
-        .achievement-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 900;
-            line-height: 1.2;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-            z-index: 2;
-        }
-
-        .ig-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: var(--text-muted);
-            font-family: 'Share Tech Mono', monospace;
+        .timeline-text {
+            color: var(--text-gray);
             font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
         }
 
-        .ig-link:hover {
-            color: var(--accent-color);
-            transform: translateX(5px);
-        }
-
-        /* OPEN MEMBER / WA CARDS */
-        .wa-card {
+        /* Lists */
+        .list-item {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 20px;
+            gap: 10px;
             margin-bottom: 15px;
-            text-decoration: none;
-            color: white;
-            border-radius: 6px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-gray);
         }
 
-        .wa-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 8px 25px rgba(0, 255, 3, 0.2);
-            background: rgba(0, 255, 3, 0.03);
-        }
-
-        .wa-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .wa-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--accent-color);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: black;
-            box-shadow: 0 0 12px var(--accent-glow);
-            transition: transform 0.3s ease;
-        }
-
-        .wa-card:hover .wa-icon {
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        .wa-role {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--accent-color);
-            font-size: 0.75rem;
-        }
-
-        .wa-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .wa-phone {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .arrow-icon {
-            color: var(--text-muted);
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-        }
-
-        .wa-card:hover .arrow-icon {
-            color: var(--accent-color);
-            transform: translate(3px, -3px);
-        }
-
-        /* SOSIAL MEDIA GRID */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .social-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            color: white;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .social-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 255, 3, 0.25);
-            background: rgba(0, 255, 3, 0.04);
-        }
-
-        .social-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.0rem;
-            font-weight: 700;
-        }
-
-        .social-handle {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--text-muted);
+        .list-item::before {
+            content: '■';
+            color: var(--accent-green);
             font-size: 0.8rem;
         }
 
-        /* FOOTER */
+        /* Footer */
         footer {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px 20px;
             border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            margin-top: 40px;
         }
 
-        footer .footer-logo {
-            height: 45px;
-            width: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 10px var(--accent-glow));
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
-        footer .brand {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            color: white;
+        .footer-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-gray);
             margin-bottom: 5px;
-            letter-spacing: 1px;
         }
 
-        /* SCROLL REVEAL ANIMATION CLASS */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .footer-address {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
         }
 
+        .copyright {
+            color: var(--text-gray);
+            font-size: 0.7rem;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Hidden Google Translate Element -->
+    <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- HEADER -->
+    <!-- Header -->
     <header>
-        <div class="logo-box" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-            <svg class="header-logo-img" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M150 20 L200 80 L250 40 L220 120 L80 120 L50 40 L100 80 Z" stroke="#00ff03" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M80 135 L220 135 M90 150 L210 150" stroke="#00ff03" stroke-width="8" stroke-linecap="round"/>
-                <path d="M60 160 L240 160 L240 260 L150 330 L60 260 Z" stroke="#00ff03" stroke-width="14" fill="none" stroke-linejoin="round"/>
-                <path d="M150 175 L150 290" stroke="#00ff03" stroke-width="12" stroke-linecap="round"/>
-            </svg>
-            <div class="header-logo-text">DIVRODITE <span>ID</span></div>
+        <div class="logo-container">
+            <img src="DIVRODITE ID.png" alt="Logo DIVRODITE ID">
+            DIVRODITE <span>ID</span>
         </div>
-        <div style="display:flex; align-items:center;">
-            <button class="lang-switcher" id="langBtn">🌐 ID</button>
-            <button class="menu-btn" id="openMenuBtn">☰</button>
+        <div class="nav-controls">
+            <div class="lang-wrapper notranslate">
+                <button class="lang-btn-simple" onclick="toggleLangMenu()">
+                    🌐 <span id="currentLang">ID</span> ▾
+                </button>
+                <div class="lang-dropdown" id="langMenu">
+                    <div class="lang-option" onclick="changeLanguage('id', 'ID')">
+                        🇮🇩 Indonesia
+                    </div>
+                    <div class="lang-option" onclick="changeLanguage('en', 'EN')">
+                        🇺🇸 English
+                    </div>
+                    <div class="lang-option" onclick="changeLanguage('ms', 'MS')">
+                        🇲🇾 Melayu
+                    </div>
+                    <div class="lang-option" onclick="changeLanguage('vi', 'VI')">
+                        🇻🇳 Tiếng Việt
+                    </div>
+                    <div class="lang-option" onclick="changeLanguage('th', 'TH')">
+                        🇹🇭 ไทย (Thai)
+                    </div>
+                    <div class="lang-option" onclick="changeLanguage('ja', 'JA')">
+                        🇯🇵 日本語
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-icon" onclick="toggleMenu()">
+                ☰
+            </div>
         </div>
+
+        <!-- Dropdown Menu Mobile dengan Nomor -->
+        <nav class="dropdown-menu" id="navMenu">
+            <a href="#tentang" onclick="toggleMenu()"><span>01</span> Tentang Guild</a>
+            <a href="#visi-misi" onclick="toggleMenu()"><span>02</span> Visi & Misi</a>
+            <a href="#kepengurusan" onclick="toggleMenu()"><span>03</span> Kepengurusan</a>
+            <a href="#prestasi" onclick="toggleMenu()"><span>04</span> Prestasi</a>
+            <a href="#open-member" onclick="toggleMenu()"><span>05</span> Open Member</a>
+            <a href="#kerja-sama" onclick="toggleMenu()"><span>06</span> Kerja Sama</a>
+            <a href="#event" onclick="toggleMenu()"><span>07</span> Event & Jadwal</a>
+            <a href="#supported" onclick="toggleMenu()"><span>08</span> Supported</a>
+        </nav>
     </header>
 
-    <!-- NAV MENU OVERLAY -->
-    <div class="nav-overlay" id="navOverlay">
-        <button class="close-btn" id="closeMenuBtn">&times;</button>
-        <ul class="nav-links">           <li><!-- DAFTAR MENU LENGKAP DIVRODITE ID (CN TESTER DI POSISI AKHIR) -->
-            <div class="dvt-drawer-content">
-                <a href="#section-tentang" onclick="toggleSideMenu()">[01] TENTANG GUILD</a>
-                <a href="#section-visimisi" onclick="toggleSideMenu()">[02] VISI & MISI</a>
-                <a href="#section-kepengurusan" onclick="toggleSideMenu()">[03] KEPENGURUSAN</a>
-                <a href="#section-prestasi" onclick="toggleSideMenu()">[04] PRESTASI</a>
-                <a href="#section-openmember" onclick="toggleSideMenu()">[05] OPEN MEMBER</a>
-                <a href="#section-kerjasama" onclick="toggleSideMenu()">[06] KERJA SAMA</a>
-                <a href="#section-event" onclick="toggleSideMenu()">[07] EVENT & JADWAL</a>
-                <a href="#section-tim-terbaik" onclick="toggleSideMenu()">[08] TIM TERBAIK</a>
-                <a href="#section-member-terbaik" onclick="toggleSideMenu()">[09] MEMBER TERBAIK</a>
-                <a href="#section-cn-tester" onclick="toggleSideMenu()">[10] CN TESTER</a>
-<a href="javascript:void(0)" onclick="scrollToSection('section-sensi-calc')">[11] AUTO SENSI & DPI</a>
-<a href="javascript:void(0)" onclick="scrollToSection('section-kd-calc')">[12] KALKULATOR K/D</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            KOMUNITAS ESPORTS · BERDIRI 01 APRIL 2024
+        </div>
+        <img src="DIVRODITE ID.png" alt="DIVRODITE ID" style="max-width: 150px; margin-bottom: 10px;">
+        <h1 class="hero-title">DIVRODITE <span>ID</span></h1>
+        <p class="hero-subtitle">
+            Satu Tujuan, Tak Terbendung!
+        </p>
+        <p class="hero-desc">
+            Go United, Win Together - DIVRODITE VICTORIOUS!!
+        </p>
+
+        <div class="game-tags">
+            <div class="tag">
+                🎮 FREE FIRE
             </div>
-</div>
-    <!-- HERO SECTION -->
-    <div class="hero">
-        <!-- DIVRODITE LOGO ANIMATED -->
-        <div class="hero-logo-container">
-            <svg class="hero-logo-img" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M150 20 L200 80 L250 40 L220 120 L80 120 L50 40 L100 80 Z" stroke="#00ff03" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="50" cy="40" r="8" fill="#00ff03"/>
-                <circle cx="150" cy="20" r="8" fill="#00ff03"/>
-                <circle cx="250" cy="40" r="8" fill="#00ff03"/>
-                <path d="M80 135 L220 135 M90 150 L210 150" stroke="#00ff03" stroke-width="7" stroke-linecap="round"/>
-                <path d="M60 160 L240 160 L240 260 L150 330 L60 260 Z" stroke="#00ff03" stroke-width="12" fill="none" stroke-linejoin="round"/>
-                <path d="M150 175 L150 290" stroke="#00ff03" stroke-width="10" stroke-linecap="round"/>
-            </svg>
+            <div class="tag">
+                🔫 CODM
+            </div>
         </div>
 
-        <div class="hero-sub" data-i18n="hero-sub">KOMUNITAS ESPORTS • BERDIRI 01 APRIL 2024</div>
-        <h1 class="hero-title glitch" data-text="DIVRODITE ID">DIVRODITE <span>ID</span></h1>
-        <div class="hero-tagline" data-i18n="hero-tagline">Satu Tujuan, Tak Terbendung!</div>
-        <div class="hero-desc" data-i18n="hero-desc">Go United, Win Together — DIVRODITE VICTORIOUS!!</div>
-        
-        <div class="game-badges">
-            <span class="badge">🎮 Free Fire</span>
-            <span class="badge">🎮 Call of Duty Mobile</span>
+        <a href="#open-member" class="btn-primary">GABUNG SEKARANG</a>
+        <a href="#tentang" class="btn-secondary">JELAJAHI GUILD</a>
+    </section>
+
+    <!-- Section 01: Tentang Guild -->
+    <section id="tentang">
+        <h2 class="section-title">PERJALANAN KOMUNITAS KAMI</h2>
+        <p class="section-desc">
+            Divrodite ID adalah komunitas esports yang bergerak kuat di medan tempur Free Fire dan Call of Duty Mobile.
+        </p>
+
+        <div class="timeline-item">
+            <div class="timeline-date">
+                01 APRIL 2024
+            </div>
+            <div class="timeline-title">
+                GUILD TERBENTUK
+            </div>
+            <div class="timeline-text">
+                Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Terbentuk di region Majalengka, Jawa Barat, dengan tekad menyatukan player kompetitif.
+            </div>
         </div>
 
-        <div class="cta-container">
-            <a href="#open-member" class="btn-primary" data-i18n="btn-join">GABUNG SEKARANG</a>
-            <a href="#about" class="btn-secondary" data-i18n="btn-explore">JELAJAHI GUILD</a>
+        <div class="timeline-item">
+            <div class="timeline-date">
+                SEJARAH CODM
+            </div>
+            <div class="timeline-title">
+                EKSPANSI CALL OF DUTY MOBILE
+            </div>
+            <div class="timeline-text">
+                Divrodite ID melebarkan sayapnya ke medan pertempuran Call of Duty Mobile, membawa nama guild untuk bersaing di arena tembak taktis yang lebih luas dan memperkuat persaudaraan antardivisi.
+            </div>
         </div>
-    </div>
 
-    <!-- TENTANG GUILD -->
-    <section id="about" class="reveal">
-        <div class="section-tag" data-i18n="tag-about">01 — TENTANG GUILD</div>
-        <h2 class="section-title" data-i18n="title-about">SATU KOMUNITAS,<br>DUA MEDAN PERANG</h2>
-        <p class="about-text" data-i18n="desc-about">Divrodite ID adalah komunitas esports yang saat ini bergerak di bidang game Free Fire dan Call of Duty Mobile.</p>
-        
-        <div class="timeline">
-            <div class="timeline-item reveal">
-                <div class="timeline-date" data-i18n="date-t1">01 APRIL 2024</div>
-                <div class="timeline-title" data-i18n="title-t1">GUILD TERBENTUK</div>
-                <div class="timeline-desc" data-i18n="desc-t1">Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Awalnya berfokus penuh pada Free Fire dan berada di region majalengka,jawa barat.</div>
+        <div class="timeline-item">
+            <div class="timeline-date">
+                FFNS 2026 SPRING
             </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-date" data-i18n="date-t2">EKSPANSI DIVISI</div>
-                <div class="timeline-title" data-i18n="title-t2">LAHIRNYA DIVISI CODM</div>
-                <div class="timeline-desc" data-i18n="desc-t2">Setelah beberapa waktu, Divrodite ID bekerja sama membangun divisi Call of Duty Mobile untuk memperluas jangkauan komunitas.</div>
+            <div class="timeline-title">
+                SEMIFINAL CITY QUALIFIER
             </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-date" data-i18n="date-t3">FFNS 2026 SPRING</div>
-                <div class="timeline-title" data-i18n="title-t3">SEMIFINAL CITY QUALIFIER</div>
-                <div class="timeline-desc" data-i18n="desc-t3">Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.</div>
+            <div class="timeline-text">
+                Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.
             </div>
         </div>
     </section>
 
-    <!-- VISI & MISI -->
-    <section id="manifesto" class="reveal">
-        <div class="section-tag" data-i18n="tag-vm">02 — VISI & MISI</div>
-        <h2 class="section-title" data-i18n="title-vm">MANIFESTO KAMI</h2>
+    <!-- Section 02: Visi & Misi -->
+    <section id="visi-misi">
+        <div class="section-number">
+            02 – VISI & MISI
+        </div>
+        <h2 class="section-title">MANIFESTO KAMI</h2>
 
-        <div class="vm-card reveal">
-            <div class="vm-number">01</div>
-            <div class="vm-title" data-i18n="title-visi">VISI</div>
-            <ul class="vm-list">
-                <li data-i18n="v1">Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.</li>
-                <li data-i18n="v2">Berbagi pengalaman dan informasi sesama member guild.</li>
-                <li data-i18n="v3">Menjadi tempat bagi player Free Fire yang ingin bermain have fun maupun kompetitif.</li>
-            </ul>
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 10px;">01 VISI</h3>
+            <div class="list-item">
+                Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.
+            </div>
+            <div class="list-item">
+                Berbagi pengalaman dan informasi sesama member guild.
+            </div>
+            <div class="list-item">
+                Menjadi tempat bagi player yang ingin bermain have fun maupun kompetitif.
+            </div>
         </div>
 
-        <div class="vm-card reveal">
-            <div class="vm-number">02</div>
-            <div class="vm-title" data-i18n="title-misi">MISI</div>
-            <ul class="vm-list">
-                <li data-i18n="m1">Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.</li>
-                <li data-i18n="m2">Membuat forum berbagi agar semua member dapat berkembang bersama.</li>
-            </ul>
+        <div class="card">
+            <h3 style="color: var(--accent-green); margin-bottom: 10px;">02 MISI</h3>
+            <div class="list-item">
+                Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.
+            </div>
+            <div class="list-item">
+                Membuat forum berbagi agar semua member dapat berkembang bersama.
+            </div>
         </div>
     </section>
 
-    <!-- STRUKTUR KEPENGURUSAN -->
-    <section id="team" class="reveal">
-        <div class="section-tag" data-i18n="tag-team">03 — STRUKTUR KEPENGURUSAN</div>
-        <h2 class="section-title" data-i18n="title-team">BARISAN KOMANDO</h2>
-        <div style="font-family: 'Share Tech Mono'; color: var(--text-muted); margin-bottom: 25px;">👥 6 MEMBERS</div>
+    <!-- Section 03: Kepengurusan -->
+    <section id="kepengurusan">
+        <div class="section-number">
+            03 – STRUKTUR KEPENGURUSAN
+        </div>
+        <h2 class="section-title">BARISAN KOMANDO</h2>
+        <p class="section-desc">
+            👥 7 MEMBERS
+        </p>
 
-        <div class="member-card leader reveal">
-            <span class="member-num">01</span>
-            <div class="member-role">LEADER / FOUNDER</div>
-            <div class="member-name">DEY</div>
+        <div class="card">
+            <span class="card-number">01</span>
+            <div class="card-role">
+                LEADER / FOUNDER
+            </div>
+            <div class="card-name">
+                DEY
+            </div>
         </div>
 
-        <div class="member-card reveal">
-            <span class="member-num">02</span>
-            <div class="member-role">STAFF OPMEM BOYS</div>
-            <div class="member-name">PANCA</div>
+        <div class="card">
+            <span class="card-number">02</span>
+            <div class="card-role">
+                STAFF OPMEM BOYS
+            </div>
+            <div class="card-name">
+                PANCA
+            </div>
         </div>
 
-        <div class="member-card reveal">
-            <span class="member-num">03</span>
-            <div class="member-role">STAFF OPMEM LADIES</div>
-            <div class="member-name">RARA</div>
+        <div class="card">
+            <span class="card-number">03</span>
+            <div class="card-role">
+                STAFF OPMEM LADIES
+            </div>
+            <div class="card-name">
+                RARA
+            </div>
         </div>
 
-        <div class="member-card reveal">
-            <span class="member-num">04</span>
-            <div class="member-role">STAFF EVENT & PENGEMBANGAN TIM</div>
-            <div class="member-name">PUTRA</div>
+        <div class="card">
+            <span class="card-number">04</span>
+            <div class="card-role">
+                STAFF EVENT & PENGEMBANGAN TIM
+            </div>
+            <div class="card-name">
+                PUTRA
+            </div>
         </div>
 
-        <div class="member-card reveal">
-            <span class="member-num">05</span>
-            <div class="member-role">STAFF EDITOR</div>
-            <div class="member-name">YANN</div>
+        <div class="card">
+            <span class="card-number">05</span>
+            <div class="card-role">
+                STAFF EDITOR
+            </div>
+            <div class="card-name">
+                -
+            </div>
         </div>
 
-        <div class="member-card reveal">
-            <span class="member-num">06</span>
-            <div class="member-role">STAFF INTERNAL</div>
-            <div class="member-name">VIRA</div>
+        <div class="card">
+            <span class="card-number">06</span>
+            <div class="card-role">
+                STAFF INTERNAL
+            </div>
+            <div class="card-name">
+                VIRA
+            </div>
         </div>
-        
-        <div class="member-card reveal">
-                    <span class="member-num">07</span>
-                    <div class="member-role">STAFF HUMAS</div>
-                    <div class="member-name">PANJI</div>
+
+        <div class="card">
+            <span class="card-number">07</span>
+            <div class="card-role">
+                STAFF HUMAS
+            </div>
+            <div class="card-name">
+                PANJI
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 04: Prestasi -->
+    <section id="prestasi">
+        <div class="section-number">
+            04 – PRESTASI
+        </div>
+        <h2 class="section-title">JEJAK KEMENANGAN</h2>
+        <p class="section-desc">
+            Momen-momen kebanggaan Divrodite ID di medan tempur.
+        </p>
+
+        <div class="card">
+            <div class="card-role">
+                🏆 FREE FIRE · FFNS 2026 SPRING
+            </div>
+            <div class="card-name" style="font-size: 1.1rem; margin-top: 5px;">
+                SEMIFINAL CITY QUALIFIER FFNS PEKANBARU
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-role">
+                🏆 FREE FIRE & CODM · DOKUMENTASI
+            </div>
+            <div class="card-name" style="font-size: 1.1rem; margin-top: 5px;">
+                PERJALANAN KOMPETITIF GUILD
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 05: Open Member -->
+    <section id="open-member">
+        <div class="section-number">
+            05 – OPEN MEMBER
+        </div>
+        <h2 class="section-title">SIAP BERGABUNG?</h2>
+        <p class="section-desc">
+            Divrodite ID membuka pintu untuk player yang ingin bertumbuh – baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.
+        </p>
+
+        <a href="https://wa.me/6288274040292" target="_blank" style="text-decoration: none; display: block;">
+            <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
+                <div class="card-role">
+                    STAFF OPMEM BOYS
                 </div>
-        
-    </section>
-
-    <!-- PRESTASI -->
-    <section id="prestasi" class="reveal">
-        <div class="section-tag" data-i18n="tag-ach">04 — PRESTASI</div>
-        <h2 class="section-title" data-i18n="title-ach">JEJAK KEMENANGAN</h2>
-        <p class="about-text" style="margin-bottom: 25px;" data-i18n="desc-ach">Momen-momen kebanggaan Divrodite ID di medan tempur.</p>
-
-        <div class="achievement-card reveal">
-           <div class="achievement-img-box" style=> 
-                <span class="achievement-badge">🏆 FREE FIRE • FFNS 2026 SPRING</span>
-                <div class="achievement-title">SEMIFINAL CITY QUALIFIER FFNS PEKANBARU</div>
-            </div>
-        </div>
-
-        <div class="achievement-card reveal">
-            <div class="achievement-img-box" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80');">
-                <span class="achievement-badge" data-i18n="badge-doc">🏆 FREE FIRE • DOKUMENTASI</span>
-                <div class="achievement-title" data-i18n="title-doc">PERJALANAN KOMPETITIF GUILD</div>
-            </div>
-        </div>
-
-        <a href="https://instagram.com/divrodite.id" target="_blank" class="ig-link" data-i18n="ig-post">— LIHAT POSTINGAN • INSTAGRAM @DIVRODITE.ID ↗</a>
-    </section>
-
-    <!-- OPEN MEMBER & KONTAK -->
-    <section id="open-member" class="reveal">
-        <div class="section-tag" data-i18n="tag-opmem">05 — OPEN MEMBER</div>
-        <h2 class="section-title" style="color: var(--accent-color);" data-i18n="title-opmem">SIAP BERGABUNG?</h2>
-        <p class="about-text" style="margin-bottom: 25px;" data-i18n="desc-opmem">Divrodite ID membuka pintu untuk player yang ingin bertumbuh — baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.</p>
-
-        <a href="https://wa.me/6288274040292" target="_blank" class="wa-card reveal">
-            <div class="wa-info">
-                <div class="wa-icon">💬</div>
-                <div>
-                    <div class="wa-role">STAFF OPMEM BOYS</div>
-                    <div class="wa-name">PANCA</div>
-                    <div class="wa-phone">+62 882-7404-0292</div>
+                <div class="card-name">
+                    PANCA
+                </div>
+                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
+                    💬 Klik di sini untuk Chat WhatsApp (+62 882-7404-0292)
                 </div>
             </div>
-            <div class="arrow-icon">↗</div>
         </a>
 
-        <a href="https://wa.me/6283167230896" target="_blank" class="wa-card reveal">
-            <div class="wa-info">
-                <div class="wa-icon">💬</div>
-                <div>
-                    <div class="wa-role">STAFF OPMEM LADIES</div>
-                    <div class="wa-name">RARA</div>
-                    <div class="wa-phone">+62 831-6723-0896</div>
+        <a href="https://wa.me/6283167230896" target="_blank" style="text-decoration: none; display: block;">
+            <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
+                <div class="card-role">
+                    STAFF OPMEM LADIES
+                </div>
+                <div class="card-name">
+                    RARA
+                </div>
+                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
+                    💬 Klik di sini untuk Chat WhatsApp (+62 831-6723-0896)
                 </div>
             </div>
-            <div class="arrow-icon">↗</div>
         </a>
 
-        <div style="margin-top: 25px; display:flex; flex-direction:column; gap: 12px;">
-            <a href="https://linktr.ee/divrodite" target="_blank" class="btn-primary" data-i18n="btn-form">📋 FORM PENDAFTARAN</a>
-            <a href="https://divroditestore.vcpanel.id" target="_blank" class="btn-secondary" data-i18n="btn-store">🛍️ TOKO TOPUP</a>
+        <a href="https://whatsapp.com/channel/0029VaaWCN19cDDXJ5pEkJ1G" target="_blank" class="btn-primary" style="margin-top: 15px; display: block; text-align: center;">📢 SALURAN WHATSAPP</a>
+        <a href="https://divroditestore.vcpanel.id" target="_blank" class="btn-secondary" style="margin-top: 10px; display: block; text-align: center;">🛍️ TOKO TOPUP</a>
+    </section>
+
+    <!-- Section 06: Kerja Sama -->
+    <section id="kerja-sama">
+        <div class="section-number">
+            06 – KERJA SAMA
         </div>
-<!-- SECTION KERJA SAMA / PARTNERSHIP -->
-        <section class="section" id="partnership">
-            
-            <!-- Bagian Judul Section -->
-            <div class="section-tag" data-i18n="tag-partner">
-                <span style="color: #00ff03; margin-right: 5px;">■</span> 06 — KERJA SAMA
+        <h2 class="section-title">BUSINESS & PARTNERSHIP</h2>
+        <p class="section-desc">
+            Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami untuk mendiskusikan peluang terbaik.
+        </p>
+
+        <a href="https://wa.me/6285707120646" target="_blank" style="text-decoration: none; display: block;">
+            <div class="card" style="cursor: pointer; border-color: var(--border-color); transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent-green)'" onmouseout="this.style.borderColor='var(--border-color)'">
+                <div class="card-role">
+                    STAFF HUMAS
+                </div>
+                <div class="card-name">
+                    PANJI
+                </div>
+                <div class="card-contact" style="color: var(--accent-green); margin-top: 5px; font-weight: bold;">
+                    💬 Klik di sini untuk Chat WhatsApp (+62 857-0712-0646)
+                </div>
             </div>
-            
-            <h2 class="section-title" style="color: #00ff03; font-weight: 900; text-transform: uppercase; font-size: 2.5rem; line-height: 1.1; margin-bottom: 20px;" data-i18n="title-partner">
-                BUSINESS &<br>PARTNERSHIP
-            </h2>
-            
-            <p class="about-text" style="margin-bottom: 30px; color: #a0a0a0;" data-i18n="desc-partner">
-                Tertarik untuk menjalin kerja sama, sponsorship, kolaborasi event, atau media partner dengan Divrodite ID? Hubungi Staff Humas kami untuk mendiskusikan peluang terbaik.
+        </a>
+    </section>
+
+    <!-- Section 07: Event & Jadwal -->
+    <section id="event">
+        <div class="section-number">
+            07 – EVENT & JADWAL
+        </div>
+        <h2 class="section-title">ARENA PERTEMPURAN</h2>
+        <p class="section-desc">
+            Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID. Bersiaplah!
+        </p>
+
+        <div class="card">
+            <div class="card-role">
+                🏆 EVENT DIVRODITE ID
+            </div>
+            <div class="card-name" style="font-size: 1.1rem;">
+                DIVRODITE ID SCRIM LEAGUE COLABORATION SEASON 2
+            </div>
+            <div class="card-contact">
+                7-11 September 2026 • 19.00-20.00 WIB
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-role">
+                ⚔️ EVENT DIVRODITE ID
+            </div>
+            <div class="card-name" style="font-size: 1.1rem;">
+                BATTLE OF DIVRODITE SEASON 4
+            </div>
+            <div class="card-contact">
+                COMING SOON • TBA
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-role">
+                ⚔️ EVENT DIVRODITE ID
+            </div>
+            <div class="card-name" style="font-size: 1.1rem;">
+                CLASH OF DIVRODITE SEASON 2
+            </div>
+            <div class="card-contact">
+                COMING SOON • TBA
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-role">
+                ⚔️ EVENT DIVRODITE ID
+            </div>
+            <div class="card-name" style="font-size: 1.1rem;">
+                SCRIM INTERNAL
+            </div>
+            <div class="card-contact">
+                SETIAP SABTU • 20.00 WIB
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-role">
+                ⚔️ EVENT DIVRODITE ID
+            </div>
+            <div class="card-name" style="font-size: 1.1rem;">
+                SCRIM EKSTERNAL
+            </div>
+            <div class="card-contact">
+                SETIAP AKHIR BULAN • 20.00 WIB
+            </div>
+        </div>
+
+        <button onclick="alert('Jadwal Lengkap sedang diperbarui!')" class="btn-primary">📅 LIHAT JADWAL LENGKAP</button>
+    </section>
+
+    <!-- Section 08: Supported By -->
+    <section id="supported">
+        <div class="section-number">
+            08 – SUPPORTED
+        </div>
+        <h2 class="section-title">MITRA KAMI</h2>
+        <p class="section-desc">
+            Terima kasih kepada pihak-pihak yang telah mendukung penuh perjalanan komunitas Divrodite ID.
+        </p>
+
+        <!-- Tempat Placeholder Sponsor 1 -->
+        <div class="card" style="text-align: center; padding: 30px 20px;">
+            <div class="card-role">
+                OFFICIAL PARTNER
+            </div>
+            <div class="card-name" style="margin-top: 15px;">
+                <!-- Masukkan Logo Di Sini -->
+                <img src="LOGO KGFFI.png" alt="Komunitas Guild Free Fire Indonesia" style="max-width: 150px; height: auto; object-fit: contain;">
+            </div>
+        </div>
+        <!-- Tempat Placeholder Sponsor 2 -->
+        <div class="card" style="text-align: center; padding: 30px 20px;">
+            <div class="card-role">
+                OFFICIAL PARTNER
+            </div>
+            <div class="card-name" style="margin-top: 15px;">
+                <!-- Masukkan Logo Di Sini -->
+                <img src="LOGO SPONSOR2.png" alt="Sponsor 2" style="max-width: 150px; height: auto; object-fit: contain;">
+            </div>
+        </div>
+        <!-- Section: Ikuti Kami -->
+        <section id="socials">
+            <p class="section-desc" style="text-transform: uppercase; letter-spacing: 2px;">
+                IKUTI KAMI
             </p>
-        
-            <!-- Kartu Kontak Staff Humas -->
-            <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 25px;">
-                
-                <!-- Ikon Pesan (Chat) -->
-                <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
-                    💬
+
+            <div class="card">
+                <div class="card-role">
+                    📸 INSTAGRAM
                 </div>
-                
-                <!-- Info Teks Staff -->
-                <div style="flex: 1;">
-                    <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">STAFF HUMAS</div>
-                    <!-- Nama Staff Humas -->
-                    <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">PANJI</div>
-                    <!-- Region / Nomor -->
-                    <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;"> +62 857-0712-0646</div>
+                <div class="card-name" style="font-size: 1rem;">
+                    <a href="https://instagram.com/divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
                 </div>
-                
-                <!-- Tombol Link ke WhatsApp -->
-                <!-- Ganti tanda # di href dengan link WhatsApp, contoh: https://wa.me/+6285707120646 -->
-<a href="https://wa.me/6285707120646" target="_blank" style="background-color: rgba(255,255,255,0.05); ...">
-                    ↗
-                </a>
             </div>
-        
-            <!-- Tombol Ekstra (Opsional: Untuk Download Proposal atau Kirim Email) -->
-            <a href="#" class="reveal" style="display: block; background-color: transparent; border: 1px solid #00ff03; color: #00ff03; text-align: center; padding: 16px; border-radius: 8px; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; font-size: 15px;">
-                UNTUK KERJASAMA HUBUNGI STAFF HUMAS 
-            </a>
-        
+
+            <div class="card">
+                <div class="card-role">
+                    🎵 TIKTOK
+                </div>
+                <div class="card-name" style="font-size: 1rem;">
+                    <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-link">@divrodite.id</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-role">
+                    ▶️ YOUTUBE
+                </div>
+                <div class="card-name" style="font-size: 1rem;">
+                    <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-link">@divrodite.id_comunity</a>
+                </div>
+            </div>
         </section>
-<!-- SECTION EVENT -->
-<section class="section" id="event">
-    
-    <!-- Bagian Judul Section -->
-    <div class="section-tag" data-i18n="tag-event">
-        <span style="color: #00ff03; margin-right: 5px;">■</span> 07 — EVENT & JADWAL
-    </div>
-    
-    <h2 class="section-title" style="color: #00ff03; font-weight: 900; text-transform: uppercase; font-size: 2.5rem; line-height: 1.1; margin-bottom: 20px;" data-i18n="title-event">
-        ARENA<br>PERTEMPURAN
-    </h2>
-    
-    <p class="about-text" style="margin-bottom: 30px; color: #a0a0a0;" data-i18n="desc-event">
-        Jadwal turnamen, Scrim League, dan event kompetitif terdekat yang akan diikuti oleh pasukan Divrodite ID. Bersiaplah!
-    </p>
 
-    <!-- Kartu Event 1: Turnamen -->
-    <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 15px;">
-        <!-- Ikon Kotak Hijau -->
-        <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
-            🏆
-        </div>
-        <!-- Info Teks -->
-        <div style="flex: 1;">
-            <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRODITE ID EVENT</div>
-            <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">DIVRDOITE ID SCRIM LEAGUE COLABORATION SEASON 2</div>
-            <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">COMING SOON • TBA</div>
-        </div>
-        <!-- Ikon Panah -->
-        <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
-            ↗
-        </div>
-    </div>
-
-    <!-- Kartu Event 2: Scrim -->
-    <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 30px;">
-        <!-- Ikon Kotak Hijau -->
-        <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
-            ⚔️
-        </div>
-        <!-- Info Teks -->
-        <div style="flex: 1;">
-            <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRDITE ID</div>
-            <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">BATTLE OF DIVRODITE SEASON 4</div>
-            <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">COMING SOON • TBA</div>
-        </div>
-        <!-- Ikon Panah -->
-        <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
-            ↗
-        </div>
-    </div>
-    <!-- Kartu Event 3: Scrim -->
-    <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 30px;">
-        <!-- Ikon Kotak Hijau -->
-        <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
-            ⚔️
-        </div>
-        <!-- Info Teks -->
-        <div style="flex: 1;">
-            <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRDITE ID</div>
-            <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">CLASH OF DIVRODITE SEASON 2</div>
-            <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">COMING SOON • TBA</div>
-        </div>
-        <!-- Ikon Panah -->
-        <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
-            ↗
-        </div>
-    </div>
-    <!-- Kartu Event 4: Scrim -->
-        <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 30px;">
-            <!-- Ikon Kotak Hijau -->
-            <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
-                ⚔️
+        <!-- Footer -->
+        <footer>
+            <img src="DIVRODITE ID.png" alt="DIVRODITE Logo" style="max-width: 80px; margin-bottom: 10px;">
+            <div class="footer-title">
+                DIVRODITE.ID
             </div>
-            <!-- Info Teks -->
-            <div style="flex: 1;">
-                <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRDITE ID</div>
-                <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">SCRIM INTERNAL</div>
-                <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">SETIAP SABTU • 20.00 WIB</div>
+            <div class="footer-subtitle">
+                SATU TUJUAN, TAK TERBENDUNG.
             </div>
-            <!-- Ikon Panah -->
-            <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
-                ↗
+            <div class="footer-address">
+                📍 Majalengka, Jawa Barat, Indonesia
             </div>
-        </div>
-    <!-- Kartu Event 5: Scrim -->
-        <div class="event-card reveal" style="background-color: #151515; border: 1px solid #222; border-radius: 12px; padding: 15px; display: flex; align-items: center; margin-bottom: 30px;">
-            <!-- Ikon Kotak Hijau -->
-            <div style="background-color: #00ff03; width: 55px; height: 55px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; flex-shrink: 0;">
-                ⚔️
+            <div class="copyright">
+                © 2026 DIVRODITE ID · SEMUA HAK DILINDUNGI.
             </div>
-            <!-- Info Teks -->
-            <div style="flex: 1;">
-                <div style="color: #00ff03; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;">FREE FIRE • DIVRDITE ID</div>
-                <div style="color: #ffffff; font-size: 18px; font-weight: bold; text-transform: uppercase;">SCRIM EKSTERNAL</div>
-                <div style="color: #888888; font-size: 12px; font-family: monospace; margin-top: 2px;">SETIAP AKHIR BULAN • 20.00 WIB</div>
-            </div>
-            <!-- Ikon Panah -->
-            <div style="background-color: rgba(255,255,255,0.05); width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; color: white; font-size: 14px; flex-shrink: 0;">
-                ↗
-            </div>
-        </div>
-  
-    <!-- Tombol Aksi -->
-    <!-- Tombol Primary (Hijau) -->
-    <a href="#" class="reveal" style="display: block; background-color: #00ff03; color: #000000; text-align: center; padding: 16px; border-radius: 8px; font-weight: 800; text-decoration: none; margin-bottom: 12px; letter-spacing: 0.5px; font-size: 15px;">
-        📅 LIHAT JADWAL LENGKAP
-    </a>
-<!-- Tombol Secondary (Hitam Transparan / Outline) -->
-        <a href="https://wa.me/6282265234077" target="_blank" class="reveal" style="display: block; background-color: transparent; border: 1px solid #333; color: #ffffff; text-align: center; padding: 16px; border-radius: 8px; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; font-size: 15px;">
-            ⚔️ PENDAFTARAN SCRIM
-        </a>
-        
-<!-- CONTAINER TIM TERBAIK & MEMBER TERBAIK -->
-<div style="margin-top: 30px; font-family: 'Rajdhani', sans-serif;">
-    
-    <!-- 1. WIDGET TIM TERBAIK (JUARA 1, 2, 3) -->
-    <section id="section-tim-terbaik" style="scroll-margin-top: 90px; margin-bottom: 20px;">
-        <div style="background: #121212; border: 1px solid #1f1f1f; border-left: 4px solid #00ff03; border-radius: 10px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-            <!-- Header Section -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #1a1a1a; padding-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 18px;">🏆</span>
-                    <h3 style="color: #00ff03; font-family: 'Orbitron', sans-serif; font-size: 15px; margin: 0; letter-spacing: 1px;">TIM TERBAIK BULAN INI</h3>
-                </div>
-                <span style="background: rgba(0,255,3,0.1); color: #00ff03; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 4px; border: 1px solid #00ff03;">BEST TEAM</span>
-            </div>
-            
-            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
-                <!-- Logo / Icon Tim -->
-                <div style="width: 55px; height: 55px; background: #1a1a1a; border: 2px solid #00ff03; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 0 10px rgba(0,255,3,0.2);">
-                    🛡️
-                </div>
-                <!-- Informasi Tim -->
-                <div style="flex: 1; min-width: 160px;">
-                    <h4 style="color: #fff; font-size: 17px; margin: 0 0 4px 0; font-family: 'Orbitron', sans-serif;">DVT BEBEL</h4>
-                    <p style="color: #888; font-size: 12px; margin: 0;">Kapten: <span style="color: #aaa;">CEPA | DVT</span></p>
-                </div>
-                <!-- Statistik Juara (1, 2, 3) -->
-                <div style="display: flex; gap: 10px; background: #181818; padding: 8px 12px; border-radius: 6px; border: 1px solid #282828;">
-                    <div style="text-align: center; min-width: 50px;">
-                        <span style="display: block; font-size: 9px; color: #ffd700; font-weight: bold;">🥇 JUARA 1</span>
-                        <strong style="color: #ffd700; font-size: 15px; font-family: 'Orbitron', sans-serif;">0x</strong>
-                    </div>
-                    <div style="text-align: center; border-left: 1px solid #252525; padding-left: 10px; min-width: 50px;">
-                        <span style="display: block; font-size: 9px; color: #c0c0c0; font-weight: bold;">🥈 JUARA 2</span>
-                        <strong style="color: #c0c0c0; font-size: 15px; font-family: 'Orbitron', sans-serif;">0x</strong>
-                    </div>
-                    <div style="text-align: center; border-left: 1px solid #252525; padding-left: 10px; min-width: 50px;">
-                        <span style="display: block; font-size: 9px; color: #cd7f32; font-weight: bold;">🥉 JUARA 3</span>
-                        <strong style="color: #cd7f32; font-size: 15px; font-family: 'Orbitron', sans-serif;">0x</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </footer>
 
-    <!-- WIDGET MEMBER TERBAIK (PEMENANG KEAKTIFAN BULAN INI) -->
-    <section id="section-member-terbaik" style="scroll-margin-top: 90px; margin-top: 20px;">
-        <div style="background: #121212; border: 1px solid #1f1f1f; border-left: 4px solid #00ff03; border-radius: 10px; padding: 16px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-family: 'Rajdhani', sans-serif;">
-            
-            <!-- Header Ringkas -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px;">
-                <h3 style="color: #00ff03; font-family: 'Orbitron', sans-serif; font-size: 13px; margin: 0; letter-spacing: 1px;">
-                    🔥 MEMBER TERAKTIF BULAN INI
-                </h3>
-                <span style="background: rgba(0,255,3,0.1); color: #00ff03; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 4px; border: 1px solid #00ff03;">
-                    AGUSTUS 2026
-                </span>
-            </div>
-            
-            <!-- Konten Simpel & Fokus Poin -->
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                <!-- Player Info -->
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <div style="width: 42px; height: 42px; background: #1a1a1a; border: 2px solid #00ff03; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 0 8px rgba(0,255,3,0.3);">
-                        👑
-                    </div>
-                    <div>
-                        <h4 style="color: #fff; font-size: 16px; margin: 0; font-family: 'Orbitron', sans-serif;">NICK | DVT</h4>
-                        <p style="color: #888; font-size: 11px; margin: 2px 0 0 0;">Top Activity Member</p>
-                    </div>
-                </div>
-    
-                <!-- Total Point Keaktifan -->
-                <div style="background: #181818; padding: 6px 14px; border-radius: 6px; border: 1px solid #282828; text-align: right;">
-                    <span style="display: block; font-size: 9px; color: #888; font-weight: bold;">POINT KEAKTIFAN NO </span>
-                    <strong style="color: #00ff03; font-size: 18px; font-family: 'Orbitron', sans-serif;">1<span
-                    style="font-size: 11px; color: #aaa;"></span></strong>
-                </div>
-            </div>
-    
-        </div>
-    </section>
-    
-<!-- KASIH ID PADA WIDGET CN TESTER -->
-<div id="cn-tester" style="scroll-margin-top: 90px;">
-    
-    <!-- Seluruh Kode Widget CN Tester Kamu Ada Di Sini -->
-
-</div>
-<!-- WIDGET FREE FIRE CN NICK TESTER (EXAMPLE: NICK | DVT) -->
-<div style="background: #121212; border: 1px solid #1f1f1f; border-radius: 12px; padding: 25px; margin-top: 30px; font-family: 'Rajdhani', sans-serif; color: #fff;">
-    
-    <!-- Title Section -->
-    <div style="text-align: center; margin-bottom: 20px;">
-        <h3 style="color: #00ff03; font-family: 'Orbitron', sans-serif; font-size: 18px; margin: 0; letter-spacing: 1px;">DIVRODITE ID NICKNAME TESTER</h3>
-        <p style="color: #777; font-size: 12px; margin-top: 4px;">Ketik nama kamu di kolom. Suffix <b> | DVT</b> sudah terpasang otomatis dengan spasi ingame.</p>
-    </div>
-
-    <!-- Form Input Area -->
-    <div style="margin-bottom: 15px;">
-        <label style="font-size: 11px; color: #aaa; display: block; margin-bottom: 6px; font-weight: bold;">INPUT NAMA PLAYER</label>
-        <div style="display: flex; align-items: center; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding-right: 12px;">
-            <input type="text" id="cnUserNick" oninput="updateCnPreviewDVT()" placeholder="Contoh: NICK" style="flex: 1; background: transparent; border: none; color: #fff; padding: 10px 12px; font-size: 13px; outline: none; box-sizing: border-box;">
-            <!-- Tag DVT dengan Spasi Khusus -->
-            <span style="color: #00ff03; font-weight: bold; font-family: 'Orbitron', sans-serif; font-size: 13px; padding-left: 10px; border-left: 1px solid #333; user-select: none;"> | DVT</span>
-        </div>
-        <span style="font-size: 10px; color: #666; margin-top: 4px; display: block;">*Akhiran " | DVT" memakan 6 karakter, sisa tersisa max 6 karakter untuk nama player.</span>
-    </div>
-
-    <!-- Quick FF Symbols Bar -->
-    <div style="margin-bottom: 20px;">
-        <label style="font-size: 11px; color: #888; display: block; margin-bottom: 6px;">SISIPKAN SIMBOL POPULER FF:</label>
-        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-            <button type="button" onclick="insertCnSymbol('亗')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">亗</button>
-            <button type="button" onclick="insertCnSymbol('⚡')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">⚡</button>
-            <button type="button" onclick="insertCnSymbol('✿')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">✿</button>
-            <button type="button" onclick="insertCnSymbol('☠')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">☠</button>
-            <button type="button" onclick="insertCnSymbol('🍷')" style="background: #222; border: 1px solid #333; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">🍷</button>
-            <button type="button" onclick="insertCnSymbol('ㅤ')" style="background: #1a1a1a; border: 1px solid #00ff03; color: #00ff03; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: bold;">+ SPASI INVISIBLE</button>
-        </div>
-    </div>
-
-    <!-- Live Preview Card -->
-    <div style="background: linear-gradient(135deg, #181818, #0a0a0a); border: 1px solid #282828; border-radius: 8px; padding: 20px; text-align: center; position: relative; margin-bottom: 15px;">
-        <span style="font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">INGAME DISPLAY PREVIEW</span>
-        
-        <div id="cnPreviewBox" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 900; color: #00ff03; letter-spacing: 1px; word-break: break-all; min-height: 30px; display: flex; align-items: center; justify-content: center;">
-            NICK | DVT
-        </div>
-
-        <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
-            <span id="cnStatusMsg" style="color: #00ff03;">✅ Panjang valid untuk Free Fire!</span>
-            <span id="cnCounter" style="font-weight: bold; color: #00ff03;">10 / 12 Karakter</span>
-        </div>
-    </div>
-
-    <!-- Copy Button -->
-    <button type="button" id="cnCopyBtn" onclick="copyCnNickDVT()" style="width: 100%; background: #00ff03; color: #000; border: none; padding: 12px; font-weight: 900; font-family: 'Orbitron', sans-serif; font-size: 13px; border-radius: 6px; cursor: pointer; letter-spacing: 1px;">
-        SALIN NICKNAME (NICK | DVT)
-    </button>
-
-</div>
-
-<!-- LOGIKA JAVASCRIPT -->
-<script>
-    const FIXED_DVT = " | DVT";
-
-    function updateCnPreviewDVT() {
-        let userNick = document.getElementById("cnUserNick").value;
-        
-        // Tampilkan 'NICK' secara default jika kolom input kosong
-        let displayNick = userNick.length > 0 ? userNick : "NICK";
-        let fullNick = displayNick + FIXED_DVT;
-        
-        let totalChar = Array.from(fullNick).length;
-
-        let previewBox = document.getElementById("cnPreviewBox");
-        let counter = document.getElementById("cnCounter");
-        let statusMsg = document.getElementById("cnStatusMsg");
-        let copyBtn = document.getElementById("cnCopyBtn");
-
-        previewBox.innerText = fullNick;
-        counter.innerText = ` / 12 Karakter`;
-        copyBtn.innerText = `SALIN NICKNAME ()`;
-
-        if (totalChar <= 12) {
-            statusMsg.innerText = "✅ Panjang valid untuk Free Fire!";
-            statusMsg.style.color = "#00ff03";
-            counter.style.color = "#00ff03";
-        } else {
-            statusMsg.innerText = "⚠️ Melebihi batas max 12 karakter FF!";
-            statusMsg.style.color = "#ff3333";
-            counter.style.color = "#ff3333";
-        }
-    }
-
-    function insertCnSymbol(symbol) {
-        let nickInput = document.getElementById("cnUserNick");
-        nickInput.value += symbol;
-        updateCnPreviewDVT();
-    }
-
-    function copyCnNickDVT() {
-        let userNick = document.getElementById("cnUserNick").value.trim();
-        let fullNick = (userNick ? userNick : "NICK") + FIXED_DVT;
-
-        navigator.clipboard.writeText(fullNick).then(() => {
-            alert("Nickname berhasil disalin: " + fullNick);
-        }).catch(err => {
-            console.error("Gagal menyalin:", err);
-        });
-    }
-</script>
-  
-  
-<!-- WIDGET KALKULATOR SENSITIVITAS & DPI AUTO-GENERATOR -->
-  <section id="section-sensi-calc" style="scroll-margin-top: 90px; margin-top: 30px; font-family: 'Rajdhani', sans-serif;">
-      <div style="background: #121212; border: 1px solid #1f1f1f; border-left: 4px solid #00ff03; border-radius: 10px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-  
-          <!-- Header Widget -->
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #1a1a1a; padding-bottom: 10px;">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-size: 18px;">🎯</span>
-                  <h3 style="color: #00ff03; font-family: 'Orbitron', sans-serif; font-size: 15px; margin: 0; letter-spacing: 1px;">
-                      AUTO SENSI & DPI GENERATOR
-                  </h3>
-              </div>
-              <span style="background: rgba(0,255,3,0.1); color: #00ff03; font-size: 10px; padding: 3px 8px; border-radius: 4px; border: 1px solid #00ff03; font-family: 'Orbitron', sans-serif;">
-                  AUTO RED-SHOT
-              </span>
-          </div>
-  
-          <!-- Input Parameter HP -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 15px;">
-              <div>
-                  <label style="color: #aaa; font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">RAM HP</label>
-                  <select id="sensi-ram" style="width: 100%; background: #181818; color: #fff; border: 1px solid #252525; padding: 8px; border-radius: 6px; font-family: 'Rajdhani', sans-serif; font-size: 13px; outline: none;">
-                      <option value="low">2GB - 4GB (Standar)</option>
-                      <option value="mid" selected>6GB - 8GB (Menengah)</option>
-                      <option value="high">12GB+ (Flagship)</option>
-                  </select>
-              </div>
-              <div>
-                  <label style="color: #aaa; font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">GAYA BERMAIN</label>
-                  <select id="sensi-role" style="width: 100%; background: #181818; color: #fff; border: 1px solid #252525; padding: 8px; border-radius: 6px; font-family: 'Rajdhani', sans-serif; font-size: 13px; outline: none;">
-                      <option value="rusher">Rusher / Shotgun (Lincah)</option>
-                      <option value="balance" selected>Balance / All-Rounder</option>
-                      <option value="sniper">Sniper / Support (Presisi)</option>
-                  </select>
-              </div>
-              <div>
-                  <label style="color: #aaa; font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">REFRESH RATE</label>
-                  <select id="sensi-hz" style="width: 100%; background: #181818; color: #fff; border: 1px solid #252525; padding: 8px; border-radius: 6px; font-family: 'Rajdhani', sans-serif; font-size: 13px; outline: none;">
-                      <option value="60">60 Hz (Layar Biasa)</option>
-                      <option value="90">90 Hz / 120 Hz (Layar Smooth)</option>
-                  </select>
-              </div>
-          </div>
-  
-          <!-- Tombol Hitung -->
-          <button onclick="generateSensi()" style="width: 100%; background: #00ff03; color: #000; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 12px; padding: 10px; border: none; border-radius: 6px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 10px rgba(0,255,3,0.3); margin-bottom: 15px;">
-              ⚡ GENERATE REKOMENDASI SENSI
-          </button>
-  
-          <!-- Hasil Output Sensitivitas -->
-          <div id="sensi-result" style="background: #181818; border: 1px solid #252525; border-radius: 8px; padding: 15px; display: none;">
-              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #252525; padding-bottom: 8px; margin-bottom: 12px;">
-                  <span style="color: #fff; font-family: 'Orbitron', sans-serif; font-size: 12px;">HASIL REKOMENDASI</span>
-                  <span id="dpi-badge" style="background: rgba(0,255,3,0.15); color: #00ff03; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: bold; border: 1px solid #00ff03; font-family: 'Orbitron', sans-serif;">DPI: -</span>
-              </div>
-  
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #ccc;">
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-                      <span>Lihat Sekeliling:</span>
-                      <strong id="val-gen" style="color: #00ff03; font-family: 'Orbitron', sans-serif;">-</strong>
-                  </div>
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-                      <span>Red Dot Sight:</span>
-                      <strong id="val-red" style="color: #00ff03; font-family: 'Orbitron', sans-serif;">-</strong>
-                  </div>
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-                      <span>2x Scope:</span>
-                      <strong id="val-2x" style="color: #00ff03; font-family: 'Orbitron', sans-serif;">-</strong>
-                  </div>
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-                      <span>4x Scope:</span>
-                      <strong id="val-4x" style="color: #00ff03; font-family: 'Orbitron', sans-serif;">-</strong>
-                  </div>
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-                      <span>Sniper Scope:</span>
-                      <strong id="val-sniper" style="color: #00ff03; font-family: 'Orbitron', sans-serif;">-</strong>
-                  </div>
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between;">
-                      <span>Lihat Bebas:</span>
-                      <strong id="val-free" style="color: #00ff03; font-family: 'Orbitron', sans-serif;">-</strong>
-                  </div>
-              </div>
-          </div>
-  
-      </div>
-  </section>
-  
-  <!-- SCRIPT KALKULASI SENSITIVITAS -->
-  <script>
-  function generateSensi() {
-      const ram = document.getElementById('sensi-ram').value;
-      const role = document.getElementById('sensi-role').value;
-      const hz = document.getElementById('sensi-hz').value;
-  
-      let baseGen = 90, baseRed = 85, base2x = 80, base4x = 75, baseSniper = 45, baseFree = 60;
-      let dpi = "411 (Default)";
-  
-      // Penyesuaian berdasarkan RAM
-      if (ram === 'low') {
-          baseGen = 100; baseRed = 95; base2x = 90; base4x = 85;
-          dpi = "480 DPI";
-      } else if (ram === 'mid') {
-          baseGen = 94; baseRed = 88; base2x = 84; base4x = 78;
-          dpi = "420 DPI";
-      } else {
-          baseGen = 88; baseRed = 82; base2x = 78; base4x = 72;
-          dpi = "Standar (Tanpa DPI)";
-      }
-  
-      // Penyesuaian berdasarkan Role
-      if (role === 'rusher') {
-          baseGen = Math.min(100, baseGen + 5);
-          baseRed = Math.min(100, baseRed + 5);
-      } else if (role === 'sniper') {
-          baseGen -= 8;
-          baseSniper = 35;
-      }
-  
-      // Penyesuaian berdasarkan Refresh Rate
-      if (hz === '90') {
-          baseGen -= 4;
-          baseRed -= 4;
-      }
-  
-      // Render ke Elemen HTML
-      document.getElementById('val-gen').innerText = baseGen;
-      document.getElementById('val-red').innerText = baseRed;
-      document.getElementById('val-2x').innerText = base2x;
-      document.getElementById('val-4x').innerText = base4x;
-      document.getElementById('val-sniper').innerText = baseSniper;
-      document.getElementById('val-free').innerText = baseFree;
-      document.getElementById('dpi-badge').innerText = "REKOMENDASI: " + dpi;
-  
-      document.getElementById('sensi-result').style.display = 'block';
-  }
-  </script>
-  
-<!-- WIDGET KALKULATOR K/D RATIO & STATISTIK FREE FIRE -->
-  <section id="section-kd-calc" style="scroll-margin-top: 90px; margin-top: 30px; font-family: 'Rajdhani', sans-serif;">
-      <div style="background: #121212; border: 1px solid #1f1f1f; border-left: 4px solid #00ff03; border-radius: 10px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-  
-          <!-- Header Widget -->
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #1a1a1a; padding-bottom: 10px;">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-size: 18px;">📊</span>
-                  <h3 style="color: #00ff03; font-family: 'Orbitron', sans-serif; font-size: 15px; margin: 0; letter-spacing: 1px;">
-                      KALKULATOR K/D RATIO
-                  </h3>
-              </div>
-              <span style="background: rgba(0,255,3,0.1); color: #00ff03; font-size: 10px; padding: 3px 8px; border-radius: 4px; border: 1px solid #00ff03; font-family: 'Orbitron', sans-serif;">
-                  STAT ANALYZER
-              </span>
-          </div>
-  
-          <!-- Input Parameter Statistik -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 15px;">
-              <div>
-                  <label style="color: #aaa; font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">TOTAL KILL</label>
-                  <input type="number" id="kd-kills" placeholder="Ex: 450" min="0" style="width: 100%; background: #181818; color: #fff; border: 1px solid #252525; padding: 8px; border-radius: 6px; font-family: 'Orbitron', sans-serif; font-size: 13px; outline: none; box-sizing: border-box;">
-              </div>
-              <div>
-                  <label style="color: #aaa; font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">TOTAL MATCH</label>
-                  <input type="number" id="kd-matches" placeholder="Ex: 120" min="1" style="width: 100%; background: #181818; color: #fff; border: 1px solid #252525; padding: 8px; border-radius: 6px; font-family: 'Orbitron', sans-serif; font-size: 13px; outline: none; box-sizing: border-box;">
-              </div>
-              <div>
-                  <label style="color: #aaa; font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">BOOYAH (WIN)</label>
-                  <input type="number" id="kd-wins" placeholder="Ex: 35" min="0" style="width: 100%; background: #181818; color: #fff; border: 1px solid #252525; padding: 8px; border-radius: 6px; font-family: 'Orbitron', sans-serif; font-size: 13px; outline: none; box-sizing: border-box;">
-              </div>
-          </div>
-  
-          <!-- Tombol Hitung -->
-          <button onclick="calculateKD()" style="width: 100%; background: #00ff03; color: #000; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 12px; padding: 10px; border: none; border-radius: 6px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 10px rgba(0,255,3,0.3); margin-bottom: 15px;">
-              ⚡ HITUNG K/D RATIO
-          </button>
-  
-          <!-- Hasil Output Statistik -->
-          <div id="kd-result" style="background: #181818; border: 1px solid #252525; border-radius: 8px; padding: 15px; display: none;">
-              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #252525; padding-bottom: 8px; margin-bottom: 12px;">
-                  <span style="color: #fff; font-family: 'Orbitron', sans-serif; font-size: 12px;">RINGKASAN PERFORMA</span>
-                  <span id="kd-tier-badge" style="background: rgba(0,255,3,0.15); color: #00ff03; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: bold; border: 1px solid #00ff03; font-family: 'Orbitron', sans-serif;">-</span>
-              </div>
-  
-              <!-- Grid Highlight K/D utama -->
-              <div style="text-align: center; background: #121212; border: 1px solid #252525; border-radius: 6px; padding: 12px; margin-bottom: 10px;">
-                  <span style="color: #888; font-size: 11px; font-weight: bold; display: block;">K/D RATIO</span>
-                  <span id="val-kd" style="color: #00ff03; font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 900;">0.00</span>
-              </div>
-  
-              <!-- Detail Statistik Tambahan -->
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #ccc;">
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between; border: 1px solid #222;">
-                      <span>Win Rate:</span>
-                      <strong id="val-winrate" style="color: #00ff03; font-family: 'Orbitron', sans-serif;">0%</strong>
-                  </div>
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between; border: 1px solid #222;">
-                      <span>Avg Kill/Match:</span>
-                      <strong id="val-avgkill" style="color: #00ff03; font-family: 'Orbitron', sans-serif;">0.0</strong>
-                  </div>
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between; border: 1px solid #222;">
-                      <span>Total Mati (Deaths):</span>
-                      <strong id="val-deaths" style="color: #fff; font-family: 'Orbitron', sans-serif;">0</strong>
-                  </div>
-                  <div style="background: #121212; padding: 8px; border-radius: 4px; display: flex; justify-content: space-between; border: 1px solid #222;">
-                      <span>Status Guild:</span>
-                      <strong id="val-status" style="color: #fff; font-family: 'Orbitron', sans-serif;">-</strong>
-                  </div>
-              </div>
-          </div>
-  
-      </div>
-  </section>
-  
-  <!-- SCRIPT KALKULASI K/D RATIO -->
-  <script>
-  function calculateKD() {
-      const kills = parseInt(document.getElementById('kd-kills').value) || 0;
-      const matches = parseInt(document.getElementById('kd-matches').value) || 0;
-      const wins = parseInt(document.getElementById('kd-wins').value) || 0;
-  
-      if (matches <= 0) {
-          alert("Jumlah Match harus lebih besar dari 0!");
-          return;
-      }
-  
-      if (wins > matches) {
-          alert("Jumlah Booyah tidak boleh lebih besar dari total Match!");
-          return;
-      }
-  
-      // Rumus K/D Battle Royale (Free Fire): Kills / Total Deaths
-      // Total Deaths = Total Matches - Total Booyah
-      let deaths = matches - wins;
-      let actualDeaths = deaths <= 0 ? 1 : deaths; // Mencegah pembagian 0 jika selalu Booyah
-  
-      const kdRatio = (kills / actualDeaths).toFixed(2);
-      const winRate = ((wins / matches) * 100).toFixed(1);
-      const avgKill = (kills / matches).toFixed(1);
-  
-      // Penentuan Tier berdasarkan nilai K/D
-      let tierText = "";
-      let tierColor = "#00ff03";
-      let statusText = "LAYAK";
-  
-      if (kdRatio >= 5.0) {
-          tierText = "🌟 GODLIKE";
-          tierColor = "#ffd700"; // Gold
-      } else if (kdRatio >= 3.5) {
-          tierText = "🔥 PRO PLAYER";
-          tierColor = "#00ff03"; // Green
-      } else if (kdRatio >= 2.0) {
-          tierText = "⚡ COMPETITIVE";
-          tierColor = "#00e5ff"; // Cyan
-      } else {
-          tierText = "🔰 AMATEUR";
-          tierColor = "#ff3333"; // Red
-          statusText = "PERLU IMPROVE";
-      }
-  
-      // Render hasil ke elemen HTML
-      document.getElementById('val-kd').innerText = kdRatio;
-      document.getElementById('val-winrate').innerText = winRate + "%";
-      document.getElementById('val-avgkill').innerText = avgKill;
-      document.getElementById('val-deaths').innerText = deaths;
-      document.getElementById('val-status').innerText = statusText;
-  
-      const badge = document.getElementById('kd-tier-badge');
-      badge.innerText = tierText;
-      badge.style.color = tierColor;
-      badge.style.borderColor = tierColor;
-      badge.style.background = tierColor + "22";
-  
-      document.getElementById('kd-result').style.display = 'block';
-  }
-  </script>
-        
-</section>
-               <div style="margin-top: 40px;">
-                   <div style="font-family:'Share Tech Mono'; color:var(--text-muted); font-size:0.85rem; letter-spacing:1px; margin-bottom:15px;" data-i18n="follow-us">IKUTI KAMI</div>
-                   <div class="social-grid">
-                       <a href="https://instagram.com/divrodite.id" target="_blank" class="social-card reveal">
-                           <div style="font-size:1.5rem;">📸</div>
-                           <div>
-                               <div class="social-title">INSTAGRAM</div>
-                               <div class="social-handle">@divrodite.id</div>
-                           </div>
-                       </a>
-                       <a href="https://tiktok.com/@divrodite.id" target="_blank" class="social-card reveal">
-                           <div style="font-size:1.5rem;">🎵</div>
-                           <div>
-                               <div class="social-title">TIKTOK</div>
-                               <div class="social-handle">@divrodite.id</div>
-                           </div>
-                       </a>
-                       <a href="https://youtube.com/@divrodite.id_comunity" target="_blank" class="social-card reveal">
-                           <div style="font-size:1.5rem;">▶️</div>
-                           <div>
-                               <div class="social-title">YOUTUBE</div>
-                               <div class="social-handle">@divrodite.id_comunity</div>
-                           </div>
-                       </a>
-                   </div>
-               </div>
-           </section>
-       
-
-    <!-- FOOTER -->
-    <footer>
-        <svg class="footer-logo" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M150 20 L200 80 L250 40 L220 120 L80 120 L50 40 L100 80 Z" stroke="#00ff03" stroke-width="10" fill="none"/>
-            <path d="M60 160 L240 160 L240 260 L150 330 L60 260 Z" stroke="#00ff03" stroke-width="12" fill="none"/>
-            <path d="M150 175 L150 290" stroke="#00ff03" stroke-width="10"/>
-        </svg>
-        <div class="brand">DIVRODITE.ID</div>
-        <div style="font-family: 'Share Tech Mono'; font-size: 0.8rem; margin-bottom: 15px;" data-i18n="footer-motto">SATU TUJUAN, TAK TERBENDUNG.</div>
-        <p data-i18n="footer-copy">&copy; 2026 DIVRODITE ID • SEMUA HAK DILINDUNGI.</p>
-    </footer>
-
-    <script>
-        const navOverlay = document.getElementById('navOverlay');
-        const openMenuBtn = document.getElementById('openMenuBtn');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-
-        openMenuBtn.addEventListener('click', () => { navOverlay.classList.add('active'); });
-        closeMenuBtn.addEventListener('click', () => { navOverlay.classList.remove('active'); });
-        function closeNav() { navOverlay.classList.remove('active'); }
-
-        const translations = {
-            id: {
-                "hero-sub": "KOMUNITAS ESPORTS • BERDIRI 01 APRIL 2024",
-                "hero-tagline": "Satu Tujuan, Tak Terbendung!",
-                "hero-desc": "Go United, Win Together — DIVRODITE VICTORIOUS!!",
-                "btn-join": "GABUNG SEKARANG",
-                "btn-explore": "JELAJAHI GUILD",
-                "tag-about": "01 — TENTANG GUILD",
-                "title-about": "SATU KOMUNITAS,<br>DUA MEDAN PERANG",
-                "desc-about": "Divrodite ID adalah komunitas esports yang saat ini bergerak di bidang game Free Fire dan Call of Duty Mobile.",
-                "date-t1": "01 APRIL 2024",
-                "title-t1": "GUILD TERBENTUK",
-                "desc-t1": "Divrodite ID dibentuk oleh 5 orang: Dey, Irfan, Wulan, Bunga, dan Alya. Awalnya berfokus penuh pada Free Fire.",
-                "date-t2": "EKSPANSI DIVISI",
-                "title-t2": "LAHIRNYA DIVISI CODM",
-                "desc-t2": "Setelah beberapa waktu, Divrodite ID bekerja sama membangun divisi Call of Duty Mobile untuk memperluas jangkauan komunitas.",
-                "date-t3": "FFNS 2026 SPRING",
-                "title-t3": "SEMIFINAL CITY QUALIFIER",
-                "desc-t3": "Prestasi terbaik kami di Free Fire: lolos ke semifinal City Qualifier FFNS Pekanbaru pada FFNS 2026 Spring.",
-                "tag-vm": "02 — VISI & MISI",
-                "title-vm": "MANIFESTO KAMI",
-                "title-visi": "VISI",
-                "v1": "Membentuk guild komunitas yang mempererat persaudaraan, solidaritas, dan soliditas antar member maupun antar guild.",
-                "v2": "Berbagi pengalaman dan informasi sesama member guild.",
-                "v3": "Menjadi tempat bagi player Free Fire yang ingin bermain have fun maupun kompetitif.",
-                "title-misi": "MISI",
-                "m1": "Membuat scrim internal, scrim external, dan event guild untuk membentuk tali persaudaraan dan solidaritas antar member serta komunitas.",
-                "m2": "Membuat forum berbagi agar semua member dapat berkembang bersama.",
-                "tag-team": "03 — STRUKTUR KEPENGURUSAN",
-                "title-team": "BARISAN KOMANDO",
-                "tag-ach": "04 — PRESTASI",
-                "title-ach": "JEJAK KEMENANGAN",
-                "desc-ach": "Momen-momen kebanggaan Divrodite ID di medan tempur.",
-                "badge-doc": "🏆 FREE FIRE • DOKUMENTASI",
-                "title-doc": "PERJALANAN KOMPETITIF GUILD",
-                "ig-post": "— LIHAT POSTINGAN • INSTAGRAM @DIVRODITE.ID ↗",
-                "tag-opmem": "05 — OPEN MEMBER",
-                "title-opmem": "SIAP BERGABUNG?",
-                "desc-opmem": "Divrodite ID membuka pintu untuk player yang ingin bertumbuh — baik have fun maupun kompetitif. Hubungi Staff Opmem kami untuk mendaftar.",
-                "btn-form": "📋 FORM PENDAFTARAN",
-                "btn-store": "🛍️ TOKO TOPUP",
-                "follow-us": "IKUTI KAMI",
-                "footer-motto": "SATU TUJUAN, TAK TERBENDUNG.",
-                "footer-copy": "&copy; 2026 DIVRODITE ID • SEMUA HAK DILINDUNGI."
-            },
-            en: {
-                "hero-sub": "ESPORTS COMMUNITY • ESTABLISHED APRIL 01, 2024",
-                "hero-tagline": "One Goal, Unstoppable!",
-                "hero-desc": "Go United, Win Together — DIVRODITE VICTORIOUS!!",
-                "btn-join": "JOIN NOW",
-                "btn-explore": "EXPLORE GUILD",
-                "tag-about": "01 — ABOUT GUILD",
-                "title-about": "ONE COMMUNITY,<br>TWO BATTLEFIELDS",
-                "desc-about": "Divrodite ID is an esports community currently active in Free Fire and Call of Duty Mobile.",
-                "date-t1": "APRIL 01, 2024",
-                "title-t1": "GUILD FOUNDED",
-                "desc-t1": "Divrodite ID was founded by 5 members: Dey, Irfan, Wulan, Bunga, and Alya. Initially focusing purely on Free Fire.",
-                "date-t2": "DIVISION EXPANSION",
-                "title-t2": "BIRTH OF CODM DIVISION",
-                "desc-t2": "Later on, Divrodite ID expanded by forming the Call of Duty Mobile division to broaden community reach.",
-                "date-t3": "FFNS 2026 SPRING",
-                "title-t3": "CITY QUALIFIER SEMIFINALS",
-                "desc-t3": "Our major achievement in Free Fire: qualifying for the FFNS Pekanbaru City Qualifier Semifinals in FFNS 2026 Spring.",
-                "tag-vm": "02 — VISION & MISSION",
-                "title-vm": "OUR MANIFESTO",
-                "title-visi": "VISION",
-                "v1": "To build a community guild strengthening brotherhood, solidarity, and unity among members and guilds.",
-                "v2": "To share knowledge and experience among all guild members.",
-                "v3": "To provide a home for Free Fire players looking for casual or competitive gameplay.",
-                "title-misi": "MISSION",
-                "m1": "Host internal/external scrims and guild events to foster brotherhood and solidarity across the community.",
-                "m2": "Create shared forums for all members to grow together.",
-                "tag-team": "03 — MANAGEMENT STRUCTURE",
-                "title-team": "COMMAND LINEUP",
-                "tag-ach": "04 — ACHIEVEMENTS",
-                "title-ach": "VICTORY PATH",
-                "desc-ach": "Divrodite ID's proud moments on the battleground.",
-                "badge-doc": "🏆 FREE FIRE • DOCUMENTATION",
-                "title-doc": "COMPETITIVE GUILD JOURNEY",
-                "ig-post": "— VIEW POST • INSTAGRAM @DIVRODITE.ID ↗",
-                "tag-opmem": "05 — OPEN MEMBER",
-                "title-opmem": "READY TO JOIN?",
-                "desc-opmem": "Divrodite ID welcomes players eager to grow — casually or competitively. Contact our Recruitment Staff to apply.",
-                "btn-form": "📋 REGISTRATION FORM",
-                "btn-store": "🛍️ TOPUP STORE",
-                "follow-us": "FOLLOW US",
-                "footer-motto": "ONE GOAL, UNSTOPPABLE.",
-                "footer-copy": "&copy; 2026 DIVRODITE ID • ALL RIGHTS RESERVED."
+        <!-- Script Menu & Multi Bahasa -->
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('navMenu');
+                menu.classList.toggle('show');
             }
-        };
 
-        let currentLang = 'id';
-        const langBtn = document.getElementById('langBtn');
+            function toggleLangMenu() {
+                const langMenu = document.getElementById('langMenu');
+                langMenu.classList.toggle('show');
+            }
 
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'id' ? 'en' : 'id';
-            langBtn.innerText = currentLang === 'id' ? '🌐 ID' : '🌐 EN';
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    el.innerHTML = translations[currentLang][key];
+            // Menutup menu jika klik di luar area
+            window.onclick = function(event) {
+                if (!event.target.closest('.lang-wrapper')) {
+                    const langMenu = document.getElementById('langMenu');
+                    if (langMenu && langMenu.classList.contains('show')) {
+                        langMenu.classList.remove('show');
+                    }
                 }
-            });
-        });
+            }
 
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            const windowHeight = window.innerHeight;
+            // Perbaikan fungsi ganti bahasa tanpa reload halaman
+            function changeLanguage(langCode, label) {
+                document.getElementById('currentLang').innerText = label;
 
-            reveals.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('active');
+                const googleCombo = document.querySelector('.goog-te-combo');
+                if (googleCombo) {
+                    if (langCode === 'id') {
+                        googleCombo.value = '';
+                    } else {
+                        googleCombo.value = langCode;
+                    }
+                    googleCombo.dispatchEvent(new Event('change'));
                 }
-            });
-        }
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
-    </script>
-</body>
+                toggleLangMenu();
+            }
+
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'id',
+                    autoDisplay: false
+                }, 'google_translate_element');
+            }
+        </script>
+        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    </body>
 </html>
-

@@ -12,13 +12,13 @@ function renderSchedules() {
   const container = document.getElementById('scheduleContainer');
   if(!container) return;
   container.innerHTML = '';
-
+  
   schedules.forEach((item) => {
     container.innerHTML += `
-      <div class="schedule-card">
-        <span class="role">${item.role}</span>
-        <h3>${item.title}</h3>
-        <p>${item.time}</p>
+      <div class="card">
+        <div class="card-role">${item.role}</div>
+        <div class="card-name" style="font-size: 1.1rem; font-weight: bold;">${item.title}</div>
+        <div class="card-contact">${item.time}</div>
       </div>
     `;
   });
